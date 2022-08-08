@@ -8,24 +8,31 @@ public class PlayerMove : MonoBehaviour
     public static readonly Vector2 SPEED = new Vector2(3f, 3f);
     public static readonly Vector2 INERTIA = new Vector2(1.1f, 0.25f);
 
+    private Animator animator => GetComponent<Animator>();
+    private SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
+
     private float x { get { return transform.position.x; } set { transform.position = new Vector3(value, transform.position.y, transform.position.z); } }
     private float y { get { return transform.position.y; } set { transform.position = new Vector3(transform.position.x, value, transform.position.z); } }
 
-    [ReadOnly] public bool JumpNow;
-    [ReadOnly] public bool OnWall;
-    [ReadOnly] public bool GravityOrientation;
-    [ReadOnly] public bool HorizontalDirection;
+    public bool JumpNow;
+    public bool OnWall;
+    public bool GravityDown;
+    public bool FaceRight;
 
-    private Vector2 force; // ax,ay
-    private Vector2 velocity; // vx,vy
+    public Vector2 force; // ax,ay
+    public Vector2 velocity; // vx,vy
 
     private int tapLeft = 0;
     private int tapRight = 0;
+
+    private int wallLayer => LayerMask.NameToLayer("wall");
 
     void Start()
     {
         // TODO: Remove when implement map
         Application.targetFrameRate = 30;
+        FaceRight = true;
+        GravityDown = true;
     }
 
     void Update()
@@ -70,18 +77,19 @@ public class PlayerMove : MonoBehaviour
         var hInput = Input.GetAxis("Horizontal");
         if (hInput != 0)
         {
-            HorizontalDirection = hInput < 0;
-            force.x = HorizontalDirection ? -SPEED.x : SPEED.x;
+            FaceRight = 0 < hInput;
+            force.x = FaceRight ? SPEED.x : -SPEED.x;
         }
+        TapMove();
 
         var vInput = Input.GetAxis("Vertical");
         if (vInput != 0)
         {
-            if (OnWall)
+            if (OnWall && !JumpNow)
             {
-                GravityOrientation = !GravityOrientation;
-                velocity.y = GravityOrientation ? 4 : -4; // TODO: Replace to constant
-                force.y = GravityOrientation ? SPEED.y : -SPEED.y;
+                GravityDown = !GravityDown;
+                velocity.y = GravityDown ? -4 : 4;
+                force.y = GravityDown ? -SPEED.y : SPEED.y;
                 JumpNow = true;
             }
         }
@@ -91,20 +99,23 @@ public class PlayerMove : MonoBehaviour
             velocity.y = 0;
         }
 
-        TapMove();
-
         velocity += force;
         velocity = applyFriction(velocity, INERTIA);
 
-        // TODO: Check Collision
         x += velocity.x;
         y += velocity.y;
+
+        animator.SetBool("MoveNow", velocity.x != 0);
+        animator.SetBool("JumpNow", JumpNow);
+
+        spriteRenderer.flipX = !FaceRight;
+        spriteRenderer.flipY = !GravityDown;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         var layer = collider.gameObject.layer;
-        if (layer == LayerMask.NameToLayer("wall"))
+        if (layer == wallLayer)
         {
             Debug.Log("Collide to wall");
             OnWall = true;
@@ -114,7 +125,7 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         var layer = collider.gameObject.layer;
-        if (layer == LayerMask.NameToLayer("wall"))
+        if (layer == wallLayer)
         {
             OnWall = false;
         }

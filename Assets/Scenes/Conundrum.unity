@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 714567370}
   - component: {fileID: 714567371}
   - component: {fileID: 714567374}
+  - component: {fileID: 714567375}
   m_Layer: 0
   m_Name: Static Sprite
   m_TagString: Untagged
@@ -521,6 +522,25 @@ MonoBehaviour:
   OnWall: 0
   GravityOrientation: 0
   HorizontalDirection: 0
+--- !u!95 &714567375
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714567369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aae58d3b40c38924da465f6fc31c1758, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &965848024
 GameObject:
   m_ObjectHideFlags: 0
