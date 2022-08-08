@@ -483,3 +483,4 @@ crashlytics-build.properties
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,unity,csharp
 
 data
+.vscode/launch.json
