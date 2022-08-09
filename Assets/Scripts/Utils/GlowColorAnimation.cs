@@ -3,29 +3,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-public class GlowColorAnimation : MonoBehaviour
+namespace VVVVVV
 {
-    // TODO: Set color in other place, Only generate color in here 
-    [SerializeField] private SpriteRenderer playerRenderer;
-    [SerializeField] private Text roomnameText;
-
-    public Color playerNormal => new Color32((byte)(160 - glow / 2 - fRand() * 20), (byte)(200 - glow / 2), (byte)(220 - glow), 255);
-    public Color roomname => new Color32(196, 196, (byte)(255 - glow), 255);
-
-    public bool glowDirection = false;
-    public int glow { get; private set; }
-
-    void Update()
+    public class GlowColorAnimation : MonoBehaviour
     {
-        glow += 2 * (glowDirection ? 1 : -1);
+        // TODO: Set color in other place, Only generate color in here 
+        [SerializeField] private SpriteRenderer playerRenderer;
+        [SerializeField] private Text roomnameText;
 
-        if (glowDirection && 62 <= glow) glowDirection = false;
-        if (!glowDirection && glow < 2) glowDirection = true;
+        public Color playerNormal => new Color32((byte)(160 - glow / 2 - fRand() * 20), (byte)(200 - glow / 2), (byte)(220 - glow), 255);
+        public Color roomname => new Color32(196, 196, (byte)(255 - glow), 255);
+
+        public bool glowDirection = false;
+        public int glow { get; private set; }
+
+        void Update()
+        {
+            glow += 2 * (glowDirection ? 1 : -1);
+
+            if (glowDirection && 62 <= glow) glowDirection = false;
+            if (!glowDirection && glow < 2) glowDirection = true;
 
 
-        roomnameText.color = roomname;
-        playerRenderer.material.color = playerNormal;
+            roomnameText.color = roomname;
+            playerRenderer.material.color = playerNormal;
+        }
+
+        public float fRand() => Convert.ToSingle(new System.Random().NextDouble());
     }
-
-    public float fRand() => Convert.ToSingle(new System.Random().NextDouble());
 }
