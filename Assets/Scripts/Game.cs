@@ -29,8 +29,8 @@ public class Game : MonoBehaviour
     {
         void AdjustCamPos()
         {
-            var camX = room.pos.x * 640 - 240;
-            var camY = room.pos.y * 480 - 380;
+            var camX = room.pos.x * 640;
+            var camY = room.pos.y * 480 - 40;
 
             cam.localPosition = new Vector3(camX, camY, cam.localPosition.z);
         }
