@@ -5,6 +5,10 @@ namespace VVVVVV.UI
     public class EnterUI : MonoBehaviour
     {
         [SerializeField] protected GameObject uiPanel;
+        [SerializeField] protected GameObject mainPanel;
+
+        private Animator slideAnimator => mainPanel.GetComponent<Animator>();
+        private PlayerMove player => GameObject.Find("Player").GetComponent<PlayerMove>();
 
         public static bool Paused = false;
 
@@ -12,30 +16,29 @@ namespace VVVVVV.UI
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Paused)
-                {
-                    Resume();
-                }
-                else
-                {
-                    Pause();
-                }
+                slideAnimator.SetBool("open", !Paused);
             }
+        }
+
+        // Get Event from Animator
+        protected virtual void Pause()
+        {
+            uiPanel.SetActive(true);
+            uiPanel.transform.SetParent(mainPanel.transform);
+            Paused = true;
+
+            player.enabled = false;
         }
 
         protected virtual void Resume()
         {
             uiPanel.SetActive(false);
-            // !TODO: Change pause way, timeScale can make side effect
-            Time.timeScale = 1f;
-            Paused = false;
-        }
+            uiPanel.transform.SetParent(null);
 
-        protected virtual void Pause()
-        {
-            uiPanel.SetActive(true);
-            Time.timeScale = 0f;
-            Paused = true;
+            Paused = false;
+
+            // TODO: refactoring need
+            player.enabled = true;
         }
     }
 }
