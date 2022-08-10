@@ -135,6 +135,9 @@ namespace VVVVVV
 
         private void OnTriggerStay2D(Collider2D collider)
         {
+            if (collider.gameObject.layer != wallLayer)
+                return;
+
             // TODO: Adjust velocity before collide (overlap animation bug)
             var overlapDist = GetComponent<BoxCollider2D>().Distance(collider);
             var diff = overlapDist.pointA.y - overlapDist.pointB.y;
