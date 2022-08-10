@@ -9,7 +9,7 @@ namespace VVVVVV.UI
     {
         private static readonly Color NON_SELECT_OPTION_COLOR = new Color32(96, 96, 96, 255);
 
-        protected Color highlightColor => new Color32(196, 196, (byte)(255 - GlowColorAnimation.glow), 255);
+        protected Color highlightColor => new Color32(196, 196, (byte)(255 - Utils.GlowColorAnimation.glow), 255);
         [SerializeField] protected List<Text> highlightTexts;
         [SerializeField] protected List<Text> options;
         private List<string> originalOptTexts;

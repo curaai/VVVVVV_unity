@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-namespace VVVVVV
+namespace VVVVVV.Utils
 {
     [DisallowMultipleComponent]
     public class GlowColorAnimation : MonoBehaviour
@@ -12,7 +12,7 @@ namespace VVVVVV
         [SerializeField] private SpriteRenderer playerRenderer;
         [SerializeField] private Text roomnameText;
 
-        public Color playerNormal => new Color32((byte)(160 - glow / 2 - fRand() * 20), (byte)(200 - glow / 2), (byte)(220 - glow), 255);
+        public Color playerNormal => new Color32((byte)(160 - glow / 2 - RandomHelper.fRand() * 20), (byte)(200 - glow / 2), (byte)(220 - glow), 255);
         public static Color roomname => new Color32(196, 196, (byte)(255 - glow), 255);
 
         public bool glowDirection = false;
@@ -29,7 +29,5 @@ namespace VVVVVV
             roomnameText.color = roomname;
             playerRenderer.material.color = playerNormal;
         }
-
-        public float fRand() => Convert.ToSingle(new System.Random().NextDouble());
     }
 }
