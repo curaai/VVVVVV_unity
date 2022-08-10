@@ -5,10 +5,10 @@ namespace VVVVVV
 {
     public class PlayerMove : MonoBehaviour
     {
-        public static readonly float MaxSpeedX = 6f;
-        public static readonly float MaxSpeedY = 10f;
-        public static readonly Vector2 SPEED = new Vector2(3f, 3f);
-        public static readonly Vector2 INERTIA = new Vector2(1.1f, 0.25f);
+        public static readonly float MaxSpeedX = 12f;
+        public static readonly float MaxSpeedY = 20f;
+        public static readonly Vector2 SPEED = new Vector2(6f, 6f);
+        public static readonly Vector2 INERTIA = new Vector2(2.2f, 0.5f);
 
         private Animator animator => GetComponent<Animator>();
         private SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
@@ -90,7 +90,7 @@ namespace VVVVVV
                 if (OnWall && !JumpNow)
                 {
                     GravityDown = !GravityDown;
-                    velocity.y = GravityDown ? -4 : 4;
+                    velocity.y = GravityDown ? -8 : 8;
                     force.y = GravityDown ? -SPEED.y : SPEED.y;
                     JumpNow = true;
                 }
