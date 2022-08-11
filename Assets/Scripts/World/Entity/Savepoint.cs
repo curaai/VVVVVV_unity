@@ -43,15 +43,15 @@ namespace VVVVVV.World.Entity
 
             void OpenMapPage()
             {
-                throw new NotImplementedException();
+                GameObject.Find("MapPanel").GetComponent<UI.SlidePanel>().Toggle();
             }
 
             SetColor();
 
-            var pressEnter = Input.GetKeyDown(KeyCode.KeypadEnter);
+            var pressEnter = Input.GetKeyDown(KeyCode.Return);
             if (CollidePlayerNow && pressEnter)
             {
-                // OpenMapPage();
+                OpenMapPage();
             }
         }
 

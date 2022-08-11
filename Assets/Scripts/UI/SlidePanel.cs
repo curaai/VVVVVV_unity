@@ -4,31 +4,14 @@ namespace VVVVVV.UI
 {
     public class SlidePanel : MonoBehaviour
     {
-        [SerializeField] protected GameObject uiPanel;
-        [SerializeField] protected GameObject mainPanel;
-
         private PlayerMove player => GameObject.Find("Player").GetComponent<PlayerMove>();
 
         public static bool Opened = false;
-
-        protected virtual void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                var controller = mainPanel.GetComponent<PanelController>();
-                if (!Opened)
-                {
-                    controller.SetMainUI(this);
-                }
-                controller.Toggle();
-            }
-        }
 
         // Get Event from Animator
         internal virtual void Open()
         {
             activeChildren(true);
-            uiPanel.transform.SetParent(mainPanel.transform);
             Opened = true;
 
             player.enabled = false;
@@ -37,17 +20,25 @@ namespace VVVVVV.UI
         internal virtual void Close()
         {
             activeChildren(false);
-            uiPanel.transform.SetParent(null);
-
             Opened = false;
 
             // TODO: refactoring need
             player.enabled = true;
         }
 
+        public void Toggle()
+        {
+            var controller = GameObject.Find("RootPanel").GetComponent<PanelController>();
+            if (!Opened)
+            {
+                controller.SetMainUI(this);
+            }
+            controller.Toggle();
+        }
+
         private void activeChildren(bool activate)
         {
-            foreach (Transform child in uiPanel.transform)
+            foreach (Transform child in transform)
                 child.gameObject.SetActive(activate);
         }
     }

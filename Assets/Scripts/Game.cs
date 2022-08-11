@@ -24,10 +24,9 @@ namespace VVVVVV
 
         void Update()
         {
-            var rpos = roomObj.transform.InverseTransformPoint(player.position);
-
             Vector2Int? IsRoomChanged()
             {
+                var rpos = roomObj.transform.InverseTransformPoint(player.position);
                 int xDir = 0;
                 if (rpos.x <= -1.25f)
                     xDir = -1;
@@ -50,6 +49,11 @@ namespace VVVVVV
             if (newRoomDir.HasValue)
             {
                 ChangeRoom(room.pos + newRoomDir.Value);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameObject.Find("PausePanel").GetComponent<UI.SlidePanel>().Toggle();
             }
         }
 

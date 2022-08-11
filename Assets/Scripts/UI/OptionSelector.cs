@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace VVVVVV.UI
 {
@@ -9,9 +10,11 @@ namespace VVVVVV.UI
     {
         private static readonly Color NON_SELECT_OPTION_COLOR = new Color32(96, 96, 96, 255);
 
-        protected Color highlightColor => new Color32(196, 196, (byte)(255 - Utils.GlowColorAnimation.glow), 255);
         [SerializeField] protected List<Text> highlightTexts;
         [SerializeField] protected List<Text> options;
+        [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
+
+        protected Color highlightColor => new Color32(196, 196, (byte)(255 - Utils.GlowColorAnimation.glow), 255);
         private List<string> originalOptTexts;
 
         private void Start()
@@ -26,9 +29,8 @@ namespace VVVVVV.UI
             curOptIdx = 0;
         }
 
-        protected override void Update()
+        protected void Update()
         {
-            base.Update();
             if (!Opened)
                 return;
 
@@ -66,6 +68,7 @@ namespace VVVVVV.UI
                 }
 
                 curOpt.text = $"[ {curOpt.text.ToUpper()} ]";
+                optionChanged.Invoke(curOptIdx);
             }
         }
 
