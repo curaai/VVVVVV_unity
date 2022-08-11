@@ -8,19 +8,8 @@ namespace VVVVVV.UI
 {
     public class OptionSelector : SlidePanel
     {
-        private static readonly Color NON_SELECT_OPTION_COLOR = new Color32(96, 96, 96, 255);
-
-        [SerializeField] protected List<Text> highlightTexts;
-        [SerializeField] protected List<Text> options;
+        [SerializeField] protected List<GlowText> options;
         [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
-
-        protected Color highlightColor => new Color32(196, 196, (byte)(255 - Utils.GlowColorAnimation.glow), 255);
-        private List<string> originalOptTexts;
-
-        private void Start()
-        {
-            originalOptTexts = options.Select(x => x.text).ToList();
-        }
 
         internal override void Open()
         {
@@ -33,10 +22,6 @@ namespace VVVVVV.UI
         {
             if (!Opened)
                 return;
-
-            options[curOptIdx].color = highlightColor;
-            foreach (var text in highlightTexts)
-                text.color = highlightColor;
 
             int direction = 0;
 
@@ -59,15 +44,10 @@ namespace VVVVVV.UI
             set
             {
                 _curOptIdx = value;
-                var curOpt = options[curOptIdx];
+                foreach (var opt in options)
+                    opt.glowOn = false;
 
-                foreach (var i in Enumerable.Range(0, options.Count))
-                {
-                    options[i].color = NON_SELECT_OPTION_COLOR;
-                    options[i].text = originalOptTexts[i];
-                }
-
-                curOpt.text = $"[ {curOpt.text.ToUpper()} ]";
+                options[curOptIdx].glowOn = true;
                 optionChanged.Invoke(curOptIdx);
             }
         }
