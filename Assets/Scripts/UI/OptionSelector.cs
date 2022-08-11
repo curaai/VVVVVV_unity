@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace VVVVVV.UI
 {
-    public class OptionSelect : EnterUI
+    public class OptionSelector : SlidePanel
     {
         private static readonly Color NON_SELECT_OPTION_COLOR = new Color32(96, 96, 96, 255);
 
@@ -19,9 +19,9 @@ namespace VVVVVV.UI
             originalOptTexts = options.Select(x => x.text).ToList();
         }
 
-        protected override void Pause()
+        protected override void Open()
         {
-            base.Pause();
+            base.Open();
 
             curOptIdx = 0;
         }
@@ -29,7 +29,7 @@ namespace VVVVVV.UI
         protected override void Update()
         {
             base.Update();
-            if (!Paused)
+            if (!Opened)
                 return;
 
             options[curOptIdx].color = highlightColor;
