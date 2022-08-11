@@ -19,7 +19,7 @@ namespace VVVVVV.UI
             originalOptTexts = options.Select(x => x.text).ToList();
         }
 
-        protected override void Open()
+        internal override void Open()
         {
             base.Open();
 

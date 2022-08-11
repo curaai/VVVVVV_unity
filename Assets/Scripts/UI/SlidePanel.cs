@@ -7,7 +7,6 @@ namespace VVVVVV.UI
         [SerializeField] protected GameObject uiPanel;
         [SerializeField] protected GameObject mainPanel;
 
-        private Animator slideAnimator => mainPanel.GetComponent<Animator>();
         private PlayerMove player => GameObject.Find("Player").GetComponent<PlayerMove>();
 
         public static bool Opened = false;
@@ -16,12 +15,17 @@ namespace VVVVVV.UI
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Toggle();
+                var controller = mainPanel.GetComponent<PanelController>();
+                if (!Opened)
+                {
+                    controller.SetMainUI(this);
+                }
+                controller.Toggle();
             }
         }
 
         // Get Event from Animator
-        protected virtual void Open()
+        internal virtual void Open()
         {
             activeChildren(true);
             uiPanel.transform.SetParent(mainPanel.transform);
@@ -30,7 +34,7 @@ namespace VVVVVV.UI
             player.enabled = false;
         }
 
-        protected virtual void Close()
+        internal virtual void Close()
         {
             activeChildren(false);
             uiPanel.transform.SetParent(null);
@@ -39,11 +43,6 @@ namespace VVVVVV.UI
 
             // TODO: refactoring need
             player.enabled = true;
-        }
-
-        public void Toggle()
-        {
-            slideAnimator.SetBool("open", !Opened);
         }
 
         private void activeChildren(bool activate)
