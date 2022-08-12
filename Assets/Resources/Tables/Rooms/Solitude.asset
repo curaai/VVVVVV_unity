@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba8aa4678a28e748932a97016e25520, type: 3}
   m_Name: Solitude
   m_EditorClassIdentifier: 
-  pos: {x: 53, y: 41}
+  pos: {x: 115, y: 105}

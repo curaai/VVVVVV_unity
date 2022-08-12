@@ -21,7 +21,7 @@ namespace VVVVVV
         void Start()
         {
             this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToDictionary(x => x.pos);
-            ChangeRoom(new Vector2Int(53, 41));
+            ChangeRoom(new Vector2Int(115, 105));
         }
 
         void Update()
@@ -84,6 +84,8 @@ namespace VVVVVV
 
             this.room = rooms[newRoomPos];
             rpos = newRoomPos;
+            Debug.Log("Room Changed" + rpos.ToString());
+
 
             AdjustCamPos();
             SettingCurRoom();

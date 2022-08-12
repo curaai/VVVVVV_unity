@@ -25,11 +25,9 @@ namespace VVVVVV.UI
 
         public void Exploring(Vector2Int r)
         {
-            (int, int) convertCoord(Vector2Int r) => (r.x + 62, r.y + 62);
 
             var len = explored.Count;
-            explored.Add(convertCoord(r));
-
+            explored.Add((r.x, r.y));
 
             (int rw, int rh) = (fogTile.width, fogTile.height);
             var tex = new Texture2D(rw * 20, rh * 20);

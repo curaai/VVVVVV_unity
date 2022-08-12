@@ -119,7 +119,6 @@ namespace VVVVVV
             var layer = collider.gameObject.layer;
             if (layer == wallLayer)
             {
-                Debug.Log("Collide to wall");
                 OnWall = true;
                 JumpNow = false;
             }
