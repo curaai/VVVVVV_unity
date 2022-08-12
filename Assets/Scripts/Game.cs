@@ -8,9 +8,11 @@ namespace VVVVVV
 {
     public class Game : MonoBehaviour
     {
-        public Transform cam;
-        public Transform player;
-        public Vector2 rpos;
+        [SerializeField] public UI.Minimap minimap;
+        [SerializeField] public Transform cam;
+        [SerializeField] public Transform player;
+
+        public Vector2Int rpos;
 
         private Dictionary<Vector2Int, Room> rooms;
         public Room room { get; private set; }
@@ -69,8 +71,8 @@ namespace VVVVVV
 
             void SettingCurRoom()
             {
-                var text = GameObject.Find("RoomName").GetComponent<Text>();
-                text.text = room.name;
+                var text = GameObject.Find("RoomName").GetComponent<UI.GlowText>();
+                text.originalText = room.name;
 
                 var root = GameObject.Find("Grid");
                 foreach (Transform _roomObj in root.transform)
@@ -81,9 +83,15 @@ namespace VVVVVV
             }
 
             this.room = rooms[newRoomPos];
+            rpos = newRoomPos;
 
             AdjustCamPos();
             SettingCurRoom();
+            minimap.Exploring(rpos);
+
+            // TODO:FOR DEBUG MOVE TO Savepoint
+            minimap.Save();
+            PlayerPrefs.Save();
         }
     }
 }
