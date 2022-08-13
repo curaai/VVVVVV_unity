@@ -41,18 +41,7 @@ namespace VVVVVV.World.Entity
                 GetComponent<SpriteRenderer>().color = color;
             }
 
-            void OpenMapPage()
-            {
-                GameObject.Find("MapPanel").GetComponent<UI.SlidePanel>().Toggle();
-            }
-
             SetColor();
-
-            var pressEnter = Input.GetKeyDown(KeyCode.Return);
-            if (CollidePlayerNow && pressEnter)
-            {
-                OpenMapPage();
-            }
         }
 
         private void OnTriggerEnter2D(Collider2D collider)

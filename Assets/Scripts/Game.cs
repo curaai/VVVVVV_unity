@@ -9,26 +9,18 @@ namespace VVVVVV
     public class Game : MonoBehaviour
     {
         [SerializeField] public UI.Minimap minimap;
-        [SerializeField] public Transform cam;
         [SerializeField] public Transform player;
-
-        public Vector2Int rpos;
-
-        private Dictionary<Vector2Int, Room> rooms;
-        public Room room { get; private set; }
-        public GameObject roomObj { get; private set; }
+        [SerializeField] public Transform cam;
 
         void Start()
         {
-            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToDictionary(x => x.pos);
-            ChangeRoom(new Vector2Int(115, 105));
         }
 
         void Update()
         {
             Vector2Int? IsRoomChanged()
             {
-                var rpos = roomObj.transform.InverseTransformPoint(player.position);
+                var rpos = minimap.RoomObj.transform.InverseTransformPoint(player.position);
                 int xDir = 0;
                 if (rpos.x <= -1.25f)
                     xDir = -1;
@@ -50,7 +42,7 @@ namespace VVVVVV
             var newRoomDir = IsRoomChanged();
             if (newRoomDir.HasValue)
             {
-                ChangeRoom(room.pos + newRoomDir.Value);
+                ChangeRoom(minimap.RoomPos + newRoomDir.Value);
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -63,37 +55,14 @@ namespace VVVVVV
         {
             void AdjustCamPos()
             {
-                var camX = room.pos.x * 640;
-                var camY = room.pos.y * 480;
+                var camX = minimap.RoomPos.x * 640;
+                var camY = minimap.RoomPos.y * 480;
 
                 cam.localPosition = new Vector3(camX, camY, cam.localPosition.z);
             }
 
-            void SettingCurRoom()
-            {
-                var text = GameObject.Find("RoomName").GetComponent<UI.GlowText>();
-                text.originalText = room.name;
-
-                var root = GameObject.Find("Grid");
-                foreach (Transform _roomObj in root.transform)
-                    _roomObj.gameObject.SetActive(false);
-
-                roomObj = root.transform.Find(room.name).gameObject;
-                roomObj.SetActive(true);
-            }
-
-            this.room = rooms[newRoomPos];
-            rpos = newRoomPos;
-            Debug.Log("Room Changed" + rpos.ToString());
-
-
+            minimap.ChangeRoom(newRoomPos);
             AdjustCamPos();
-            SettingCurRoom();
-            minimap.Exploring(rpos);
-
-            // TODO:FOR DEBUG MOVE TO Savepoint
-            minimap.Save();
-            PlayerPrefs.Save();
         }
     }
 }
