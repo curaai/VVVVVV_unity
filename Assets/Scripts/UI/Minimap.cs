@@ -13,7 +13,9 @@ namespace VVVVVV.UI
     public class Minimap : MonoBehaviour
     {
         public static readonly string SerializeKey = "minimap";
+        public static readonly float BlinkFastDuration = 2f;
 
+        [SerializeField] GameObject FocusBlink;
         [SerializeField] Image fogMaskPanel;
         [SerializeField] Texture2D fogTile;
 
@@ -71,9 +73,15 @@ namespace VVVVVV.UI
                 var text = GameObject.Find("RoomName").GetComponent<UI.GlowText>();
                 text.originalText = room.name;
             }
+            void SetBlinkPos()
+            {
+                var z = FocusBlink.transform.localPosition.z;
+                FocusBlink.transform.localPosition = new Vector3(24 * LocalRoomPos.x, -(18 * LocalRoomPos.y), z);
+            }
 
             Name();
             Grid();
+            SetBlinkPos();
         }
 
         void Exploring(Vector2Int r)
@@ -115,10 +123,21 @@ namespace VVVVVV.UI
             Save();
         }
 
-        public void Save()
+        public void OpenMinimapTab(int tabIdx)
         {
-            var serilized = Utils.PlayerPrefsSerializer.Serializable(explored);
-            PlayerPrefs.SetString(SerializeKey, serilized);
+            IEnumerator SetBlinkSlowAnim()
+            {
+                yield return new WaitForSeconds(BlinkFastDuration);
+                FocusBlink.GetComponent<Animator>().SetTrigger("3 Seconds Later");
+                yield return null;
+            }
+
+            // TODO : Replace to Constant? 
+            if (tabIdx != 0)
+                return;
+
+            StartCoroutine(SetBlinkSlowAnim());
         }
+
     }
 }
