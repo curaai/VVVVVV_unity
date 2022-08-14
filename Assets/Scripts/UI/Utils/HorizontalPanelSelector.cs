@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VVVVVV.UI
+namespace VVVVVV.UI.Utils
 {
     public class HorizontalPanelSelector : MonoBehaviour
     {

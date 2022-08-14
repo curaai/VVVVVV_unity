@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-namespace VVVVVV.UI
+namespace VVVVVV.UI.Utils
 {
     public class OptionSelector : SlidePanel
     {

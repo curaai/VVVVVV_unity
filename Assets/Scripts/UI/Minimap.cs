@@ -1,12 +1,9 @@
-using System;
-using System.IO;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using VVVVVV.UI.Utils;
 
 namespace VVVVVV.UI
 {
@@ -60,7 +57,7 @@ namespace VVVVVV.UI
 
             void Name()
             {
-                var text = GameObject.Find("RoomName").GetComponent<UI.GlowText>();
+                var text = GameObject.Find("RoomName").GetComponent<GlowText>();
                 text.originalText = room.name;
             }
             void SetBlinkPos()

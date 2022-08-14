@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VVVVVV.UI.Utils;
 
 namespace VVVVVV
 {
@@ -60,9 +61,9 @@ namespace VVVVVV
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
-                GameObject.Find("PausePanel").GetComponent<UI.SlidePanel>().Toggle();
+                GameObject.Find("PausePanel").GetComponent<SlidePanel>().Toggle();
             if (Input.GetKeyDown(KeyCode.Return))
-                GameObject.Find("MapPanel").GetComponent<UI.SlidePanel>().Toggle();
+                GameObject.Find("MapPanel").GetComponent<SlidePanel>().Toggle();
         }
 
         void ChangeRoom(Vector2Int newRoomPos)

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using VVVVVV.Utils;
 
-
-namespace VVVVVV.UI
+namespace VVVVVV.UI.Utils
 {
     public class GlowText : UnityEngine.UI.Text
     {
@@ -62,11 +62,11 @@ namespace VVVVVV.UI
 
         byte parse(string exp)
         {
-            var glow = Utils.GlowColorAnimation.glow;
+            var glow = GlowColorAnimation.glow;
 #if UNITY_EDITOR
             if (glow == null) glow = 0;
 #endif
-            var frand = Utils.RandomHelper.fRand();
+            var frand = RandomHelper.fRand();
 
             exp = exp.Replace("glow", glow.ToString());
             exp = exp.Replace("frand()", frand.ToString());

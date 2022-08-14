@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VVVVVV.UI
+namespace VVVVVV.UI.Utils
 {
     public class SlidePanel : MonoBehaviour
     {

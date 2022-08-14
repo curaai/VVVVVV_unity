@@ -4,6 +4,7 @@ using UnityEditor.UI;
 using System.Collections;
 using VVVVVV.Utils;
 using VVVVVV.UI;
+using VVVVVV.UI.Utils;
 
 namespace VVVVVV.Editor
 {
