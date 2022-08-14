@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using UnityEngine;
 
 namespace VVVVVV
@@ -8,10 +7,19 @@ namespace VVVVVV
     {
         public Vector2Int pos;
         public Area area;
+        public string areaStr()
+        {
+            switch (area)
+            {
+                case Area.SpaceStation:
+                    return "Space Station";
+                default:
+                    return "???";
+            }
+        }
     }
     public enum Area
     {
-        [Description("Space Station")]
         SpaceStation = 5,
     }
 }

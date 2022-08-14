@@ -9,6 +9,8 @@ namespace VVVVVV.World
 
         public string SerializeKey => "clock";
 
+        public override string ToString() => $"{playtime:m\\:ss}";
+
         void Update()
         {
             playtime += TimeSpan.FromSeconds(Time.deltaTime);
@@ -16,7 +18,7 @@ namespace VVVVVV.World
 
         public void Load(string str)
         {
-            if (str != null)
+            if (str != null && str != "")
                 playtime = TimeSpan.Parse(str);
         }
 

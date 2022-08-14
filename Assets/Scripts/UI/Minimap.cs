@@ -16,7 +16,9 @@ namespace VVVVVV.UI
         [SerializeField] Image fogMaskPanel;
         [SerializeField] Texture2D fogTile;
 
-        private Dictionary<Vector2Int, Room> rooms;
+        public Room this[Vector2Int pos] => rooms.Find(x => x.pos == pos);
+
+        private List<Room> rooms;
         public Room room { get; private set; }
         public GameObject RoomObj { get; private set; }
         public Vector2Int RoomPos => room.pos;
@@ -26,7 +28,7 @@ namespace VVVVVV.UI
 
         void Awake()
         {
-            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToDictionary(x => x.pos);
+            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToList();
         }
 
         void Start()
@@ -36,7 +38,7 @@ namespace VVVVVV.UI
 
         public void ChangeRoom(Vector2Int pos)
         {
-            room = rooms[pos];
+            room = this[pos];
             Debug.Log("Room Changed" + RoomPos.ToString());
 
             UpdateUI();

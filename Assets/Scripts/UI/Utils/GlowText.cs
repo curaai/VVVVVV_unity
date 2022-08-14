@@ -50,7 +50,7 @@ namespace VVVVVV.UI.Utils
                 this.color = new Color32(r, g, b, 255);
             }
 
-            if (glowOn && EnablePadding)
+            if (glowOn && EnablePadding && originalText != "" && originalText != null)
             {
                 text = $"[ {originalText.ToUpper()} ]";
             }

@@ -10,6 +10,7 @@ namespace VVVVVV
     public class Game : MonoBehaviour
     {
         [SerializeField] public UI.Minimap minimap;
+        [SerializeField] public UI.SaveTab savetab;
         [SerializeField] public Transform player;
         [SerializeField] public Transform cam;
 
@@ -18,14 +19,10 @@ namespace VVVVVV
         void Awake()
         {
             Application.targetFrameRate = 30;
-        }
-
-        void Start()
-        {
             var saveTargetList = new List<ISerializable>() {
                 minimap,
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
-                GameObject.FindGameObjectWithTag("Clock").GetComponent<World.Clock>(),
+                GameObject.Find("Clock").GetComponent<World.Clock>(),
             };
             saveManager = new SaveManager(saveTargetList);
             saveManager.Load();
@@ -85,6 +82,7 @@ namespace VVVVVV
         public void Save()
         {
             saveManager.Save();
+            savetab.LoadSavedData();
         }
     }
 }

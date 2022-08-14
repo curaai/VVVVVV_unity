@@ -11,7 +11,7 @@ namespace VVVVVV.World.Entity
     {
         public string SerializeKey { get => "last_savepoint"; }
 
-        public static Savepoint LastSavepoint { get; private set; }
+        public static Savepoint LastSavepoint { get; private set; } = null;
         public bool ActivatedPoint { get; private set; }
         public bool CollidePlayerNow { get; private set; }
 
