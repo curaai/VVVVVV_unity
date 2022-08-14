@@ -12,8 +12,13 @@ namespace VVVVVV
         [SerializeField] public Transform player;
         [SerializeField] public Transform cam;
 
+        private SaveManager saveManager;
+
         void Start()
         {
+            var saveTargetList = new List<ISerializable>() { minimap, };
+            saveManager = new SaveManager(saveTargetList);
+            saveManager.Load();
         }
 
         void Update()
@@ -46,9 +51,9 @@ namespace VVVVVV
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
                 GameObject.Find("PausePanel").GetComponent<UI.SlidePanel>().Toggle();
-            }
+            if (Input.GetKeyDown(KeyCode.Return))
+                GameObject.Find("MapPanel").GetComponent<UI.SlidePanel>().Toggle();
         }
 
         void ChangeRoom(Vector2Int newRoomPos)
@@ -62,6 +67,8 @@ namespace VVVVVV
             }
 
             minimap.ChangeRoom(newRoomPos);
+            saveManager.Save(minimap.SerializeKey);
+
             AdjustCamPos();
         }
     }

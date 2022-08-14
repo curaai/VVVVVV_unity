@@ -10,41 +10,31 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace VVVVVV.UI
 {
-    public class Minimap : MonoBehaviour
+    public class Minimap : MonoBehaviour, ISerializable
     {
-        public static readonly string SerializeKey = "minimap";
+        public string SerializeKey { get => "minimap"; }
         public static readonly float BlinkFastDuration = 2f;
 
         [SerializeField] GameObject FocusBlink;
         [SerializeField] Image fogMaskPanel;
         [SerializeField] Texture2D fogTile;
 
-        public Room room { get; private set; }
-        public Vector2Int RoomPos => room.pos;
-        public GameObject RoomObj { get; private set; }
         private Dictionary<Vector2Int, Room> rooms;
-
+        public Room room { get; private set; }
+        public GameObject RoomObj { get; private set; }
+        public Vector2Int RoomPos => room.pos;
         public Vector2Int LocalRoomPos => new Vector2Int(RoomPos.x - 100, RoomPos.y - 100);
 
-        // use tuple only for serializable 
-        HashSet<(int, int)> explored = new HashSet<(int, int)>();
+        HashSet<(int, int)> explored = new HashSet<(int, int)>(); // use tuple only for serializable 
+
+        void Awake()
+        {
+            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToDictionary(x => x.pos);
+        }
 
         void Start()
         {
-            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToDictionary(x => x.pos);
-
-            var loaded = (HashSet<(int, int)>)Utils.PlayerPrefsSerializer.Deserialize(SerializeKey);
-            if (loaded != null)
-                explored = loaded;
-
             ChangeRoom(new Vector2Int(115, 105));
-        }
-
-        void Update()
-        {
-            var pressEnter = Input.GetKeyDown(KeyCode.Return);
-            if (pressEnter)
-                GameObject.Find("MapPanel").GetComponent<UI.SlidePanel>().Toggle();
         }
 
         public void ChangeRoom(Vector2Int pos)
@@ -110,17 +100,11 @@ namespace VVVVVV.UI
                 var newMask = Sprite.Create(tex, new Rect(0, 0, 240, 180), Vector2.one / 2f);
                 fogMaskPanel.sprite = newMask;
             }
-            void Save()
-            {
-                var serilized = Utils.PlayerPrefsSerializer.Serializable(explored);
-                PlayerPrefs.SetString(SerializeKey, serilized);
-            }
 
             var len = explored.Count;
             explored.Add((r.x, r.y));
 
             UpdateFog();
-            Save();
         }
 
         public void OpenMinimapTab(int tabIdx)
@@ -139,5 +123,16 @@ namespace VVVVVV.UI
             StartCoroutine(SetBlinkSlowAnim());
         }
 
+        public string Save()
+        {
+            return SaveManager.SerializableObject(explored);
+        }
+
+        public void Load(string str)
+        {
+            var loaded = (HashSet<(int, int)>)SaveManager.DeserializeObject(SerializeKey);
+            if (loaded != null)
+                explored = loaded;
+        }
     }
 }
