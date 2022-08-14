@@ -27,6 +27,7 @@ namespace VVVVVV
             foreach (var x in list)
                 x.Load(PlayerPrefs.GetString(x.SerializeKey, ""));
         }
+
         public void Save(string key)
         {
             PlayerPrefs.SetString(key, this[key].Save());
@@ -42,14 +43,10 @@ namespace VVVVVV
             return System.Convert.ToBase64String(memoryStream.ToArray());
         }
 
-        public static object DeserializeObject(string prefKey)
+        public static T DeserializeObject<T>(string str)
         {
-            string tmp = PlayerPrefs.GetString(prefKey, string.Empty);
-            if (tmp == string.Empty)
-                return null;
-
-            MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(tmp));
-            return bf.Deserialize(memoryStream);
+            MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(str));
+            return (T)bf.Deserialize(memoryStream);
         }
     }
 

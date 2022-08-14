@@ -82,10 +82,11 @@ namespace VVVVVV.World.Entity
 
         public void Load(string str)
         {
-            var res = SaveManager.DeserializeObject(str) as ((float, float), (float, float))?;
-            // TODO: respawn player, not implemented now 
-            if (res.HasValue)
+            if (str == "")
                 return;
+
+            // TODO: respawn player, not implemented now 
+            var res = SaveManager.DeserializeObject<((float, float), (float, float))>(str);
         }
     }
 }
