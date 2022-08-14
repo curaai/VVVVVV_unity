@@ -14,11 +14,17 @@ namespace VVVVVV
 
         private SaveManager saveManager;
 
+        void Awake()
+        {
+            Application.targetFrameRate = 30;
+        }
+
         void Start()
         {
             var saveTargetList = new List<ISerializable>() {
                 minimap,
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
+                GameObject.FindGameObjectWithTag("Clock").GetComponent<World.Clock>(),
             };
             saveManager = new SaveManager(saveTargetList);
             saveManager.Load();

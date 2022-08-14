@@ -31,8 +31,6 @@ namespace VVVVVV
 
         void Start()
         {
-            // TODO: Remove when implement map
-            Application.targetFrameRate = 30;
             FaceRight = true;
             GravityDown = true;
         }
