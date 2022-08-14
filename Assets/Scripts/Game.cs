@@ -16,7 +16,10 @@ namespace VVVVVV
 
         void Start()
         {
-            var saveTargetList = new List<ISerializable>() { minimap, };
+            var saveTargetList = new List<ISerializable>() {
+                minimap,
+                GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
+            };
             saveManager = new SaveManager(saveTargetList);
             saveManager.Load();
         }
@@ -70,6 +73,11 @@ namespace VVVVVV
             saveManager.Save(minimap.SerializeKey);
 
             AdjustCamPos();
+        }
+
+        public void Save()
+        {
+            saveManager.Save();
         }
     }
 }

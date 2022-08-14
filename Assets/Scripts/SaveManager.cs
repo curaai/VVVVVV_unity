@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace VVVVVV
             string tmp = PlayerPrefs.GetString(prefKey, string.Empty);
             if (tmp == string.Empty)
                 return null;
+
             MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(tmp));
             return bf.Deserialize(memoryStream);
         }

@@ -130,7 +130,7 @@ namespace VVVVVV.UI
 
         public void Load(string str)
         {
-            var loaded = (HashSet<(int, int)>)SaveManager.DeserializeObject(SerializeKey);
+            var loaded = SaveManager.DeserializeObject(SerializeKey) as HashSet<(int, int)>;
             if (loaded != null)
                 explored = loaded;
         }

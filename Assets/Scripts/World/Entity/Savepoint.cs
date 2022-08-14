@@ -7,8 +7,11 @@ using VVVVVV.Utils;
 
 namespace VVVVVV.World.Entity
 {
-    public class Savepoint : MonoBehaviour
+    public class Savepoint : MonoBehaviour, ISerializable
     {
+        public string SerializeKey { get => "last_savepoint"; }
+
+        public static Savepoint LastSavepoint { get; private set; }
         public bool ActivatedPoint { get; private set; }
         public bool CollidePlayerNow { get; private set; }
 
@@ -46,11 +49,43 @@ namespace VVVVVV.World.Entity
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.gameObject.CompareTag("Player")) CollidePlayerNow = true;
+            if (collider.gameObject.CompareTag("Player"))
+            {
+                // TODO: disable other savepoints
+
+                CollidePlayerNow = true;
+                ActivatedPoint = true;
+                LastSavepoint = this;
+
+                // AutoSave
+                GameObject.Find("Game").GetComponent<Game>().Save();
+            }
         }
+
         private void OnTriggerExit2D(Collider2D collider)
         {
             if (collider.gameObject.CompareTag("Player")) CollidePlayerNow = false;
+        }
+
+        public string Save()
+        {
+            if (LastSavepoint == this)
+            {
+                var room = (transform.position.x / 40, transform.position.y / 30);
+                var local = (transform.localPosition.x, transform.localPosition.y);
+
+                return SaveManager.SerializableObject((room, local));
+            }
+            else
+                return LastSavepoint.Save();
+        }
+
+        public void Load(string str)
+        {
+            var res = SaveManager.DeserializeObject(str) as ((float, float), (float, float))?;
+            // TODO: respawn player, not implemented now 
+            if (res.HasValue)
+                return;
         }
     }
 }
