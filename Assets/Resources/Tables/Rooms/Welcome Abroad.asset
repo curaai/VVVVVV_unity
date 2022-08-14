@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Welcome Abroad
   m_EditorClassIdentifier: 
   pos: {x: 113, y: 105}
+  area: 5

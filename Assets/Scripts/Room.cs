@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 namespace VVVVVV
@@ -6,5 +7,11 @@ namespace VVVVVV
     public class Room : ScriptableObject
     {
         public Vector2Int pos;
+        public Area area;
+    }
+    public enum Area
+    {
+        [Description("Space Station")]
+        SpaceStation = 5,
     }
 }

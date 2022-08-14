@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Conundrum
   m_EditorClassIdentifier: 
   pos: {x: 114, y: 105}
+  area: 5
