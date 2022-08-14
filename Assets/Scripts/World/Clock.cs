@@ -5,26 +5,31 @@ namespace VVVVVV.World
 {
     public class Clock : MonoBehaviour, ISerializable
     {
-        public TimeSpan playtime { get; private set; }
+        public TimeSpan curPlaytime { get; private set; }
+        public TimeSpan savetime { get; private set; }
 
         public string SerializeKey => "clock";
 
-        public override string ToString() => $"{playtime:m\\:ss}";
-
         void Update()
         {
-            playtime += TimeSpan.FromSeconds(Time.deltaTime);
+            curPlaytime += TimeSpan.FromSeconds(Time.deltaTime);
         }
 
         public void Load(string str)
         {
             if (str != null && str != "")
-                playtime = TimeSpan.Parse(str);
+            {
+                curPlaytime = TimeSpan.Parse(str);
+                savetime = curPlaytime;
+            }
         }
 
         public string Save()
         {
-            return playtime.ToString();
+            savetime = curPlaytime;
+            return curPlaytime.ToString();
         }
+
+        public static string FormatString(TimeSpan t) => $"{t:m\\:ss}";
     }
 }

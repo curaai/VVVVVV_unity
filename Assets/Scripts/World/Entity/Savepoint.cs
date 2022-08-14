@@ -10,19 +10,20 @@ namespace VVVVVV.World.Entity
     public class Savepoint : MonoBehaviour, ISerializable
     {
         public string SerializeKey { get => "last_savepoint"; }
+        private int SavepointLayer => LayerMask.NameToLayer("entity");
 
         public static Savepoint LastSavepoint { get; private set; } = null;
         public bool ActivatedPoint { get; private set; }
         public bool CollidePlayerNow { get; private set; }
 
+        public void Activate()
+        {
+            ActivatedPoint = true;
+            LastSavepoint = this;
+        }
+
         public void Update()
         {
-            /*
-            TODO
-            - Show UI when action
-            - Set main SavePoint to game obj
-            */
-
             void SetColor()
             {
                 Color32 color;
@@ -54,8 +55,6 @@ namespace VVVVVV.World.Entity
                 // TODO: disable other savepoints
 
                 CollidePlayerNow = true;
-                ActivatedPoint = true;
-                LastSavepoint = this;
 
                 // AutoSave
                 GameObject.Find("Game").GetComponent<Game>().Save();
@@ -71,10 +70,12 @@ namespace VVVVVV.World.Entity
         {
             if (LastSavepoint == this)
             {
-                var room = (transform.position.x / 40, transform.position.y / 30);
-                var local = (transform.localPosition.x, transform.localPosition.y);
+                var roompos = (Mathf.FloorToInt(transform.position.x / 640),
+                                Mathf.FloorToInt(transform.position.y / 480));
 
-                return SaveManager.SerializableObject((room, local));
+                var local = (transform.position.x, transform.position.y);
+
+                return SaveManager.SerializableObject((roompos, local));
             }
             else
                 return LastSavepoint.Save();
@@ -85,8 +86,31 @@ namespace VVVVVV.World.Entity
             if (str == "")
                 return;
 
+            Savepoint FindLastSavepoint(string str)
+            {
+                var res = SaveManager.DeserializeObject<((int, int), (float, float))>(str);
+                var rpos = res.Item1;
+
+                return Physics2D.OverlapCircleAll(
+                                        new Vector2(res.Item2.Item1, res.Item2.Item2),
+                                        3
+                                        )
+                                    .Where(x => x.CompareTag("Savepoint"))
+                                    .Select(x => x.GetComponent<Savepoint>())
+                                    .First();
+            }
+
+            var savepoint = FindLastSavepoint(str);
+
             // TODO: respawn player, not implemented now 
-            var res = SaveManager.DeserializeObject<((float, float), (float, float))>(str);
+
+            if (savepoint == null)
+                return;
+            else
+            {
+                LastSavepoint = savepoint;
+                LastSavepoint.Activate();
+            }
         }
     }
 }
