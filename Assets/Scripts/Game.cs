@@ -82,7 +82,8 @@ namespace VVVVVV
         public void Save()
         {
             saveManager.Save();
-            savetab.LoadSavedData();
+            savetab.Save();
+            // savetab.LoadSavedData();
         }
     }
 }

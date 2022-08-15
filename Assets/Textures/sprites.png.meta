@@ -97,7 +97,7 @@ TextureImporter:
     second: sprites_30
   - first:
       213: -1369878811986984067
-    second: sprites_31
+    second: sprites_trinket
   - first:
       213: 2737844872717370115
     second: sprites_32
@@ -145,7 +145,7 @@ TextureImporter:
     second: sprites_46
   - first:
       213: 4895558001321355738
-    second: sprites_47
+    second: sprites_clock
   - first:
       213: -3286353352431079860
     second: sprites_48
@@ -715,7 +715,7 @@ TextureImporter:
         x: 103
         y: 489
         width: 10
-        height: 21
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1292,7 +1292,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_31
+      name: sprites_trinket
       rect:
         serializedVersion: 2
         x: 320
@@ -1628,10 +1628,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_47
+      name: sprites_clock
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 367
         width: 17
         height: 17
