@@ -41,9 +41,9 @@ namespace VVVVVV
 
                 int yDir = 0;
                 if (rpos.y <= -1.5f)
-                    yDir = -1;
-                else if (28.25f < rpos.y)
                     yDir = 1;
+                else if (28.25f < rpos.y)
+                    yDir = -1;
 
                 if (xDir == 0 && yDir == 0)
                     return null;
@@ -68,7 +68,7 @@ namespace VVVVVV
             void AdjustCamPos()
             {
                 var camX = minimap.RoomPos.x * 640;
-                var camY = minimap.RoomPos.y * 480;
+                var camY = minimap.RoomPos.y * -480;
 
                 cam.localPosition = new Vector3(camX, camY, cam.localPosition.z);
             }

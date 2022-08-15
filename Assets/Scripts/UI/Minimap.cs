@@ -87,10 +87,7 @@ namespace VVVVVV.UI
                         var pixels = fogTile.GetPixels();
                         // reverse y for coordnation
                         if (explored.Contains((x + 100, (19 - y) + 100)))
-                        {
                             pixels = Enumerable.Repeat(new Color(0, 0, 0, 0), rw * rh).ToArray();
-                            Debug.Log("Opened room" + (x, y).ToString());
-                        }
 
                         tex.SetPixels(x * rw, y * rh, rw, rh, pixels);
                     }
