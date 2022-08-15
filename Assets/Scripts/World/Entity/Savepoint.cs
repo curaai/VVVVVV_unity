@@ -55,6 +55,7 @@ namespace VVVVVV.World.Entity
                 // TODO: disable other savepoints
 
                 CollidePlayerNow = true;
+                Activate();
 
                 // AutoSave
                 GameObject.Find("Game").GetComponent<Game>().Save();
