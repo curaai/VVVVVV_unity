@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3153067739626019448}
   - component: {fileID: 3153067739626019449}
-  - component: {fileID: 3153067739626019462}
+  - component: {fileID: 3006138517221030565}
   - component: {fileID: 3153067739626019463}
   - component: {fileID: 3153067739626019460}
   m_Layer: 10
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3153067739626019462
+--- !u!60 &3006138517221030565
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3153067739626019451}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

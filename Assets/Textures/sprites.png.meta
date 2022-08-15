@@ -88,10 +88,10 @@ TextureImporter:
     second: sprites_27
   - first:
       213: 7829124088692640654
-    second: sprites_29
+    second: sprites_savepoint
   - first:
       213: -8000517053470610818
-    second: sprites_29
+    second: sprites_savepoint
   - first:
       213: 3864339640949227112
     second: sprites_30
@@ -1070,15 +1070,42 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 406
+        y: 416
         width: 22
-        height: 42
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
+      physicsShape:
+      - - {x: 6, y: -13}
+        - {x: 8, y: -11}
+        - {x: 8, y: -10}
+        - {x: 5, y: -8}
+        - {x: 2, y: -8}
+        - {x: 2, y: -5}
+        - {x: 5, y: -5}
+        - {x: 11, y: 1}
+        - {x: 11, y: 9}
+        - {x: 4, y: 16}
+        - {x: -4, y: 16}
+        - {x: -11, y: 9}
+        - {x: -11, y: 1}
+        - {x: -6, y: -4}
+        - {x: -6, y: -5}
+        - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: -6, y: -9}
+        - {x: -5, y: -10}
+        - {x: -3, y: -10}
+        - {x: -3, y: -15}
+        - {x: -4, y: -15}
+        - {x: -4, y: -16}
+        - {x: -1, y: -16}
+        - {x: -1, y: -15}
+        - {x: 4, y: -15}
+        - {x: 4, y: -14}
+      tessellationDetail: 1
       bones: []
       spriteID: 26252ae153f4818e0800000000000000
       internalID: -1722539767903399326
@@ -1234,7 +1261,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_29
+      name: sprites_savepoint
       rect:
         serializedVersion: 2
         x: 289
@@ -1263,7 +1290,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_28
+      name: sprites_savepoint_flip
       rect:
         serializedVersion: 2
         x: 257
