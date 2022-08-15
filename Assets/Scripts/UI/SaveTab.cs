@@ -11,8 +11,8 @@ namespace VVVVVV.UI
     {
         [SerializeField] Minimap minimap;
         [SerializeField] Clock clock;
-        [SerializeField] GlowText lastSaveUI;
-        [SerializeField] GlowText summaryUI;
+        [SerializeField] Text lastSaveUI;
+        [SerializeField] Text summaryUI;
 
         public bool saved { get; private set; }
 
@@ -37,7 +37,7 @@ namespace VVVVVV.UI
 
                 lastSaveUI.enabled = true;
                 summaryUI.enabled = true;
-                summaryUI.originalText = $"{areaStr}, {clockStr}";
+                summaryUI.text = $"{areaStr}, {clockStr}";
             }
             else
             {
@@ -55,8 +55,8 @@ namespace VVVVVV.UI
             var curTab = transform.Find("Saved");
             curTab.gameObject.SetActive(true);
             (var areaStr, var clockStr) = GetSavedAreaAndTime();
-            curTab.Find("Container/savetime").GetComponent<GlowText>().originalText = clockStr;
-            curTab.Find("Container/savearea").GetComponent<GlowText>().originalText = areaStr;
+            curTab.Find("Container/savetime").GetComponent<Text>().text = clockStr;
+            curTab.Find("Container/savearea").GetComponent<Text>().text = areaStr;
 
             // TODO: Set trinket, Crews
         }

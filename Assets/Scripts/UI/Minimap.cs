@@ -59,8 +59,8 @@ namespace VVVVVV.UI
 
             void Name()
             {
-                var text = GameObject.Find("RoomName").GetComponent<GlowText>();
-                text.originalText = room.name;
+                var text = GameObject.Find("RoomName").GetComponent<Text>();
+                text.text = room.name;
             }
             void SetBlinkPos()
             {

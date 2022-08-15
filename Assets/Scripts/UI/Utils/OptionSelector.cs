@@ -8,7 +8,7 @@ namespace VVVVVV.UI.Utils
 {
     public class OptionSelector : SlidePanel
     {
-        [SerializeField] protected List<GlowText> options;
+        [SerializeField] protected List<Text> options;
         [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
 
         internal override void Open()
@@ -44,10 +44,20 @@ namespace VVVVVV.UI.Utils
             set
             {
                 _curOptIdx = value;
-                foreach (var opt in options)
-                    opt.glowOn = false;
+                var effects = options.Select(x => x.GetComponent<GlowEffect>()).ToList();
+                foreach (var opt in options.Select(x => x.GetComponent<GlowEffect>()))
+                {
+                    opt.GlowOn = false;
+                    var _pad = opt.GetComponent<GlowTextPadding>();
+                    if (_pad != null)
+                        _pad.enabled = false;
+                }
 
-                options[curOptIdx].glowOn = true;
+                options[curOptIdx].GetComponent<GlowEffect>().GlowOn = true;
+                var pad = options[curOptIdx].GetComponent<GlowTextPadding>();
+                if (pad != null)
+                    pad.enabled = true;
+
                 optionChanged.Invoke(curOptIdx);
             }
         }
