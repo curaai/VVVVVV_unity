@@ -1,10 +1,11 @@
 using UnityEngine;
+using VVVVVV.World.Entity;
 
 namespace VVVVVV.UI.Utils
 {
     public class SlidePanel : MonoBehaviour
     {
-        private PlayerMove player => GameObject.Find("Player").GetComponent<PlayerMove>();
+        private MoveController player => GameObject.Find("Player").GetComponent<MoveController>();
 
         public static bool Opened = false;
 

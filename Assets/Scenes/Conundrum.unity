@@ -10167,7 +10167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 73594, y: -50397, z: -1}
+  m_LocalPosition: {x: 73600, y: -50400, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 361071830}
@@ -10639,9 +10639,10 @@ GameObject:
   - component: {fileID: 714567372}
   - component: {fileID: 714567370}
   - component: {fileID: 714567371}
-  - component: {fileID: 714567374}
   - component: {fileID: 714567375}
   - component: {fileID: 714567376}
+  - component: {fileID: 714567374}
+  - component: {fileID: 714567377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10659,7 +10660,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 714567369}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -10680,7 +10681,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -10763,7 +10764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73851.57, y: -50269}
+  m_AnchoredPosition: {x: 73851.83, y: -50269.64}
   m_SizeDelta: {x: 1.25, y: 2.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714567374
@@ -10775,15 +10776,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 714567369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4cfd7c92c806a74993c003e77e5b134, type: 3}
+  m_Script: {fileID: 11500000, guid: da8340b11f1be334a80b19f7e9aa6120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpNow: 0
-  OnWall: 0
-  GravityDown: 0
-  FaceRight: 0
-  force: {x: 0, y: 0}
-  velocity: {x: 0, y: 0}
+  OnWallLeft: 0
+  OnWallRight: 0
+  OnGround: 0
+  OnRoof: 0
+  gravity: 1
+  direction: 0
+  force: {x: 0, y: -6}
+  velocity: {x: 0, y: -6}
 --- !u!95 &714567375
 Animator:
   serializedVersion: 3
@@ -10817,6 +10820,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRenderer: {fileID: 714567372}
   glowDirection: 0
+--- !u!114 &714567377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714567369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549ae72892aa4343a8a0336010ed1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &760422006
 GameObject:
   m_ObjectHideFlags: 0
