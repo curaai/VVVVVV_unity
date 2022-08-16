@@ -64,25 +64,25 @@ TextureImporter:
     second: sprites_19
   - first:
       213: -1722539767903399326
-    second: sprites_20
+    second: sprites StopMan 0
   - first:
       213: -2018968827443427868
     second: sprites_21
   - first:
       213: 3950689983899740486
-    second: sprites_22
+    second: sprites StopMan 1
   - first:
       213: -3525548655422949061
     second: sprites_23
   - first:
       213: -577312649904740640
-    second: sprites_24
+    second: sprites StopMan 2
   - first:
       213: -3114738102144766914
     second: sprites_25
   - first:
       213: 4172163778452043772
-    second: sprites_26
+    second: sprites StopMan 3
   - first:
       213: 2414474533063011785
     second: sprites_27
@@ -1066,10 +1066,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_20
+      name: sprites StopMan 0
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 416
         width: 22
         height: 32
@@ -1135,19 +1135,41 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_22
+      name: sprites StopMan 1
       rect:
         serializedVersion: 2
         x: 160
-        y: 406
+        y: 416
         width: 22
-        height: 42
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
+      physicsShape:
+      - - {x: 8, y: -8}
+        - {x: 7, y: -7}
+        - {x: 5, y: -5}
+        - {x: 11, y: 1}
+        - {x: 11, y: 9}
+        - {x: 4, y: 16}
+        - {x: -4, y: 16}
+        - {x: -11, y: 9}
+        - {x: -11, y: 1}
+        - {x: -5, y: -5}
+        - {x: -7, y: -7}
+        - {x: -8, y: -8}
+        - {x: -8, y: -10}
+        - {x: -7, y: -11}
+        - {x: -4, y: -11}
+        - {x: -4, y: -15}
+        - {x: 1, y: -15}
+        - {x: 1, y: -16}
+        - {x: 4, y: -16}
+        - {x: 4, y: -11}
+        - {x: 7, y: -11}
+        - {x: 8, y: -10}
+      tessellationDetail: 1
       bones: []
       spriteID: 649a904db9ba3d630800000000000000
       internalID: 3950689983899740486
@@ -1177,18 +1199,40 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_24
+      name: sprites StopMan 2
       rect:
         serializedVersion: 2
         x: 192
-        y: 406
+        y: 416
         width: 22
-        height: 42
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 5, y: -10}
+        - {x: 8, y: -7}
+        - {x: 5, y: -5}
+        - {x: 11, y: 1}
+        - {x: 11, y: 9}
+        - {x: 4, y: 16}
+        - {x: -4, y: 16}
+        - {x: -11, y: 9}
+        - {x: -11, y: 1}
+        - {x: -5, y: -5}
+        - {x: -4, y: -5}
+        - {x: -4, y: -8}
+        - {x: -8, y: -11}
+        - {x: -5, y: -13}
+        - {x: -3, y: -10}
+        - {x: -3, y: -15}
+        - {x: -4, y: -15}
+        - {x: -4, y: -16}
+        - {x: -1, y: -16}
+        - {x: -1, y: -15}
+        - {x: 4, y: -15}
+        - {x: 4, y: -10}
       tessellationDetail: 0
       bones: []
       spriteID: 0e6a6122439fcf7f0800000000000000
@@ -1219,18 +1263,40 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_26
+      name: sprites StopMan 3
       rect:
         serializedVersion: 2
         x: 224
-        y: 406
+        y: 416
         width: 22
-        height: 42
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 8, y: -8}
+        - {x: 7, y: -7}
+        - {x: 5, y: -5}
+        - {x: 11, y: 1}
+        - {x: 11, y: 9}
+        - {x: 4, y: 16}
+        - {x: -4, y: 16}
+        - {x: -11, y: 9}
+        - {x: -11, y: 1}
+        - {x: -5, y: -5}
+        - {x: -7, y: -7}
+        - {x: -8, y: -8}
+        - {x: -8, y: -10}
+        - {x: -7, y: -11}
+        - {x: -4, y: -11}
+        - {x: -4, y: -15}
+        - {x: 1, y: -15}
+        - {x: 1, y: -16}
+        - {x: 4, y: -16}
+        - {x: 4, y: -11}
+        - {x: 7, y: -11}
+        - {x: 8, y: -10}
       tessellationDetail: 0
       bones: []
       spriteID: cf7b267f9d086e930800000000000000
