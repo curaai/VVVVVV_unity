@@ -34,9 +34,9 @@ namespace VVVVVV
             {
                 var rpos = minimap.RoomObj.transform.InverseTransformPoint(player.position);
                 int xDir = 0;
-                if (rpos.x <= -1.25f)
+                if (rpos.x <= 0f)
                     xDir = -1;
-                else if (38.75f < rpos.x)
+                else if (40f < rpos.x)
                     xDir = 1;
 
                 int yDir = 0;
