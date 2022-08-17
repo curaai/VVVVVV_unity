@@ -18,7 +18,7 @@ namespace VVVVVV
 
         void Awake()
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
             var saveTargetList = new List<ISerializable>() {
                 minimap,
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
