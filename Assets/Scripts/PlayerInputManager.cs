@@ -7,6 +7,7 @@ namespace VVVVVV
     [RequireComponent(typeof(MoveController))]
     public class PlayerInputManager : MonoBehaviour
     {
+        public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space };
         private int tapLeft = 0;
         private int tapRight = 0;
 
@@ -41,8 +42,8 @@ namespace VVVVVV
                 controller.force.x = controller.direction == Direction.RIGHT ? MoveController.SPEED.x : -MoveController.SPEED.x;
             }
 
-            var vInput = Input.GetAxis("Vertical");
-            if (vInput != 0)
+            // use key down to avoid repeat gravity switching 
+            if (VerticalKeyList.Select(Input.GetKeyDown).Contains(true))
             {
                 if (!controller.OnAir)
                 {
