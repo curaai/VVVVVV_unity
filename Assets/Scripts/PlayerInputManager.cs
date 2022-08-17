@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using VVVVVV.World.Entity;
 
@@ -12,8 +13,8 @@ namespace VVVVVV
         void Update()
         {
             var controller = GetComponent<MoveController>();
-            var force = GetComponent<MoveController>().force;
-            var velocity = GetComponent<MoveController>().velocity;
+            var force = controller.force;
+            var velocity = controller.velocity;
 
             void TapMove()
             {
@@ -47,7 +48,7 @@ namespace VVVVVV
                 {
                     controller.ReverseGravity();
                     force.y = MoveController.SPEED.y;
-                    force.y = controller.gravity == Gravity.DOWN ? force.y : -force.y;
+                    controller.force.y = controller.gravity == Gravity.DOWN ? -force.y : force.y;
                 }
             }
 
