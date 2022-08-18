@@ -10187,6 +10187,50 @@ Transform:
   m_Father: {fileID: 361071830}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &548912324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548912326}
+  - component: {fileID: 548912325}
+  m_Layer: 0
+  m_Name: Glow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &548912325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548912324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1628f7a1763d2744592be81213361393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowDirection: 0
+--- !u!4 &548912326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548912324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &557315518
 GameObject:
   m_ObjectHideFlags: 0
@@ -10653,10 +10697,10 @@ GameObject:
   - component: {fileID: 714567372}
   - component: {fileID: 714567370}
   - component: {fileID: 714567375}
-  - component: {fileID: 714567376}
   - component: {fileID: 714567374}
   - component: {fileID: 714567377}
   - component: {fileID: 714567371}
+  - component: {fileID: 714567378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10818,20 +10862,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &714567376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714567369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1628f7a1763d2744592be81213361393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRenderer: {fileID: 714567372}
-  glowDirection: 0
 --- !u!114 &714567377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10844,6 +10874,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3549ae72892aa4343a8a0336010ed1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &714567378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714567369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49dbb58bcc6f47c479047ac082e0f983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowOn: 1
+  on:
+    r: 160 - glow / 2 - frand() * 20
+    g: 200 - glow / 2
+    b: 220 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &760422006
 GameObject:
   m_ObjectHideFlags: 0

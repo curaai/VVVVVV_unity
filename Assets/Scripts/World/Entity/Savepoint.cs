@@ -20,32 +20,8 @@ namespace VVVVVV.World.Entity
         {
             ActivatedPoint = true;
             LastSavepoint = this;
-        }
 
-        public void Update()
-        {
-            void SetColor()
-            {
-                Color32 color;
-                if (ActivatedPoint)
-                {
-                    var r = (byte)(164 + RandomHelper.fRand() * 64);
-                    var g = (byte)(164 + RandomHelper.fRand() * 64);
-                    var b = (byte)(255 - (RandomHelper.fRand() * 64));
-                    color = new Color32(r, g, b, 255);
-                }
-                else
-                {
-                    var c = (byte)Mathf.FloorToInt(
-                       GlowColorAnimation.glow / 2
-                     + RandomHelper.fRand() * 8
-                     + 80);
-                    color = new Color32(c, c, c, 255);
-                }
-                GetComponent<SpriteRenderer>().color = color;
-            }
-
-            SetColor();
+            GetComponent<UI.Utils.Glow.SpriteGlowEffect>().GlowOn = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collider)

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using VVVVVV.Utils;
 
-namespace VVVVVV.UI.Utils
+namespace VVVVVV.UI.Utils.Glow
 {
     [RequireComponent(typeof(Text))]
     [RequireComponent(typeof(GlowEffect))]

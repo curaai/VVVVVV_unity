@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3006138517221030565}
   - component: {fileID: 3153067739626019463}
   - component: {fileID: 3153067739626019460}
+  - component: {fileID: 431772931643821251}
   m_Layer: 10
   m_Name: Savepoint
   m_TagString: Savepoint
@@ -151,3 +152,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69d117025cc4f74b9c04361a590c2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &431772931643821251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153067739626019451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49dbb58bcc6f47c479047ac082e0f983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowOn: 0
+  on:
+    r: 164 + frand() * 64
+    g: 164 + frand() * 64
+    b: 255 - frand() * 64
+  off:
+    r: glow / 2 + frand() * 8 + 80
+    g: glow / 2 + frand() * 8 + 80
+    b: glow / 2 + frand() * 8 + 80
