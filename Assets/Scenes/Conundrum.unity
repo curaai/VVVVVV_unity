@@ -240,12 +240,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 25
-  OnGColorExpression: 255 - glow / 2
-  OnBColorExpression: 255 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 25
+    g: 255 - glow / 2
+    b: 255 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!222 &38235887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -394,12 +396,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!1 &96875677
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,12 +455,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 255 - glow / 2
-  OnGColorExpression: 255 - glow / 2
-  OnBColorExpression: 255 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 255 - glow / 2
+    g: 255 - glow / 2
+    b: 255 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!222 &96875680
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -663,12 +669,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 255 - glow / 8
-  OnGColorExpression: 70 - glow / 4
-  OnBColorExpression: '120 - glow / 4 '
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 255 - glow / 8
+    g: 70 - glow / 4
+    b: '120 - glow / 4 '
+  off:
+    r: '60 - glow / 8 '
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &210288665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,12 +1035,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!1 &301005099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6683,12 +6693,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!222 &437105369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6795,12 +6807,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!114 &450776267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11049,12 +11063,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 130 - glow / 2
-  OnGColorExpression: 130 - glow / 2
-  OnBColorExpression: 130 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 130 - glow / 2
+    g: 130 - glow / 2
+    b: 130 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &789293074
 GameObject:
   m_ObjectHideFlags: 0
@@ -16521,12 +16537,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!1 &907621535
 GameObject:
   m_ObjectHideFlags: 0
@@ -16657,12 +16675,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 164 - glow / 4
-  OnGColorExpression: 164 - glow / 4
-  OnBColorExpression: 164
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 164 - glow / 4
+    g: 164 - glow / 4
+    b: 164
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &910137994
 GameObject:
   m_ObjectHideFlags: 0
@@ -28801,12 +28821,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 220 - glow / 4 (frand() * 20)
-  OnGColorExpression: '210 - glow / 4 '
-  OnBColorExpression: 120 - glow / 4
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 220 - glow / 4 (frand() * 20)
+    g: '210 - glow / 4 '
+    b: 120 - glow / 4
+  off:
+    r: '60 - glow / 8 '
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &984082664
 GameObject:
   m_ObjectHideFlags: 0
@@ -28900,12 +28922,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &997988213
 GameObject:
   m_ObjectHideFlags: 0
@@ -29074,12 +29098,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 164 - glow / 4
-  OnGColorExpression: 164 - glow / 4
-  OnBColorExpression: 164
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 164 - glow / 4
+    g: 164 - glow / 4
+    b: 164
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &1097816260
 GameObject:
   m_ObjectHideFlags: 0
@@ -29319,12 +29345,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 120 - glow / 4 - (frand() * 20)
-  OnGColorExpression: 220 - glow / 4
-  OnBColorExpression: 120 - glow /4
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 120 - glow / 4 - (frand() * 20)
+    g: 220 - glow / 4
+    b: 120 - glow /4
+  off:
+    r: '60 - glow / 8 '
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &1135635229
 GameObject:
   m_ObjectHideFlags: 0
@@ -29805,12 +29833,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!114 &1246342219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39581,7 +39611,7 @@ GameObject:
   - component: {fileID: 1435810845}
   - component: {fileID: 1435810847}
   - component: {fileID: 1435810846}
-  - component: {fileID: 1435810848}
+  - component: {fileID: 1435810849}
   m_Layer: 5
   m_Name: 1 purple
   m_TagString: Untagged
@@ -39646,7 +39676,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435810844}
   m_CullTransparentMesh: 1
---- !u!114 &1435810848
+--- !u!114 &1435810849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39659,12 +39689,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 220 - glow / 4 - (frand() * 20)
-  OnGColorExpression: 120 - glow / 4
-  OnBColorExpression: 210 - glow / 4
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 220 - glow / 4 - (frand() * 20)
+    g: 120 - glow / 4
+    b: 210 - glow / 4
+  off:
+    r: 60 - glow / 8
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &1436997380
 GameObject:
   m_ObjectHideFlags: 0
@@ -46931,12 +46963,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 75
-  OnGColorExpression: 75
-  OnBColorExpression: 255 - glow / 4 - (frand() * 20)
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 75
+    g: 75
+    b: 255 - glow / 4 - (frand() * 20)
+  off:
+    r: '60 - glow / 8 '
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &1538023090
 GameObject:
   m_ObjectHideFlags: 0
@@ -47231,12 +47265,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 0
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 96
-  OffGColorExpression: 96
-  OffBColorExpression: 96
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 96
+    g: 96
+    b: 96
 --- !u!1 &1592490922
 GameObject:
   m_ObjectHideFlags: 0
@@ -68163,12 +68199,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 196
-  OnGColorExpression: 196
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 196
+    g: 196
+    b: 255 - glow
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!222 &1786736929
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68350,12 +68388,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 255 - glow * 2
-  OnGColorExpression: 255 - glow * 2
-  OnBColorExpression: 255 - glow
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 255 - glow * 2
+    g: 255 - glow * 2
+    b: 255 - glow
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!222 &1801161752
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69132,7 +69172,7 @@ GameObject:
   - component: {fileID: 1962108973}
   - component: {fileID: 1962108975}
   - component: {fileID: 1962108974}
-  - component: {fileID: 1962108976}
+  - component: {fileID: 1962108977}
   m_Layer: 5
   m_Name: 0 cyan
   m_TagString: Untagged
@@ -69197,7 +69237,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962108972}
   m_CullTransparentMesh: 1
---- !u!114 &1962108976
+--- !u!114 &1962108977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69210,12 +69250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 160 - glow / 2 - (frand() * 20)
-  OnGColorExpression: 200 - glow / 2
-  OnBColorExpression: 220 - glow / 2
-  OffRColorExpression: '60 - glow / 8 '
-  OffGColorExpression: '60 - glow / 8 '
-  OffBColorExpression: '60 - glow / 8 '
+  on:
+    r: 160 - glow / 2 - (frand() * 20)
+    g: 200 - glow / 2
+    b: 220 - glow / 2
+  off:
+    r: '60 - glow / 8 '
+    g: '60 - glow / 8 '
+    b: '60 - glow / 8 '
 --- !u!1 &1975256881
 GameObject:
   m_ObjectHideFlags: 0
@@ -69412,12 +69454,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 255 - glow / 2
-  OnGColorExpression: 255 - glow / 2
-  OnBColorExpression: 255 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 255 - glow / 2
+    g: 255 - glow / 2
+    b: 255 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!114 &1998073452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69553,12 +69597,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 255 - glow / 2
-  OnGColorExpression: 255 - glow / 2
-  OnBColorExpression: 255 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 255 - glow / 2
+    g: 255 - glow / 2
+    b: 255 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &2017274222
 GameObject:
   m_ObjectHideFlags: 0
@@ -75669,12 +75715,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowOn: 1
-  OnRColorExpression: 130 - glow / 2
-  OnGColorExpression: 130 - glow / 2
-  OnBColorExpression: 130 - glow / 2
-  OffRColorExpression: 
-  OffGColorExpression: 
-  OffBColorExpression: 
+  on:
+    r: 130 - glow / 2
+    g: 130 - glow / 2
+    b: 130 - glow / 2
+  off:
+    r: 
+    g: 
+    b: 
 --- !u!1 &2129111884
 GameObject:
   m_ObjectHideFlags: 0

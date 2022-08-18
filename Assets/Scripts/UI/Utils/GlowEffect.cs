@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
@@ -5,32 +6,35 @@ using VVVVVV.Utils;
 
 namespace VVVVVV.UI.Utils
 {
+    [Serializable]
+    public class GlowExpression
+    {
+        public string r;
+        public string g;
+        public string b;
+    }
+
     [RequireComponent(typeof(Graphic)), DisallowMultipleComponent]
     public class GlowEffect : MonoBehaviour
     {
         public bool GlowOn;
-
-        public string OnRColorExpression;
-        public string OnGColorExpression;
-        public string OnBColorExpression;
-        public string OffRColorExpression;
-        public string OffGColorExpression;
-        public string OffBColorExpression;
+        public GlowExpression on;
+        public GlowExpression off;
 
         private byte r, g, b;
         void Update()
         {
             if (GlowOn)
             {
-                r = parse(OnRColorExpression);
-                g = parse(OnGColorExpression);
-                b = parse(OnBColorExpression);
+                r = parse(on.r);
+                g = parse(on.g);
+                b = parse(on.b);
             }
             else
             {
-                r = parse(OffRColorExpression);
-                g = parse(OffGColorExpression);
-                b = parse(OffBColorExpression);
+                r = parse(off.r);
+                g = parse(off.g);
+                b = parse(off.b);
             }
             GetComponent<Graphic>().color = new Color32(r, g, b, 255);
         }
