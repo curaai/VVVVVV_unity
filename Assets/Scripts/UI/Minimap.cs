@@ -33,7 +33,7 @@ namespace VVVVVV.UI
 
         void Start()
         {
-            ChangeRoom(new Vector2Int(115, 105));
+            ChangeRoom(new Vector2Int(115, 103));
         }
 
         public void ChangeRoom(Vector2Int pos)

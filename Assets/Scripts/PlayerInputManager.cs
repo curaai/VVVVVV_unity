@@ -7,6 +7,8 @@ namespace VVVVVV
     [RequireComponent(typeof(MoveController))]
     public class PlayerInputManager : MonoBehaviour
     {
+        public static readonly Vector2 SPEED = new Vector2(6f, 6f);
+
         public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space };
         private int tapLeft = 0;
         private int tapRight = 0;
@@ -39,7 +41,7 @@ namespace VVVVVV
             if (hInput != 0)
             {
                 controller.direction = hInput < 0 ? Direction.LEFT : Direction.RIGHT;
-                controller.force.x = controller.direction == Direction.RIGHT ? MoveController.SPEED.x : -MoveController.SPEED.x;
+                controller.force.x = controller.direction == Direction.RIGHT ? SPEED.x : -SPEED.x;
             }
 
             // use key down to avoid repeat gravity switching 
@@ -48,8 +50,7 @@ namespace VVVVVV
                 if (!controller.OnAir)
                 {
                     controller.ReverseGravity();
-                    force.y = MoveController.SPEED.y;
-                    controller.force.y = controller.gravity == Gravity.DOWN ? -force.y : force.y;
+                    controller.force.y = controller.gravity == Gravity.DOWN ? -SPEED.y : SPEED.y;
                 }
             }
 

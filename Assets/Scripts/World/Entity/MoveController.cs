@@ -19,11 +19,11 @@ namespace VVVVVV.World.Entity
     public class MoveController : MonoBehaviour
     {
         public static readonly Vector2 MaxSpeed = new Vector2(12, 20);
-        public static readonly Vector2 SPEED = new Vector2(6f, 6f);
         public static readonly Vector2 INERTIA = new Vector2(2.2f, 0.5f);
         private static readonly float VelocityCalibrationParameter = 25;
 
         [SerializeField] bool UpdateSprite;
+        [SerializeField] bool ApplyFriction;
 
         protected static int wallLayer => LayerMask.NameToLayer("wall");
         protected Animator animator => GetComponent<Animator>();
@@ -69,7 +69,7 @@ namespace VVVVVV.World.Entity
                 (!OnGround && !OnRoof))
                 velocity.y = velocity.y + force.y;
 
-            velocity = applyFriction(velocity);
+            if (ApplyFriction) velocity = applyFriction(velocity);
             GetComponent<Rigidbody2D>().velocity = velocity * VelocityCalibrationParameter;
 
             animator?.SetBool("MoveNow", velocity != Vector2.zero);

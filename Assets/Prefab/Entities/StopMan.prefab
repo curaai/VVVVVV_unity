@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7698084535399488182}
   - component: {fileID: 7698084535399488183}
   - component: {fileID: 7698084535399488179}
-  - component: {fileID: 7698084535399488176}
+  - component: {fileID: 6609852015672164102}
+  - component: {fileID: 1785293549801082197}
+  - component: {fileID: 4671537146945365142}
   m_Layer: 0
   m_Name: StopMan
   m_TagString: Untagged
@@ -95,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 7698084535399488180}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75ba95fcf2b5e2643bc106eb13e8faac, type: 2}
+  m_Controller: {fileID: 9100000, guid: 34564b7a13b15284b9b694121e2b7289, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -124,9 +126,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!60 &7698084535399488176
-PolygonCollider2D:
+  m_Constraints: 4
+--- !u!61 &6609852015672164102
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,32 +150,37 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.75, y: -1.625}
-      - {x: 1, y: -1.375}
-      - {x: 1, y: -1.25}
-      - {x: 0.625, y: -1}
-      - {x: 0.25, y: -1}
-      - {x: 0.25, y: -0.625}
-      - {x: 0.625, y: -0.625}
-      - {x: 1.375, y: 0.125}
-      - {x: 1.375, y: 1.125}
-      - {x: 0.5, y: 2}
-      - {x: -0.5, y: 2}
-      - {x: -1.375, y: 1.125}
-      - {x: -1.375, y: 0.125}
-      - {x: -0.75, y: -0.5}
-      - {x: -0.75, y: -0.625}
-      - {x: -1, y: -0.875}
-      - {x: -1, y: -1}
-      - {x: -0.75, y: -1.125}
-      - {x: -0.625, y: -1.25}
-      - {x: -0.375, y: -1.25}
-      - {x: -0.375, y: -1.875}
-      - {x: -0.5, y: -1.875}
-      - {x: -0.5, y: -2}
-      - {x: -0.125, y: -2}
-      - {x: -0.125, y: -1.875}
-      - {x: 0.5, y: -1.875}
-      - {x: 0.5, y: -1.75}
+  serializedVersion: 2
+  m_Size: {x: 2.75, y: 4}
+  m_EdgeRadius: 0
+--- !u!114 &1785293549801082197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698084535399488180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8340b11f1be334a80b19f7e9aa6120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateSprite: 0
+  ApplyFriction: 0
+  gravity: 0
+  direction: 1
+  force: {x: 0, y: 0}
+  velocity: {x: 0, y: 0}
+--- !u!114 &4671537146945365142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698084535399488180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e23c69c821c2da4382815d1e3ff5dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SPEED: {x: 0, y: 8}
