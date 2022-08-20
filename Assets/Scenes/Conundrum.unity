@@ -10696,10 +10696,11 @@ GameObject:
   - component: {fileID: 714567373}
   - component: {fileID: 714567372}
   - component: {fileID: 714567370}
+  - component: {fileID: 714567371}
   - component: {fileID: 714567375}
   - component: {fileID: 714567374}
   - component: {fileID: 714567377}
-  - component: {fileID: 714567371}
+  - component: {fileID: 714567376}
   - component: {fileID: 714567378}
   m_Layer: 0
   m_Name: Player
@@ -10822,9 +10823,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 74075, y: -49155}
+  m_AnchoredPosition: {x: 74024.305, y: -49096.332}
   m_SizeDelta: {x: 1.25, y: 2.625}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714567374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10862,6 +10863,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &714567376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714567369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a615bc48dbfe3d34699c7b9048104539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &714567377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10883,18 +10896,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 714567369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dbb58bcc6f47c479047ac082e0f983, type: 3}
+  m_Script: {fileID: 11500000, guid: feb64890503545443ae0257531cf168c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowOn: 1
-  on:
-    r: 160 - glow / 2 - frand() * 20
+  idx: 0
+  expressions:
+  - r: 160 - glow / 2 - frand() * 20
     g: 200 - glow / 2
     b: 220 - glow / 2
-  off:
-    r: 
-    g: 
-    b: 
+  - r: 196 - frand() * 64
+    g: 10
+    b: 10
 --- !u!1 &760422006
 GameObject:
   m_ObjectHideFlags: 0
@@ -29493,7 +29505,7 @@ GameObject:
   - component: {fileID: 1162378579}
   m_Layer: 8
   m_Name: obstacle
-  m_TagString: Untagged
+  m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4671537146945365142}
   m_Layer: 0
   m_Name: StopMan
-  m_TagString: Untagged
+  m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
