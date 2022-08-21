@@ -25,11 +25,6 @@ namespace VVVVVV.UI
             this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToList();
         }
 
-        void Start()
-        {
-            ChangeRoom(new Vector2Int(115, 103));
-        }
-
         public Room room(Vector2Int pos) => rooms.Find(x => x.pos == pos);
         public Room room(string name) => rooms.Find(x => x.name == name);
         public GameObject roomObj(Room r) => GameObject.Find("Grid").transform.Find(r.name).gameObject;
@@ -114,8 +109,7 @@ namespace VVVVVV.UI
 
         public void Load(string str)
         {
-            if (str == "")
-                return;
+            if (str == "") return;
 
             explored = SaveManager.DeserializeObject<HashSet<(int, int)>>(str);
         }

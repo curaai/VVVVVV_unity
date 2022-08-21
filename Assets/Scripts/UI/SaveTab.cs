@@ -16,9 +16,13 @@ namespace VVVVVV.UI
 
         public bool saved { get; private set; }
 
-        void Start()
+        void OnEnable()
         {
             LoadSavedData();
+        }
+        void OnDisable()
+        {
+            saved = false;
         }
 
         void Update()
@@ -26,6 +30,8 @@ namespace VVVVVV.UI
             if (Input.GetKeyDown(KeyCode.Space) && !saved)
             {
                 GameObject.Find("Game").GetComponent<Game>().Save();
+                // Check current ui opened 
+                saved = true;
             }
         }
 
@@ -48,8 +54,6 @@ namespace VVVVVV.UI
 
         public void Save()
         {
-            // Check current ui opened 
-            saved = true;
 
             transform.Find("NotSaved").gameObject.SetActive(false);
             var curTab = transform.Find("Saved");
@@ -64,7 +68,7 @@ namespace VVVVVV.UI
         private (string, string) GetSavedAreaAndTime()
         {
             var rx = Mathf.FloorToInt(Savepoint.LastSavepoint.transform.position.x / 640);
-            var ry = Mathf.FloorToInt(-Savepoint.LastSavepoint.transform.position.y / 480);
+            var ry = -Mathf.FloorToInt(Savepoint.LastSavepoint.transform.position.y / 480);
             var areaStr = minimap.room(new Vector2Int(rx, ry)).areaStr();
             var clockStr = Clock.FormatString(clock.savetime);
             return (areaStr, clockStr);

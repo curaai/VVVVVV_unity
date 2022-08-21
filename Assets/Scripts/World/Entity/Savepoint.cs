@@ -13,8 +13,8 @@ namespace VVVVVV.World.Entity
         private int SavepointLayer => LayerMask.NameToLayer("entity");
 
         public static Savepoint LastSavepoint { get; private set; } = null;
-        public bool ActivatedPoint { get; private set; }
-        public bool CollidePlayerNow { get; private set; }
+        public bool ActivatedPoint { get; private set; } = false;
+        public bool CollidePlayerNow { get; private set; } = false;
 
         public void Activate()
         {
@@ -48,7 +48,7 @@ namespace VVVVVV.World.Entity
             if (LastSavepoint == this)
             {
                 var roompos = (Mathf.FloorToInt(transform.position.x / 640),
-                                Mathf.FloorToInt(transform.position.y / 480));
+                                -Mathf.FloorToInt(transform.position.y / 480));
 
                 var local = (transform.position.x, transform.position.y);
 

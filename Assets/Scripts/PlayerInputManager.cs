@@ -12,10 +12,15 @@ namespace VVVVVV
         public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space };
         private int tapLeft = 0;
         private int tapRight = 0;
+        MoveController controller;
+
+        void Awake()
+        {
+            controller = GetComponent<MoveController>();
+        }
 
         void Update()
         {
-            var controller = GetComponent<MoveController>();
             var force = controller.force;
             var velocity = controller.velocity;
 
@@ -50,11 +55,16 @@ namespace VVVVVV
                 if (!controller.OnAir)
                 {
                     controller.ReverseGravity();
-                    controller.force.y = controller.gravity == Gravity.DOWN ? -SPEED.y : SPEED.y;
+                    SetGravityForce();
                 }
             }
 
             TapMove();
+        }
+
+        public void SetGravityForce()
+        {
+            controller.force.y = controller.gravity == Gravity.DOWN ? -SPEED.y : SPEED.y;
         }
     }
 }

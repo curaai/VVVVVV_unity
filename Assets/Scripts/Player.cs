@@ -6,25 +6,24 @@ using VVVVVV.World.Entity;
 namespace VVVVVV
 {
     [RequireComponent(typeof(Animator), typeof(Collider2D), typeof(MoveController))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, ISerializable
     {
         const string DAMAGABLE_TAG = "Damagable";
+        public string SerializeKey => "Player";
 
-        Animator animator;
-        MoveController controller;
-        UI.Minimap minimap;
-        Game game;
+        [SerializeField] private Game game;
 
-        Room room;
+        private Animator animator;
+        private MoveController controller;
+        private UI.Minimap minimap;
 
-        void Start()
+        public Room room;
+
+        void Awake()
         {
             animator = GetComponent<Animator>();
             controller = GetComponent<MoveController>();
-            game = GameObject.Find("Game").GetComponent<Game>();
             minimap = game.minimap;
-
-            room = minimap.room(new Vector2Int(115, 103));
         }
 
         void Update()
@@ -50,21 +49,21 @@ namespace VVVVVV
                     return new Vector2Int(xDir, yDir);
             }
 
-            void ChangeRoom(Vector2Int rpos)
-            {
-                room = minimap.room(rpos);
-
-                var game = GameObject.Find("Game").GetComponent<Game>();
-                game.ChangeRoom(room.pos);
-
-                transform.SetParent(minimap.roomObj(room).transform);
-            }
-
             var newRoomDir = IsRoomChanged();
             if (newRoomDir.HasValue)
             {
-                ChangeRoom(room.pos + newRoomDir.Value);
+                changeRoom(room.pos + newRoomDir.Value);
             }
+        }
+
+        private void changeRoom(Vector2Int rpos)
+        {
+            room = minimap.room(rpos);
+
+            var game = GameObject.Find("Game").GetComponent<Game>();
+            game.ChangeRoom(room.pos);
+
+            transform.SetParent(minimap.roomObj(room).transform);
         }
 
         void OnCollisionEnter2D(Collision2D collision)
@@ -81,6 +80,49 @@ namespace VVVVVV
             GetComponent<Collider2D>().isTrigger = true;
             controller.force = Vector2.zero;
             controller.velocity = Vector2.zero;
+        }
+
+        public string Save()
+        {
+            var p = Savepoint.LastSavepoint.transform.position;
+
+            return SaveManager.SerializableObject(
+                new SaveInfo()
+                {
+                    direction = controller.direction,
+                    gravity = controller.gravity,
+                    roomPos = (room.pos.x, room.pos.y),
+                    position = (p.x, p.y, p.z),
+                }
+            );
+        }
+
+        public void Load(string str)
+        {
+            if (str == "")
+            {
+                // Only Use for Development when save data clear
+                changeRoom(new Vector2Int(115, 103));
+                return;
+            }
+
+            var x = SaveManager.DeserializeObject<SaveInfo>(str);
+            controller.direction = x.direction;
+            controller.gravity = x.gravity;
+            GetComponent<PlayerInputManager>().SetGravityForce();
+
+            changeRoom(new Vector2Int(x.roomPos.Item1, x.roomPos.Item2));
+            transform.position = new Vector3(x.position.Item1, x.position.Item2, x.position.Item3);
+        }
+
+
+        [Serializable]
+        struct SaveInfo
+        {
+            public Direction direction;
+            public Gravity gravity;
+            public (int, int) roomPos;
+            public (float, float, float) position;
         }
     }
 }

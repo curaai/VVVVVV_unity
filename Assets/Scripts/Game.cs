@@ -23,8 +23,13 @@ namespace VVVVVV
                 minimap,
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 GameObject.Find("Clock").GetComponent<World.Clock>(),
+                player
             };
             saveManager = new SaveManager(saveTargetList);
+        }
+
+        void Start()
+        {
             saveManager.Load();
         }
 
