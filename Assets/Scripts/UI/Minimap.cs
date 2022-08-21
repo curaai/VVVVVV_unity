@@ -16,13 +16,7 @@ namespace VVVVVV.UI
         [SerializeField] Image fogMaskPanel;
         [SerializeField] Texture2D fogTile;
 
-        public Room this[Vector2Int pos] => rooms.Find(x => x.pos == pos);
-
         private List<Room> rooms;
-        public Room room { get; private set; }
-        public GameObject RoomObj { get; private set; }
-        public Vector2Int RoomPos => room.pos;
-        public Vector2Int LocalRoomPos => new Vector2Int(RoomPos.x - 100, RoomPos.y - 100);
 
         HashSet<(int, int)> explored = new HashSet<(int, int)>(); // use tuple only for serializable 
 
@@ -36,40 +30,34 @@ namespace VVVVVV.UI
             ChangeRoom(new Vector2Int(115, 103));
         }
 
+        public Room room(Vector2Int pos) => rooms.Find(x => x.pos == pos);
+        public Room room(string name) => rooms.Find(x => x.name == name);
+        public GameObject roomObj(Room r) => GameObject.Find("Grid").transform.Find(r.name).gameObject;
+
         public void ChangeRoom(Vector2Int pos)
         {
-            room = this[pos];
-            Debug.Log("Room Changed" + RoomPos.ToString());
+            Debug.Log("Room Changed" + pos.ToString());
 
-            UpdateUI();
-            Exploring(RoomPos);
+            UpdateUI(room(pos));
+            Exploring(pos);
         }
 
-        void UpdateUI()
+        void UpdateUI(Room r)
         {
-            void Grid()
-            {
-                var root = GameObject.Find("Grid");
-                foreach (Transform t in root.transform)
-                    t.gameObject.SetActive(false);
-
-                RoomObj = root.transform.Find(room.name).gameObject;
-                RoomObj.SetActive(true);
-            }
-
             void Name()
             {
                 var text = GameObject.Find("RoomName").GetComponent<Text>();
-                text.text = room.name;
+                text.text = r.name;
             }
+
             void SetBlinkPos()
             {
                 var z = FocusBlink.transform.localPosition.z;
-                FocusBlink.transform.localPosition = new Vector3(24 * LocalRoomPos.x, -(18 * LocalRoomPos.y), z);
+                var localPos = r.pos - Vector2.one * 100;
+                FocusBlink.transform.localPosition = new Vector3(24 * localPos.x, -(18 * localPos.y), z);
             }
 
             Name();
-            Grid();
             SetBlinkPos();
         }
 

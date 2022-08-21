@@ -65,7 +65,7 @@ namespace VVVVVV.UI
         {
             var rx = Mathf.FloorToInt(Savepoint.LastSavepoint.transform.position.x / 640);
             var ry = Mathf.FloorToInt(-Savepoint.LastSavepoint.transform.position.y / 480);
-            var areaStr = minimap[new Vector2Int(rx, ry)].areaStr();
+            var areaStr = minimap.room(new Vector2Int(rx, ry)).areaStr();
             var clockStr = Clock.FormatString(clock.savetime);
             return (areaStr, clockStr);
         }
