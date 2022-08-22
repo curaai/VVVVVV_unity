@@ -35,12 +35,12 @@ namespace VVVVVV.World.Entity
                 if (c.OnGround)
                 {
                     c.velocity.y = SPEED.y;
-                    c.gravity = Gravity.UP;
+                    c.ReverseGravity(Gravity.UP);
                 }
                 else
                 {
                     c.velocity.y = -SPEED.y;
-                    c.gravity = Gravity.DOWN;
+                    c.ReverseGravity(Gravity.DOWN);
                 }
             }
         }

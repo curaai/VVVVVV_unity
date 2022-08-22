@@ -4,10 +4,10 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6128299156075563123
-    second: sprites_0
+    second: sprites Character Normal 0
   - first:
       213: 3386662938922423588
-    second: sprites_1
+    second: sprites Character Normal 1
   - first:
       213: -6110656803992641779
     second: sprites_2
@@ -43,7 +43,7 @@ TextureImporter:
     second: sprites_12
   - first:
       213: -7039003182478323700
-    second: sprites_13
+    second: sprites Character Sad 0
   - first:
       213: -5559150632450785296
     second: sprites_14
@@ -619,7 +619,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprites_0
+      name: sprites Character Normal 0
       rect:
         serializedVersion: 2
         x: 7
@@ -644,7 +644,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_1
+      name: sprites Character Normal 1
       rect:
         serializedVersion: 2
         x: 38
@@ -904,7 +904,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_13
+      name: sprites Character Sad 0
       rect:
         serializedVersion: 2
         x: 7

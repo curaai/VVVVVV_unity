@@ -30,7 +30,7 @@ namespace VVVVVV
 
         void Start()
         {
-            saveManager.Load();
+            Respawn();
         }
 
         void Update()
@@ -39,6 +39,11 @@ namespace VVVVVV
                 GameObject.Find("PausePanel").GetComponent<SlidePanel>().Toggle();
             if (Input.GetKeyDown(KeyCode.Return))
                 GameObject.Find("MapPanel").GetComponent<SlidePanel>().Toggle();
+        }
+
+        public void Respawn()
+        {
+            saveManager.Load();
         }
 
         public void ChangeRoom(Vector2Int newRoomPos)
@@ -72,8 +77,6 @@ namespace VVVVVV
         public void Save()
         {
             saveManager.Save();
-            savetab.Save();
-            // savetab.LoadSavedData();
         }
     }
 }

@@ -14,12 +14,18 @@ namespace VVVVVV.UI
         [SerializeField] Text lastSaveUI;
         [SerializeField] Text summaryUI;
 
+        private Transform offSavedUI => transform.Find("NotSaved");
+        private Transform onSavedUI => transform.Find("Saved");
+
         public bool saved { get; private set; }
 
         void OnEnable()
         {
             LoadSavedData();
+            offSavedUI.gameObject.SetActive(true);
+            onSavedUI.gameObject.SetActive(false);
         }
+
         void OnDisable()
         {
             saved = false;
@@ -32,6 +38,7 @@ namespace VVVVVV.UI
                 GameObject.Find("Game").GetComponent<Game>().Save();
                 // Check current ui opened 
                 saved = true;
+                OpenSaveUI();
             }
         }
 
@@ -52,15 +59,14 @@ namespace VVVVVV.UI
             }
         }
 
-        public void Save()
+        public void OpenSaveUI()
         {
+            offSavedUI.gameObject.SetActive(false);
 
-            transform.Find("NotSaved").gameObject.SetActive(false);
-            var curTab = transform.Find("Saved");
-            curTab.gameObject.SetActive(true);
+            onSavedUI.gameObject.SetActive(true);
             (var areaStr, var clockStr) = GetSavedAreaAndTime();
-            curTab.Find("Container/savetime").GetComponent<Text>().text = clockStr;
-            curTab.Find("Container/savearea").GetComponent<Text>().text = areaStr;
+            onSavedUI.Find("Container/savetime").GetComponent<Text>().text = clockStr;
+            onSavedUI.Find("Container/savearea").GetComponent<Text>().text = areaStr;
 
             // TODO: Set trinket, Crews
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-namespace VVVVVV.Utils
+namespace VVVVVV.UI.Utils.Glow
 {
     [DisallowMultipleComponent]
     public class GlowColorAnimation : MonoBehaviour

@@ -13,12 +13,10 @@ namespace VVVVVV.World.Entity
         private int SavepointLayer => LayerMask.NameToLayer("entity");
 
         public static Savepoint LastSavepoint { get; private set; } = null;
-        public bool ActivatedPoint { get; private set; } = false;
         public bool CollidePlayerNow { get; private set; } = false;
 
         public void Activate()
         {
-            ActivatedPoint = true;
             LastSavepoint = this;
 
             GetComponent<UI.Utils.Glow.SpriteGlowEffect>().GlowOn = true;
@@ -47,12 +45,9 @@ namespace VVVVVV.World.Entity
         {
             if (LastSavepoint == this)
             {
-                var roompos = (Mathf.FloorToInt(transform.position.x / 640),
-                                -Mathf.FloorToInt(transform.position.y / 480));
+                var pos = (transform.position.x, transform.position.y);
 
-                var local = (transform.position.x, transform.position.y);
-
-                return SaveManager.SerializableObject((roompos, local));
+                return SaveManager.SerializableObject(pos);
             }
             else
                 return LastSavepoint.Save();
@@ -60,34 +55,22 @@ namespace VVVVVV.World.Entity
 
         public void Load(string str)
         {
-            if (str == "")
-                return;
+            if (str == "") return;
 
             Savepoint FindLastSavepoint(string str)
             {
-                var res = SaveManager.DeserializeObject<((int, int), (float, float))>(str);
-                var rpos = res.Item1;
-
+                var res = SaveManager.DeserializeObject<(float, float)>(str);
                 return Physics2D.OverlapCircleAll(
-                                        new Vector2(res.Item2.Item1, res.Item2.Item2),
+                                        new Vector2(res.Item1, res.Item2),
                                         3
                                         )
                                     .Where(x => x.CompareTag("Savepoint"))
                                     .Select(x => x.GetComponent<Savepoint>())
-                                    .First();
+                                    .FirstOrDefault();
             }
 
-            var savepoint = FindLastSavepoint(str);
-
-            // TODO: respawn player, not implemented now 
-
-            if (savepoint == null)
-                return;
-            else
-            {
-                LastSavepoint = savepoint;
-                LastSavepoint.Activate();
-            }
+            LastSavepoint ??= FindLastSavepoint(str);
+            LastSavepoint.Activate();
         }
     }
 }

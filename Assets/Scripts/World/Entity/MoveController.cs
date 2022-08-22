@@ -36,7 +36,7 @@ namespace VVVVVV.World.Entity
         public bool OnRoof { get; protected set; }
         protected ContactPoint2D[] lastContactPts;
 
-        public Gravity gravity;
+        public Gravity gravity { get; protected set; }
         public Direction direction;
 
         public Vector2 force;
@@ -72,8 +72,8 @@ namespace VVVVVV.World.Entity
             if (ApplyFriction) velocity = applyFriction(velocity);
             GetComponent<Rigidbody2D>().velocity = velocity * VelocityCalibrationParameter;
 
-            animator?.SetBool("MoveNow", velocity != Vector2.zero);
-            animator?.SetBool("JumpNow", OnAir);
+            animator?.SetBool("MoveNow", velocity.x != 0);
+            animator?.SetBool("JumpNow", velocity.y != 0);
 
             if (UpdateSprite)
             {

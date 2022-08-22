@@ -31,22 +31,15 @@ namespace VVVVVV
             Vector2Int? IsRoomChanged()
             {
                 var lpos = transform.localPosition;
-                int xDir = 0;
-                if (lpos.x <= 0f)
-                    xDir = -1;
-                else if (40f < lpos.x)
-                    xDir = 1;
+                var res = Vector2Int.zero;
 
-                int yDir = 0;
-                if (lpos.y <= -1.5f)
-                    yDir = 1;
-                else if (28.25f < lpos.y)
-                    yDir = -1;
+                if (lpos.x <= 0f) res.x = -1;
+                else if (40f < lpos.x) res.x = 1;
 
-                if (xDir == 0 && yDir == 0)
-                    return null;
-                else
-                    return new Vector2Int(xDir, yDir);
+                if (lpos.y <= -1.5f) res.y = 1;
+                else if (28.25f < lpos.y) res.y = -1;
+
+                return res == Vector2Int.zero ? (Vector2Int?)null : res;
             }
 
             var newRoomDir = IsRoomChanged();
@@ -69,17 +62,24 @@ namespace VVVVVV
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider.CompareTag(DAMAGABLE_TAG))
-            {
-                animator.SetBool("HurtNow", true);
                 GameOver();
-            }
         }
 
         public void GameOver()
         {
+            animator.SetBool("HurtNow", true);
+
             GetComponent<Collider2D>().isTrigger = true;
+            controller.enabled = false;
             controller.force = Vector2.zero;
             controller.velocity = Vector2.zero;
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            StartCoroutine(Utils.AnimationHelper.CheckAnimationCompleted(animator, "Hurt", () =>
+            {
+                game.Respawn();
+                animator.SetBool("HurtNow", false);
+            }));
         }
 
         public string Save()
@@ -106,10 +106,12 @@ namespace VVVVVV
                 return;
             }
 
+            GetComponent<Collider2D>().isTrigger = false;
+            controller.enabled = true;
+
             var x = SaveManager.DeserializeObject<SaveInfo>(str);
             controller.direction = x.direction;
-            controller.gravity = x.gravity;
-            GetComponent<PlayerInputManager>().SetGravityForce();
+            controller.ReverseGravity(x.gravity);
 
             changeRoom(new Vector2Int(x.roomPos.Item1, x.roomPos.Item2));
             transform.position = new Vector3(x.position.Item1, x.position.Item2, x.position.Item3);

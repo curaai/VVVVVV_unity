@@ -10799,9 +10799,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 1485657529
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 6128299156075563123, guid: 85012919ff3802a4d8f63425e2c26093, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10829,7 +10829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 31.214844, y: 4.208008}
+  m_AnchoredPosition: {x: 33.67, y: 21.35}
   m_SizeDelta: {x: 1.25, y: 2.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714567374
@@ -10846,7 +10846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateSprite: 1
   ApplyFriction: 1
-  gravity: 1
   direction: 0
   force: {x: 0, y: -6}
   velocity: {x: 0, y: 0}
@@ -30195,8 +30194,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -354323785
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -40337,9 +40336,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -752738925
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -67919,8 +67918,20 @@ PrefabInstance:
       value: StopMan 2
       objectReference: {fileID: 0}
     - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1485657529
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
@@ -68759,6 +68770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892216095}
   - component: {fileID: 1892216096}
+  - component: {fileID: 1892216097}
   m_Layer: 5
   m_Name: Panels
   m_TagString: Untagged
@@ -68801,6 +68813,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f683fc28a08aaa408c44dfdb9270ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1892216097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892216094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1 &1927241878
 GameObject:
   m_ObjectHideFlags: 0
@@ -69081,8 +69106,20 @@ PrefabInstance:
       value: StopMan 1
       objectReference: {fileID: 0}
     - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1485657529
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
@@ -69157,6 +69194,14 @@ PrefabInstance:
     - target: {fileID: 3153067739626019448, guid: 12602731591b5804aafa90bbf36ced86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153067739626019449, guid: 12602731591b5804aafa90bbf36ced86, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153067739626019449, guid: 12602731591b5804aafa90bbf36ced86, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1485657529
       objectReference: {fileID: 0}
     - target: {fileID: 3153067739626019451, guid: 12602731591b5804aafa90bbf36ced86, type: 3}
       propertyPath: m_Name
@@ -69345,7 +69390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975256882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76019,6 +76064,18 @@ PrefabInstance:
     - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
       propertyPath: m_Name
       value: StopMan 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488180, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698084535399488182, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1485657529
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc7906f80a424b439a2479a7225c4f4, type: 3}

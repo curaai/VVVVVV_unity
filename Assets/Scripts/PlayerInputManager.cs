@@ -55,16 +55,10 @@ namespace VVVVVV
                 if (!controller.OnAir)
                 {
                     controller.ReverseGravity();
-                    SetGravityForce();
                 }
             }
-
-            TapMove();
-        }
-
-        public void SetGravityForce()
-        {
             controller.force.y = controller.gravity == Gravity.DOWN ? -SPEED.y : SPEED.y;
+            TapMove();
         }
     }
 }
