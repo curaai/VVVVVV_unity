@@ -50,6 +50,9 @@ TagManager:
   - name: Wall
     uniqueID: 3542228371
     locked: 0
+  - name: Obstacle
+    uniqueID: 870786043
+    locked: 0
   - name: Entity
     uniqueID: 1485657529
     locked: 0
