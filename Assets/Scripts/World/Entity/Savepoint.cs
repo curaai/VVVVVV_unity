@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using VVVVVV.Utils;
+using VVVVVV.UI.Utils.Glow;
 
 namespace VVVVVV.World.Entity
 {
@@ -13,32 +14,37 @@ namespace VVVVVV.World.Entity
         private int SavepointLayer => LayerMask.NameToLayer("entity");
 
         public static Savepoint LastSavepoint { get; private set; } = null;
-        public bool CollidePlayerNow { get; private set; } = false;
+        private static Savepoint[] allSavepoints = null;
+
+        void Awake()
+        {
+            allSavepoints ??= transform.root.GetComponentsInChildren<Savepoint>();
+        }
 
         public void Activate()
         {
+            void disableAll() =>
+                allSavepoints
+                    .Select(x => x.GetComponent<SpriteGlowEffect>())
+                    .Select(x => x.GlowOn = false)
+                    .ToList();
+
             LastSavepoint = this;
 
-            GetComponent<UI.Utils.Glow.SpriteGlowEffect>().GlowOn = true;
+            disableAll();
+
+            GetComponent<SpriteGlowEffect>().GlowOn = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.gameObject.CompareTag("Player"))
             {
-                // TODO: disable other savepoints
-
-                CollidePlayerNow = true;
                 Activate();
 
                 // AutoSave
                 GameObject.Find("Game").GetComponent<Game>().Save();
             }
-        }
-
-        private void OnTriggerExit2D(Collider2D collider)
-        {
-            if (collider.gameObject.CompareTag("Player")) CollidePlayerNow = false;
         }
 
         public string Save()
