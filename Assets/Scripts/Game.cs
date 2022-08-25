@@ -11,6 +11,7 @@ namespace VVVVVV
     {
         [SerializeField] public UI.Minimap minimap;
         [SerializeField] public UI.SaveTab savetab;
+        [SerializeField] public World.TrinketManager trinketManager;
         [SerializeField] public Player player;
         [SerializeField] public Transform cam;
 
@@ -23,7 +24,8 @@ namespace VVVVVV
                 minimap,
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 GameObject.Find("Clock").GetComponent<World.Clock>(),
-                player
+                player,
+                trinketManager
             };
             saveManager = new SaveManager(saveTargetList);
         }

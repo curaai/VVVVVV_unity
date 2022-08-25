@@ -12,7 +12,7 @@ namespace VVVVVV.World.Entity
         public bool Collected
         {
             get => _collected;
-            private set
+            set
             {
                 _collected = value;
                 GetComponent<SpriteRenderer>().enabled = !Collected;
@@ -23,7 +23,6 @@ namespace VVVVVV.World.Entity
         {
             if (Collected) return;
 
-            Collected = true;
             manager.Collect(this);
         }
     }
