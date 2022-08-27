@@ -12,6 +12,7 @@ namespace VVVVVV.World
         public const int TOTAL_TRINKET_COUNT = 20;
         public string SerializeKey => "Trinkets";
         private const string CLOSE_UI_TRIGGER = "Close";
+
         [SerializeField] GameObject trinketUI;
 
         private Trinket[] trinkets;
@@ -34,17 +35,10 @@ namespace VVVVVV.World
 
         public void Collect(Trinket t)
         {
-            string number2word(int n)
-            {
-                var words = new[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty" };
-                if (20 < n) throw new InvalidCastException("Cannot convert number to word: " + n.ToString());
-                return words[n];
-            }
-
             trinkets.Where(x => x == t).First().Collected = true;
             trinketUI.SetActive(true);
             var textUi = trinketUI.transform.Find("Count").GetComponent<Text>();
-            textUi.text = $" {number2word(Collections)} out of twenty";
+            textUi.text = CountString();
         }
 
         public void Load(string str)
@@ -65,5 +59,15 @@ namespace VVVVVV.World
         }
 
         public int Collections => trinkets.Where(x => x.Collected).ToList().Count;
+        public string CountString()
+        {
+            string number2word(int n)
+            {
+                var words = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty" };
+                if (20 < n) throw new InvalidCastException("Cannot convert number to word: " + n.ToString());
+                return words[n];
+            }
+            return $" {number2word(Collections)} out of Twenty ";
+        }
     }
 }
