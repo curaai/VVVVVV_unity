@@ -36,7 +36,6 @@ namespace VVVVVV.UI
             if (Input.GetKeyDown(KeyCode.Space) && !saved)
             {
                 GameObject.Find("Game").GetComponent<Game>().Save();
-                // Check current ui opened 
                 saved = true;
                 OpenSaveUI();
             }

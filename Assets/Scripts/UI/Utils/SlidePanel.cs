@@ -7,21 +7,15 @@ namespace VVVVVV.UI.Utils
     {
         private MoveController player => GameObject.Find("Player").GetComponent<MoveController>();
 
-        public static bool Opened = false;
-
-        // Get Event from Animator
-        internal virtual void Open()
+        protected virtual void OnEnable()
         {
             activeChildren(true);
-            Opened = true;
-
             player.enabled = false;
         }
 
-        internal virtual void Close()
+        protected virtual void OnDisable()
         {
             activeChildren(false);
-            Opened = false;
 
             // TODO: refactoring need
             player.enabled = true;
@@ -30,7 +24,7 @@ namespace VVVVVV.UI.Utils
         public void Toggle()
         {
             var controller = GameObject.Find("RootPanel").GetComponent<PanelController>();
-            if (!Opened)
+            if (!enabled)
             {
                 controller.SetMainUI(this);
             }

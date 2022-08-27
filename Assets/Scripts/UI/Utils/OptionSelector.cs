@@ -12,18 +12,15 @@ namespace VVVVVV.UI.Utils
         [SerializeField] protected List<Text> options;
         [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
 
-        internal override void Open()
+        protected override void OnEnable()
         {
-            base.Open();
+            base.OnEnable();
 
             curOptIdx = 0;
         }
 
         protected void Update()
         {
-            if (!Opened)
-                return;
-
             int direction = 0;
 
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.UpArrow))
