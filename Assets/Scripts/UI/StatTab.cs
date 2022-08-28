@@ -14,7 +14,7 @@ namespace VVVVVV.UI
         void OnEnable()
         {
             trinket.text = trinketManager.CountString().Trim();
-            deaths.text = "0";
+            deaths.text = GameObject.FindWithTag("Player").GetComponent<Player>().deathCount.ToString();
         }
 
         void Update()

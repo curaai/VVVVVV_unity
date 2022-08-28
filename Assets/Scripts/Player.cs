@@ -18,6 +18,7 @@ namespace VVVVVV
         private UI.Minimap minimap;
 
         public Room room;
+        public int deathCount = 0;
 
         void Awake()
         {
@@ -115,6 +116,8 @@ namespace VVVVVV
 
             changeRoom(new Vector2Int(x.roomPos.Item1, x.roomPos.Item2));
             transform.position = new Vector3(x.position.Item1, x.position.Item2, x.position.Item3);
+
+            deathCount = x.deathCount;
         }
 
 
@@ -125,6 +128,7 @@ namespace VVVVVV
             public Gravity gravity;
             public (int, int) roomPos;
             public (float, float, float) position;
+            public int deathCount;
         }
     }
 }

@@ -22,17 +22,18 @@ namespace VVVVVV
             foreach (var x in list)
                 Save(x.SerializeKey);
         }
+        public void Save(string key)
+        {
+            PlayerPrefs.SetString(key, this[key].Save());
+            PlayerPrefs.Save();
+        }
         public void Load()
         {
             foreach (var x in list)
                 x.Load(PlayerPrefs.GetString(x.SerializeKey, ""));
         }
 
-        public void Save(string key)
-        {
-            PlayerPrefs.SetString(key, this[key].Save());
-            PlayerPrefs.Save();
-        }
+        public void Load(string key) => list.Find(x => x.SerializeKey == key).Load(PlayerPrefs.GetString(key, ""));
 
         // serializableObject is any struct or class marked with [Serializable]
         public static BinaryFormatter bf = new BinaryFormatter();

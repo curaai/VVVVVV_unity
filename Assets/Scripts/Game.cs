@@ -32,7 +32,7 @@ namespace VVVVVV
 
         void Start()
         {
-            Respawn();
+            saveManager.Load();
         }
 
         void Update()
@@ -45,7 +45,9 @@ namespace VVVVVV
 
         public void Respawn()
         {
-            saveManager.Load();
+            saveManager.Load(player.SerializeKey);
+            // TODO: Separate stat members from player
+            player.deathCount++;
         }
 
         public void ChangeRoom(Vector2Int newRoomPos)
