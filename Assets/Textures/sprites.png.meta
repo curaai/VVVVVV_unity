@@ -73,7 +73,7 @@ TextureImporter:
     second: sprites StopMan 1
   - first:
       213: -3525548655422949061
-    second: sprites_23
+    second: sprites Terminal
   - first:
       213: -577312649904740640
     second: sprites StopMan 2
@@ -1166,7 +1166,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_23
+      name: sprites Terminal
       rect:
         serializedVersion: 2
         x: 162
