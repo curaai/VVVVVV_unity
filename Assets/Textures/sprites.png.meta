@@ -94,7 +94,7 @@ TextureImporter:
     second: sprites_savepoint
   - first:
       213: 3864339640949227112
-    second: sprites_30
+    second: sprites WaveLength 0
   - first:
       213: -1369878811986984067
     second: sprites Trinket
@@ -530,6 +530,9 @@ TextureImporter:
   - first:
       213: -2947830591355695505
     second: sprites_175
+  - first:
+      213: -5014597575052150466
+    second: sprites WaveLength 1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -4418,6 +4421,64 @@ TextureImporter:
       bones: []
       spriteID: f6ec63802b33717d0800000000000000
       internalID: -2947830591355695505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites WaveLength 0
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 434
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -11, y: 6}
+        - {x: -16, y: 1}
+        - {x: -16, y: -1}
+        - {x: -11, y: -6}
+        - {x: 10, y: -6}
+        - {x: 16, y: -1}
+        - {x: 16, y: 1}
+        - {x: 11, y: 6}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 86e3d36ed64e0a530800000000000000
+      internalID: 3864339640949227112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites WaveLength 1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 432
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 1}
+        - {x: 11, y: 8}
+        - {x: -11, y: 8}
+        - {x: -16, y: 1}
+        - {x: -16, y: -1}
+        - {x: -11, y: -8}
+        - {x: 10, y: -8}
+        - {x: 16, y: -1}
+      tessellationDetail: 1
+      bones: []
+      spriteID: e393b7fe212986ab0800000000000000
+      internalID: -5014597575052150466
       vertices: []
       indices: 
       edges: []
