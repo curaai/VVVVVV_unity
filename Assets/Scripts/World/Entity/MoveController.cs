@@ -26,7 +26,6 @@ namespace VVVVVV.World.Entity
         [SerializeField] bool ApplyFriction;
 
         protected static int wallLayer => LayerMask.NameToLayer("wall");
-        protected Animator animator => GetComponent<Animator>();
         protected SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
 
         public bool OnAir => !(OnGround || OnRoof);
@@ -71,9 +70,6 @@ namespace VVVVVV.World.Entity
 
             if (ApplyFriction) velocity = applyFriction(velocity);
             GetComponent<Rigidbody2D>().velocity = velocity * VelocityCalibrationParameter;
-
-            animator?.SetBool("MoveNow", velocity.x != 0);
-            animator?.SetBool("JumpNow", velocity.y != 0);
 
             if (UpdateSprite)
             {

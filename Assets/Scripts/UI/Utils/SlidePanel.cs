@@ -24,11 +24,7 @@ namespace VVVVVV.UI.Utils
         public void Toggle()
         {
             var controller = GameObject.Find("RootPanel").GetComponent<PanelController>();
-            if (!enabled)
-            {
-                controller.SetMainUI(this);
-            }
-            controller.Toggle();
+            controller.Toggle(this);
         }
 
         private void activeChildren(bool activate)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using VVVVVV.UI.Utils;
+using VVVVVV.UI;
 
 namespace VVVVVV
 {
@@ -16,6 +17,7 @@ namespace VVVVVV
         [SerializeField] public Transform cam;
 
         private SaveManager saveManager;
+        private PanelController panelController;
 
         void Awake()
         {
@@ -28,6 +30,7 @@ namespace VVVVVV
                 trinketManager
             };
             saveManager = new SaveManager(saveTargetList);
+            panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
         }
 
         void Start()
@@ -39,7 +42,7 @@ namespace VVVVVV
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 GameObject.Find("PausePanel").GetComponent<SlidePanel>().Toggle();
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) && panelController.mainUI == null)
                 GameObject.Find("MapPanel").GetComponent<SlidePanel>().Toggle();
         }
 

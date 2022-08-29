@@ -1014,7 +1014,7 @@ RectTransform:
   m_Children:
   - {fileID: 2038828066}
   m_Father: {fileID: 361071830}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1917,11 +1917,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 519420032}
+  - {fileID: 1660099380}
   - {fileID: 832658717}
   - {fileID: 907621536}
-  - {fileID: 1802774238}
-  - {fileID: 1660099380}
   - {fileID: 222696710}
+  - {fileID: 1802774238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27970,7 +27970,7 @@ RectTransform:
   m_Children:
   - {fileID: 1978725100}
   m_Father: {fileID: 361071830}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -33344,7 +33344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &907621536
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33359,7 +33359,7 @@ RectTransform:
   - {fileID: 1677603206}
   - {fileID: 1483872262}
   m_Father: {fileID: 361071830}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -87167,7 +87167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972053830604879731, guid: e0eef3298992a7547bc2306a8a030bd3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5972053830604879731, guid: e0eef3298992a7547bc2306a8a030bd3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -108609,7 +108609,7 @@ RectTransform:
   - {fileID: 1415381884}
   - {fileID: 2053044903}
   m_Father: {fileID: 361071830}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -110330,8 +110330,8 @@ PrefabInstance:
     - target: {fileID: 5972053830604879729, guid: e0eef3298992a7547bc2306a8a030bd3, type: 3}
       propertyPath: m_Text
       value: " Almost everyone has been\n evacuated from the space\n station now.
-        The rest of us \n are leaving in a couple of\n days, once our research has\n
-        been completed."
+        The rest of us \n are leaving in a couple of\n days, once our research has\nbeen
+        completed."
       objectReference: {fileID: 0}
     - target: {fileID: 5972053830604879729, guid: e0eef3298992a7547bc2306a8a030bd3, type: 3}
       propertyPath: m_FontData.m_Alignment

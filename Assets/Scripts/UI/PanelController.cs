@@ -28,14 +28,26 @@ namespace VVVVVV.UI
             mainUI = null;
         }
 
-        public void Toggle()
+        public void Toggle(SlidePanel ui)
         {
-            slideAnimator.SetBool("open", !mainUI.enabled);
-        }
-
-        public void SetMainUI(SlidePanel ui)
-        {
-            mainUI = ui;
+            // close 
+            if (mainUI == ui)
+            {
+                slideAnimator.SetBool("open", false);
+            }
+            // replace
+            else if (mainUI != null && mainUI != ui)
+            {
+                Close();
+                mainUI = ui;
+                Open();
+            }
+            // new Open
+            else
+            {
+                mainUI = ui;
+                slideAnimator.SetBool("open", true);
+            }
         }
     }
 }

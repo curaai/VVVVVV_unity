@@ -27,6 +27,13 @@ namespace VVVVVV
             minimap = game.minimap;
         }
 
+        void FixedUpdate()
+        {
+            var v = controller.velocity;
+            animator.SetBool("MoveNow", v.x != 0);
+            animator.SetBool("JumpNow", v.y != 0);
+        }
+
         void Update()
         {
             Vector2Int? IsRoomChanged()
