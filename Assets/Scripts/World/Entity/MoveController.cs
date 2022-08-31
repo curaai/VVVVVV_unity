@@ -15,7 +15,7 @@ namespace VVVVVV.World.Entity
         RIGHT,
     }
 
-    // [RequireComponent(typeof(World.Entity.GravityController))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class MoveController : MonoBehaviour
     {
         public static readonly Vector2 MaxSpeed = new Vector2(12, 20);

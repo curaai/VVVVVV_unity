@@ -100,16 +100,16 @@ TextureImporter:
     second: sprites Trinket
   - first:
       213: 2737844872717370115
-    second: sprites_32
+    second: sprites Security Drone 0
   - first:
       213: -4056437433907239288
-    second: sprites_33
+    second: sprites Security Drone 1
   - first:
       213: -5647778350772032766
     second: sprites_34
   - first:
       213: 286243765835191086
-    second: sprites_35
+    second: sprites Security Drone 2
   - first:
       213: -5113350760131414088
     second: sprites_36
@@ -1402,7 +1402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_32
+      name: sprites Security Drone 0
       rect:
         serializedVersion: 2
         x: 0
@@ -1423,7 +1423,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_33
+      name: sprites Security Drone 1
       rect:
         serializedVersion: 2
         x: 32
@@ -1465,7 +1465,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_35
+      name: sprites Security Drone 2
       rect:
         serializedVersion: 2
         x: 99
