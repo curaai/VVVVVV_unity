@@ -20,25 +20,16 @@ namespace VVVVVV.World
         void Awake()
         {
             trinkets = GameObject.FindWithTag("World").GetComponentsInChildren<Trinket>();
-            trinketUI.SetActive(false);
-        }
-
-        void Update()
-        {
-            if (trinketUI.activeSelf && Input.GetKeyDown(KeyCode.Return))
-            {
-                var animator = trinketUI.GetComponent<Animator>();
-                animator.SetTrigger("Close");
-                StartCoroutine(Utils.AnimationHelper.CheckAnimationCompleted(animator, "Close", () => trinketUI.SetActive(false)));
-            }
         }
 
         public void Collect(Trinket t)
         {
             trinkets.Where(x => x == t).First().Collected = true;
-            trinketUI.SetActive(true);
+
             var textUi = trinketUI.transform.Find("Count").GetComponent<Text>();
             textUi.text = CountString();
+
+            GameObject.Find("CutScene").GetComponent<UI.CutSceneController>().Open(trinketUI);
         }
 
         public void Load(string str)

@@ -42,7 +42,7 @@ namespace VVVVVV
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 GameObject.Find("PausePanel").GetComponent<SlidePanel>().Toggle();
-            if (Input.GetKeyDown(KeyCode.Return) && panelController.mainUI == null)
+            if (Input.GetKeyDown(KeyCode.Return))
                 GameObject.Find("MapPanel").GetComponent<SlidePanel>().Toggle();
         }
 

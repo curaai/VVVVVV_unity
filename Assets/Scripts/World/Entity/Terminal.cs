@@ -19,22 +19,16 @@ namespace VVVVVV.World.Entity
 
         void Update()
         {
-            if (OnPlayerNow && Input.GetKeyDown(KeyCode.Return))
+            if (!log.activeSelf && !OnceActivated && OnPlayerNow && Input.GetKeyDown(KeyCode.Return))
             {
-                var logActivated = log.activeSelf;
-                if (logActivated)
-                {
-                    log.SetActive(false);
-                }
-                else
-                {
-                    log.SetActive(true);
-                    GetComponent<SpriteGlowEffect>().GlowOn = true;
-                    OnceActivated = true;
-                    hoverTextBox.SetActive(false);
-                }
+                OnceActivated = true;
+
+                GetComponent<SpriteGlowEffect>().GlowOn = true;
+                hoverTextBox.SetActive(false);
+                GameObject.Find("CutScene").GetComponent<UI.CutSceneController>().Open(log);
             }
         }
+
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.gameObject.CompareTag("Player") && !OnceActivated)
