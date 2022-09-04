@@ -49,10 +49,12 @@ namespace VVVVVV
 
                 return res == Vector2Int.zero ? (Vector2Int?)null : res;
             }
+            if (!transform.parent.CompareTag("Room")) return;
 
             var newRoomDir = IsRoomChanged();
             if (newRoomDir.HasValue)
             {
+                Debug.Log("Room changed");
                 changeRoom(room.pos + newRoomDir.Value);
             }
         }

@@ -21,12 +21,12 @@ namespace VVVVVV.World.Entity
             {
                 if (c.OnWallLeft)
                 {
-                    c.velocity.x = SPEED.x;
+                    c.velocity.x = Mathf.Abs(SPEED.x);
                     c.direction = Direction.RIGHT;
                 }
                 else
                 {
-                    c.velocity.x = -SPEED.x;
+                    c.velocity.x = -Mathf.Abs(SPEED.x);
                     c.direction = Direction.LEFT;
                 }
             }
@@ -34,12 +34,12 @@ namespace VVVVVV.World.Entity
             {
                 if (c.OnGround)
                 {
-                    c.velocity.y = SPEED.y;
+                    c.velocity.y = Mathf.Abs(SPEED.y);
                     c.ReverseGravity(Gravity.UP);
                 }
                 else
                 {
-                    c.velocity.y = -SPEED.y;
+                    c.velocity.y = -Mathf.Abs(SPEED.y);
                     c.ReverseGravity(Gravity.DOWN);
                 }
             }

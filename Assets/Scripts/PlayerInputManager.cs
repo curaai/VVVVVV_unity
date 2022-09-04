@@ -9,7 +9,7 @@ namespace VVVVVV
     {
         public static readonly Vector2 SPEED = new Vector2(6f, 6f);
 
-        public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space };
+        public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space, KeyCode.W, KeyCode.S };
         private int tapLeft = 0;
         private int tapRight = 0;
         MoveController controller;

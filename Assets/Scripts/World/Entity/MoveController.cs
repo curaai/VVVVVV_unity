@@ -40,6 +40,7 @@ namespace VVVVVV.World.Entity
 
         public Vector2 force;
         public Vector2 velocity;
+        public Vector2 AdditionalVelocity = Vector2.zero;
 
         void FixedUpdate()
         {
@@ -69,7 +70,7 @@ namespace VVVVVV.World.Entity
                 velocity.y = velocity.y + force.y;
 
             if (ApplyFriction) velocity = applyFriction(velocity);
-            GetComponent<Rigidbody2D>().velocity = velocity * VelocityCalibrationParameter;
+            GetComponent<Rigidbody2D>().velocity = (AdditionalVelocity + velocity) * VelocityCalibrationParameter;
 
             if (UpdateSprite)
             {
