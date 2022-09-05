@@ -382,16 +382,16 @@ TextureImporter:
     second: sprites_125
   - first:
       213: 3966643369446284000
-    second: sprites_126
+    second: sprites Radar 0
   - first:
       213: -7926089871495726621
-    second: sprites_127
+    second: sprites Radar 3
   - first:
       213: 783367815335846877
-    second: sprites_128
+    second: sprites Radar 3
   - first:
       213: -2980183875662610693
-    second: sprites_129
+    second: sprites Radar 3
   - first:
       213: -4126146701794544339
     second: sprites_130
@@ -533,6 +533,12 @@ TextureImporter:
   - first:
       213: -5014597575052150466
     second: sprites WaveLength 1
+  - first:
+      213: 2174282902262228016
+    second: sprites Speaker 0
+  - first:
+      213: -5561777447717349959
+    second: sprites Speaker 1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -3376,13 +3382,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_126
+      name: sprites Radar 0
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 128
-        width: 53
-        height: 58
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3397,13 +3403,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_127
+      name: sprites Radar 1
       rect:
         serializedVersion: 2
-        x: 198
+        x: 192
         y: 128
-        width: 53
-        height: 58
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3418,13 +3424,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_128
+      name: sprites Radar 2
       rect:
         serializedVersion: 2
-        x: 262
+        x: 256
         y: 128
-        width: 53
-        height: 58
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3439,13 +3445,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_129
+      name: sprites Radar 3
       rect:
         serializedVersion: 2
-        x: 326
+        x: 320
         y: 128
-        width: 53
-        height: 58
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4479,6 +4485,48 @@ TextureImporter:
       bones: []
       spriteID: e393b7fe212986ab0800000000000000
       internalID: -5014597575052150466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites Speaker 0
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034ab8e97ca9c2e10800000000000000
+      internalID: 2174282902262228016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites Speaker 1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5570df0e890d2b0800000000000000
+      internalID: -5561777447717349959
       vertices: []
       indices: 
       edges: []
