@@ -12,10 +12,10 @@ namespace VVVVVV.UI
         public GameObject mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
 
-        public void Open(GameObject uiObj, Action closeCallback = null)
+        public void Open(GameObject uiObj)
         {
             originalParent = uiObj.transform.parent;
-            this.closeCallback = closeCallback;
+            // this.closeCallback = closeCallback;
 
             mainUI = uiObj;
             mainUI.transform.SetParent(transform);
@@ -27,6 +27,9 @@ namespace VVVVVV.UI
         {
             if (mainUI != null && mainUI.activeSelf && Input.GetKeyDown(KeyCode.Space))
             {
+                // TODO: Only Debug 
+                return;
+
                 slideAnimator.SetBool("Open", false);
                 StartCoroutine(AnimationHelper.CheckAnimationCompleted(
                     slideAnimator, "Close", () => Close()

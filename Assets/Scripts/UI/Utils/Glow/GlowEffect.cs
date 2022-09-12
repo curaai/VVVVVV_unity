@@ -47,6 +47,5 @@ namespace VVVVVV.UI.Utils.Glow
             var b = parse(exp.b);
             return new Color32(r, g, b, 255);
         }
-
     }
 }

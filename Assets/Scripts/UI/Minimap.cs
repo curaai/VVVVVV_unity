@@ -70,7 +70,7 @@ namespace VVVVVV.UI
                         var pixels = fogTile.GetPixels();
                         // reverse y for coordnation
                         if (explored.Contains((x + 100, (19 - y) + 100)))
-                            pixels = Enumerable.Repeat(new Color(0, 0, 0, 0), rw * rh).ToArray();
+                            pixels = Enumerable.Repeat(new UnityEngine.Color(0, 0, 0, 0), rw * rh).ToArray();
 
                         tex.SetPixels(x * rw, y * rh, rw, rh, pixels);
                     }
