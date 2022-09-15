@@ -57,12 +57,26 @@ namespace VVVVVV
         {
             void EnableRoom()
             {
-                // Disable all 
-                var root = GameObject.Find("Grid");
-                foreach (Transform t in root.transform)
-                    t.gameObject.SetActive(false);
+                void Tilemap()
+                {
+                    // Disable all 
+                    var root = GameObject.Find("Grid");
+                    foreach (Transform t in root.transform)
+                        t.gameObject.SetActive(false);
 
-                minimap.roomObj(minimap.room(newRoomPos)).SetActive(true);
+                    minimap.roomObj(minimap.room(newRoomPos)).SetActive(true);
+                }
+                void Canvas()
+                {
+                    var root = GameObject.Find("Canvas").transform.Find("Rooms");
+                    foreach (Transform t in root.transform)
+                        t.gameObject.SetActive(false);
+
+                    root.Find(player.room.name)?.gameObject.SetActive(true);
+                }
+
+                Tilemap();
+                Canvas();
             }
 
             void AdjustCamPos()
