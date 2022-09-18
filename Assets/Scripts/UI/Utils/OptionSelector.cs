@@ -4,22 +4,42 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using VVVVVV.UI.Utils.Glow;
+using VVVVVV.World.Entity;
 
 namespace VVVVVV.UI.Utils
 {
-    public class OptionSelector : SlidePanel
+    public class OptionSelector : MonoBehaviour
     {
         [SerializeField] protected List<Text> options;
         [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
+        private MoveController player => GameObject.Find("Player").GetComponent<MoveController>();
 
-        protected override void OnEnable()
+        void OnEnable()
         {
-            base.OnEnable();
-
+            activeChildren(true);
+            player.enabled = false;
             curOptIdx = 0;
         }
 
-        protected void Update()
+        void OnDisable()
+        {
+            activeChildren(false);
+
+            // TODO: refactoring need
+            player.enabled = true;
+        }
+
+        public void Toggle()
+        {
+        }
+
+        private void activeChildren(bool activate)
+        {
+            foreach (Transform child in transform)
+                child.gameObject.SetActive(activate);
+        }
+
+        void Update()
         {
             int direction = 0;
 

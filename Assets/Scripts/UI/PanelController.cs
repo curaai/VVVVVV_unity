@@ -7,47 +7,43 @@ namespace VVVVVV.UI
     {
         [SerializeField] private Transform archiveObj;
 
-        public SlidePanel mainUI;
+        public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
+        public bool Opened => GetComponent<RectTransform>().anchoredPosition.y == 480;
 
-        public void Open()
+        private void Open(GameObject obj)
         {
-            if (!mainUI.enabled)
+            mainUI = (obj, obj.transform.parent);
+            if (!Opened)
+                slideAnimator.SetBool("open", true);
+
+            if (mainUI.HasValue)
             {
-                mainUI.transform.SetParent(transform);
-                mainUI.enabled = true;
+                var container = transform.GetChild(1);
+                mainUI?.Item1.transform.SetParent(container);
+                mainUI?.Item1.SetActive(true);
             }
         }
-        public void Close()
+        private void Close()
         {
-            if (mainUI.enabled)
-            {
-                mainUI.transform.SetParent(archiveObj);
-                mainUI.enabled = false;
-            }
-            mainUI = null;
-        }
-
-        public void Toggle(SlidePanel ui)
-        {
-            // close 
-            if (mainUI == ui)
+            if (Opened)
             {
                 slideAnimator.SetBool("open", false);
+                VVVVVV.Utils.AnimationHelper.CheckAnimationCompleted(slideAnimator, "close", () =>
+                {
+                    mainUI?.Item1.transform.SetParent(mainUI?.Item2);
+                    mainUI?.Item1.SetActive(false);
+                    mainUI = null;
+                });
             }
-            // replace
-            else if (mainUI != null && mainUI != ui)
-            {
+        }
+
+        public void Toggle(GameObject ui)
+        {
+            if (mainUI?.Item1 == ui)
                 Close();
-                mainUI = ui;
-                Open();
-            }
-            // new Open
             else
-            {
-                mainUI = ui;
-                slideAnimator.SetBool("open", true);
-            }
+                Open(ui);
         }
     }
 }
