@@ -6,26 +6,28 @@ namespace VVVVVV.UI
 {
     public class CutSceneController : MonoBehaviour
     {
-        private Transform originalParent;
-        private Action closeCallback;
+        public (GameObject, Transform)? mainUI;
 
-        public GameObject mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
 
         public void Open(GameObject uiObj)
         {
-            originalParent = uiObj.transform.parent;
-            // this.closeCallback = closeCallback;
+            var container = transform.GetChild(1);
+            uiObj.transform.SetParent(container);
+            uiObj.SetActive(true);
+            // save original parent;
+            mainUI = (uiObj, uiObj.transform.parent);
 
-            mainUI = uiObj;
-            mainUI.transform.SetParent(transform);
-            mainUI.SetActive(true);
             slideAnimator.SetBool("Open", true);
+
+            var player = GameObject.Find("Player");
+            player.GetComponent<World.Entity.MoveController>().Stop();
+            player.GetComponent<PlayerInputManager>().enabled = false;
         }
 
         void Update()
         {
-            if (mainUI != null && mainUI.activeSelf && Input.GetKeyDown(KeyCode.Space))
+            if (mainUI?.Item1.activeSelf ?? false && Input.GetKeyDown(KeyCode.Space))
             {
                 // TODO: Only Debug 
                 return;
@@ -39,13 +41,13 @@ namespace VVVVVV.UI
 
         public void Close()
         {
-            mainUI.transform.SetParent(originalParent);
-            mainUI.SetActive(false);
-            originalParent = null;
-            mainUI = null;
-
-            if (closeCallback != null)
-                closeCallback();
+            if (mainUI.HasValue)
+            {
+                var obj = mainUI.Value.Item1;
+                obj.SetActive(false);
+                obj.transform.SetParent(mainUI.Value.Item2);
+                mainUI = null;
+            }
         }
     }
 }

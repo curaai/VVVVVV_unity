@@ -79,6 +79,21 @@ namespace VVVVVV.World.Entity
             }
         }
 
+        public void Stop()
+        {
+            force.x = 0f;
+            velocity.x = 0f;
+        }
+
+        public void ToGround()
+        {
+            if (!OnGround)
+            {
+                gravity = Gravity.DOWN;
+                force.y = -6f;
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var layer = collision.collider.gameObject.layer;
