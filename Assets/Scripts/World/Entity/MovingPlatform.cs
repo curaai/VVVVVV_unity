@@ -23,9 +23,9 @@ namespace VVVVVV.World.Entity
             if (!collision.collider.CompareTag("Player")) return;
             if (player != null) return;
 
+            orignialParent = player.parent;
             player = collision.collider.transform as RectTransform;
             player.gameObject.transform.SetParent(gameObject.transform, true);
-            orignialParent = player.parent;
         }
 
         void OnCollisionExit2D(Collision2D collision)

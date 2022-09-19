@@ -35,7 +35,7 @@ namespace VVVVVV.World.Entity
         public bool OnRoof { get; protected set; }
         protected ContactPoint2D[] lastContactPts;
 
-        public Gravity gravity { get; protected set; }
+        public Gravity gravity;
         public Direction direction;
 
         public Vector2 force;

@@ -112,16 +112,16 @@ TextureImporter:
     second: sprites Security Drone 2
   - first:
       213: -5113350760131414088
-    second: sprites_36
+    second: sprites YesMan 0
   - first:
       213: -2943835317918062483
-    second: sprites_37
+    second: sprites YesMan 1
   - first:
       213: -9009826273307446855
-    second: sprites_38
+    second: sprites YesMan 2
   - first:
       213: -6038895966588477023
-    second: sprites_39
+    second: sprites YesMan 3
   - first:
       213: 2527441650270232441
     second: sprites_40
@@ -1492,13 +1492,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_36
+      name: sprites YesMan 0
       rect:
         serializedVersion: 2
-        x: 135
+        x: 128
         y: 396
-        width: 9
-        height: 9
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1513,13 +1513,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_37
+      name: sprites YesMan 1
       rect:
         serializedVersion: 2
-        x: 167
+        x: 160
         y: 396
-        width: 9
-        height: 9
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1534,13 +1534,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_38
+      name: sprites YesMan 2
       rect:
         serializedVersion: 2
-        x: 199
+        x: 192
         y: 396
-        width: 9
-        height: 9
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1555,13 +1555,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_39
+      name: sprites YesMan 3
       rect:
         serializedVersion: 2
-        x: 230
+        x: 224
         y: 396
-        width: 10
-        height: 9
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
