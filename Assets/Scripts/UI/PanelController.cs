@@ -29,18 +29,18 @@ namespace VVVVVV.UI
             if (Opened)
             {
                 slideAnimator.SetBool("open", false);
-                VVVVVV.Utils.AnimationHelper.CheckAnimationCompleted(slideAnimator, "close", () =>
+                StartCoroutine(VVVVVV.Utils.AnimationHelper.CheckAnimationCompleted(slideAnimator, "DOWN", () =>
                 {
                     mainUI?.Item1.transform.SetParent(mainUI?.Item2);
                     mainUI?.Item1.SetActive(false);
                     mainUI = null;
-                });
+                }));
             }
         }
 
         public void Toggle(GameObject ui)
         {
-            if (mainUI?.Item1 == ui)
+            if (ui == null || mainUI?.Item1 == ui)
                 Close();
             else
                 Open(ui);

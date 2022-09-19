@@ -32,21 +32,26 @@ namespace VVVVVV.UI
                 // TODO: Only Debug 
                 return;
 
-                slideAnimator.SetBool("Open", false);
-                StartCoroutine(AnimationHelper.CheckAnimationCompleted(
-                    slideAnimator, "Close", () => Close()
-                ));
             }
         }
 
         public void Close()
         {
+            slideAnimator.SetBool("Open", false);
             if (mainUI.HasValue)
             {
-                var obj = mainUI.Value.Item1;
-                obj.SetActive(false);
-                obj.transform.SetParent(mainUI.Value.Item2);
-                mainUI = null;
+                StartCoroutine(AnimationHelper.CheckAnimationCompleted(
+                    slideAnimator, "Close", () =>
+                    {
+                        var obj = mainUI.Value.Item1;
+                        obj.SetActive(false);
+                        obj.transform.SetParent(mainUI.Value.Item2);
+                        mainUI = null;
+
+                        var player = GameObject.Find("Player");
+                        player.GetComponent<PlayerInputManager>().enabled = true;
+                    }
+                ));
             }
         }
     }

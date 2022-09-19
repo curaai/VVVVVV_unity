@@ -15,6 +15,7 @@ namespace VVVVVV.UI
         [SerializeField] GameObject FocusBlink;
         [SerializeField] Image fogMaskPanel;
         [SerializeField] Texture2D fogTile;
+        [SerializeField] Text roomnameText;
 
         private List<Room> rooms;
 
@@ -34,17 +35,11 @@ namespace VVVVVV.UI
             Debug.Log("Room Changed" + pos.ToString());
 
             UpdateUI(room(pos));
-            Exploring(pos);
+            SetExplored(pos);
         }
 
         void UpdateUI(Room r)
         {
-            void Name()
-            {
-                var text = GameObject.Find("RoomName").GetComponent<Text>();
-                text.text = r.name;
-            }
-
             void SetBlinkPos()
             {
                 var z = FocusBlink.transform.localPosition.z;
@@ -52,38 +47,41 @@ namespace VVVVVV.UI
                 FocusBlink.transform.localPosition = new Vector3(24 * localPos.x, -(18 * localPos.y), z);
             }
 
-            Name();
+            roomnameText.text = r.name;
             SetBlinkPos();
         }
 
-        void Exploring(Vector2Int r)
+        public void SetExplored(Vector2Int r, bool status = true)
         {
-            void UpdateFog()
-            {
-                (int rw, int rh) = (fogTile.width, fogTile.height);
-                var tex = new Texture2D(rw * 20, rh * 20);
-                tex.alphaIsTransparency = true;
-                for (int y = 0; y < 20; y++)
-                {
-                    for (int x = 0; x < 20; x++)
-                    {
-                        var pixels = fogTile.GetPixels();
-                        // reverse y for coordnation
-                        if (explored.Contains((x + 100, (19 - y) + 100)))
-                            pixels = Enumerable.Repeat(new UnityEngine.Color(0, 0, 0, 0), rw * rh).ToArray();
-
-                        tex.SetPixels(x * rw, y * rh, rw, rh, pixels);
-                    }
-                }
-                tex.Apply(false);
-                var newMask = Sprite.Create(tex, new Rect(0, 0, 240, 180), Vector2.one / 2f);
-                fogMaskPanel.sprite = newMask;
-            }
-
-            var len = explored.Count;
-            explored.Add((r.x, r.y));
+            r -= Vector2Int.one * 100;
+            if (status)
+                explored.Add((r.x, r.y));
+            else
+                explored.Remove((r.x, r.y));
 
             UpdateFog();
+        }
+
+        private void UpdateFog()
+        {
+            (int rw, int rh) = (fogTile.width, fogTile.height);
+            var tex = new Texture2D(rw * 20, rh * 20);
+            tex.alphaIsTransparency = true;
+            for (int y = 0; y < 20; y++)
+            {
+                for (int x = 0; x < 20; x++)
+                {
+                    var pixels = fogTile.GetPixels();
+                    // reverse y for coordnation
+                    if (explored.Contains((x, 19 - y)))
+                        pixels = Enumerable.Repeat(new UnityEngine.Color(0, 0, 0, 0), rw * rh).ToArray();
+
+                    tex.SetPixels(x * rw, y * rh, rw, rh, pixels);
+                }
+            }
+            tex.Apply(false);
+            var newMask = Sprite.Create(tex, new Rect(0, 0, 240, 180), Vector2.one / 2f);
+            fogMaskPanel.sprite = newMask;
         }
 
         public void OpenMinimapTab(int tabIdx)
@@ -112,6 +110,27 @@ namespace VVVVVV.UI
             if (str == "") return;
 
             explored = SaveManager.DeserializeObject<HashSet<(int, int)>>(str);
+        }
+
+        public void ShowShip()
+        {
+            var dummy = Vector2Int.one * 100;
+            SetExplored(new Vector2Int(2, 10) + dummy);
+            SetExplored(new Vector2Int(3, 10) + dummy);
+            SetExplored(new Vector2Int(4, 10) + dummy);
+            SetExplored(new Vector2Int(2, 11) + dummy);
+            SetExplored(new Vector2Int(3, 11) + dummy);
+            SetExplored(new Vector2Int(4, 11) + dummy);
+        }
+        public void HideShip()
+        {
+            var dummy = Vector2Int.one * 100;
+            SetExplored(new Vector2Int(2, 10) + dummy, false);
+            SetExplored(new Vector2Int(3, 10) + dummy, false);
+            SetExplored(new Vector2Int(4, 10) + dummy, false);
+            SetExplored(new Vector2Int(2, 11) + dummy, false);
+            SetExplored(new Vector2Int(3, 11) + dummy, false);
+            SetExplored(new Vector2Int(4, 11) + dummy, false);
         }
     }
 }

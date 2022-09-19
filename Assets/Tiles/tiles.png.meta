@@ -3385,7 +3385,7 @@ TextureImporter:
     second: tiles_1126
   - first:
       213: 571565190852976569
-    second: tiles_1127
+    second: tiles Teleporter
   - first:
       213: -7718856030976652436
     second: tiles_1128
@@ -27374,7 +27374,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_1127
+      name: tiles Teleporter
       rect:
         serializedVersion: 2
         x: 56

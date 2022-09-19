@@ -9,15 +9,20 @@ namespace VVVVVV.UI
 {
     public class SaveTab : MonoBehaviour
     {
-        [SerializeField] Minimap minimap;
         [SerializeField] Clock clock;
         [SerializeField] Text lastSaveUI;
         [SerializeField] Text summaryUI;
+
+        Minimap minimap;
 
         private Transform offSavedUI => transform.Find("NotSaved");
         private Transform onSavedUI => transform.Find("Saved");
 
         public bool saved { get; private set; }
+        void Awake()
+        {
+            minimap = GameObject.Find("Game").GetComponent<Game>().minimap;
+        }
 
         void OnEnable()
         {
