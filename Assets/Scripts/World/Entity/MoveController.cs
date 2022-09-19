@@ -25,7 +25,7 @@ namespace VVVVVV.World.Entity
         [SerializeField] bool UpdateSprite;
         [SerializeField] bool ApplyFriction;
 
-        protected static int wallLayer => LayerMask.NameToLayer("wall");
+        public int CollideTargetLayer = -1;
         protected SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
 
         public bool OnAir => !(OnGround || OnRoof);
@@ -41,6 +41,12 @@ namespace VVVVVV.World.Entity
         public Vector2 force;
         public Vector2 velocity;
         public Vector2 AdditionalVelocity = Vector2.zero;
+
+        void Awake()
+        {
+            if (CollideTargetLayer == -1)
+                CollideTargetLayer = LayerMask.NameToLayer("wall");
+        }
 
         void FixedUpdate()
         {
@@ -97,7 +103,7 @@ namespace VVVVVV.World.Entity
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var layer = collision.collider.gameObject.layer;
-            if (layer == wallLayer)
+            if (layer == CollideTargetLayer)
             {
                 UpdateTouchStatus(collision.contacts);
                 lastContactPts = collision.contacts;
@@ -105,7 +111,7 @@ namespace VVVVVV.World.Entity
         }
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision.collider.gameObject.layer != wallLayer)
+            if (collision.collider.gameObject.layer != CollideTargetLayer)
                 return;
 
             if (collision.contacts.Length != lastContactPts.Length)
@@ -117,14 +123,14 @@ namespace VVVVVV.World.Entity
         }
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.collider.gameObject.layer != wallLayer)
+            if (collision.collider.gameObject.layer != CollideTargetLayer)
                 return;
 
             UpdateTouchStatus(collision.contacts);
             lastContactPts = collision.contacts;
         }
 
-        void UpdateTouchStatus(ContactPoint2D[] contacts)
+        protected void UpdateTouchStatus(ContactPoint2D[] contacts)
         {
             // disable all status 
             OnWallLeft = OnWallRight = OnGround = OnRoof = false;

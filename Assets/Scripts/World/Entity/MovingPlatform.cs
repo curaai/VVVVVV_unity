@@ -23,8 +23,8 @@ namespace VVVVVV.World.Entity
             if (!collision.collider.CompareTag("Player")) return;
             if (player != null) return;
 
-            orignialParent = player.parent;
             player = collision.collider.transform as RectTransform;
+            orignialParent = player.parent;
             player.gameObject.transform.SetParent(gameObject.transform, true);
         }
 
