@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8715659180263512804}
   m_Layer: 10
   m_Name: Trinket
-  m_TagString: Untagged
+  m_TagString: Trinket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

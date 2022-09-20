@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4cf9566189a6a844cbc2fe55c457a5cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateSprite: 0
   ApplyFriction: 0
+  CollideTargetLayer: -1
   gravity: 0
   direction: 0
   force: {x: 0, y: 0}

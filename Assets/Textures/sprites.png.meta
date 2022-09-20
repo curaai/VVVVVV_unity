@@ -124,16 +124,16 @@ TextureImporter:
     second: sprites YesMan 3
   - first:
       213: 2527441650270232441
-    second: sprites_40
+    second: sprites Hunchbacked Guards 0
   - first:
       213: 5163875854333359583
-    second: sprites_41
+    second: sprites Hunchbacked Guards 1
   - first:
       213: -7573515227342601164
-    second: sprites_42
+    second: sprites Hunchbacked Guards 2
   - first:
       213: -8643503263307243172
-    second: sprites_43
+    second: sprites Hunchbacked Guards 3
   - first:
       213: 5888225539240422257
     second: sprites_44
@@ -1576,13 +1576,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_40
+      name: sprites Hunchbacked Guards 0
       rect:
         serializedVersion: 2
         x: 256
         y: 397
         width: 16
-        height: 19
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1597,13 +1597,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_41
+      name: sprites Hunchbacked Guards 1
       rect:
         serializedVersion: 2
         x: 288
         y: 397
         width: 16
-        height: 18
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1618,13 +1618,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_42
+      name: sprites Hunchbacked Guards 2
       rect:
         serializedVersion: 2
         x: 320
         y: 397
         width: 16
-        height: 18
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1639,13 +1639,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_43
+      name: sprites Hunchbacked Guards 3
       rect:
         serializedVersion: 2
         x: 352
         y: 398
         width: 16
-        height: 18
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
