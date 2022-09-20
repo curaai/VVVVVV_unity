@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace VVVVVV
@@ -6,6 +7,16 @@ namespace VVVVVV
     {
         public Vector2Int pos;
         public Area area;
+        public GameObject UI { get; private set; }
+
+        void Awake()
+        {
+            UI = GameObject.Find("UI Rooms").transform.Find(name).gameObject;
+        }
+
+        void OnEnable() => UI?.SetActive(true);
+        void OnDisable() => UI?.SetActive(false);
+
         public string areaStr()
         {
             switch (area)
@@ -17,6 +28,7 @@ namespace VVVVVV
             }
         }
     }
+
     public enum Area
     {
         SpaceStation = 5,
