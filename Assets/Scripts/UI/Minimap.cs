@@ -35,6 +35,7 @@ namespace VVVVVV.UI
             CurRoom = room(pos);
             Debug.Log("Room Changed" + pos.ToString());
 
+            EnableRoom();
             UpdateUI();
             SetExplored(pos);
         }
