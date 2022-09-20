@@ -26,14 +26,14 @@ namespace VVVVVV
         {
             Application.targetFrameRate = 60;
             var saveTargetList = new List<ISerializable>() {
-                minimap,
-                GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
-                GameObject.Find("Clock").GetComponent<World.Clock>(),
+                // minimap,
+                // GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
+                // GameObject.Find("Clock").GetComponent<World.Clock>(),
                 player,
-                trinketManager
+                // trinketManager
             };
             saveManager = new SaveManager(saveTargetList);
-            panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
+            // panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
         }
 
         void Start()
@@ -43,10 +43,27 @@ namespace VVVVVV
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-                panelController.Toggle(PausePanel);
-            if (Input.GetKeyDown(KeyCode.Return))
-                panelController.Toggle(MapPanel);
+            // if (Input.GetKeyDown(KeyCode.Escape))
+            //     panelController.Toggle(PausePanel);
+            // if (Input.GetKeyDown(KeyCode.Return))
+            //     panelController.Toggle(MapPanel);
+
+            Vector2Int? PlayerMovedRoom()
+            {
+                var lpos = player.transform.localPosition;
+                var res = Vector2Int.zero;
+
+                if (lpos.x <= 0f) res.x = -1;
+                else if (40f < lpos.x) res.x = 1;
+
+                if (lpos.y <= -1.5f) res.y = 1;
+                else if (28.25f < lpos.y) res.y = -1;
+
+                return res == Vector2Int.zero ? (Vector2Int?)null : res;
+            }
+            var newRoomDir = PlayerMovedRoom();
+            if (newRoomDir.HasValue)
+                ChangeRoom(minimap.CurRoom.pos + newRoomDir.Value);
         }
 
         public void Respawn()
@@ -58,30 +75,6 @@ namespace VVVVVV
 
         public void ChangeRoom(Vector2Int newRoomPos)
         {
-            void EnableRoom()
-            {
-                void Tilemap()
-                {
-                    // Disable all 
-                    var root = GameObject.Find("Grid");
-                    foreach (Transform t in root.transform)
-                        t.gameObject.SetActive(false);
-
-                    minimap.roomObj(minimap.room(newRoomPos)).SetActive(true);
-                }
-                void Canvas()
-                {
-                    var root = GameObject.Find("Canvas").transform.Find("Rooms");
-                    foreach (Transform t in root.transform)
-                        t.gameObject.SetActive(false);
-
-                    root.Find(player.room.name)?.gameObject.SetActive(true);
-                }
-
-                Tilemap();
-                Canvas();
-            }
-
             void AdjustCamPos()
             {
                 var camX = newRoomPos.x * 640;
@@ -91,11 +84,7 @@ namespace VVVVVV
             }
 
             minimap.ChangeRoom(newRoomPos);
-
-            EnableRoom();
             AdjustCamPos();
-
-            saveManager.Save(minimap.SerializeKey);
         }
 
         public void Save()

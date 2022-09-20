@@ -24,6 +24,9 @@ namespace VVVVVV
         {
             animator = GetComponent<Animator>();
             controller = GetComponent<MoveController>();
+        }
+        void Start()
+        {
             minimap = game.minimap;
         }
 
@@ -32,41 +35,6 @@ namespace VVVVVV
             var v = controller.velocity;
             animator.SetBool("MoveNow", v.x != 0);
             animator.SetBool("JumpNow", v.y != 0);
-        }
-
-        void Update()
-        {
-            Vector2Int? IsRoomChanged()
-            {
-                var lpos = transform.localPosition;
-                var res = Vector2Int.zero;
-
-                if (lpos.x <= 0f) res.x = -1;
-                else if (40f < lpos.x) res.x = 1;
-
-                if (lpos.y <= -1.5f) res.y = 1;
-                else if (28.25f < lpos.y) res.y = -1;
-
-                return res == Vector2Int.zero ? (Vector2Int?)null : res;
-            }
-            if (!transform.parent.CompareTag("Room")) return;
-
-            var newRoomDir = IsRoomChanged();
-            if (newRoomDir.HasValue)
-            {
-                Debug.Log("Room changed");
-                changeRoom(room.pos + newRoomDir.Value);
-            }
-        }
-
-        private void changeRoom(Vector2Int rpos)
-        {
-            room = minimap.room(rpos);
-
-            var game = GameObject.Find("Game").GetComponent<Game>();
-            game.ChangeRoom(room.pos);
-
-            transform.SetParent(minimap.roomObj(room).transform);
         }
 
         void OnCollisionEnter2D(Collision2D collision)
@@ -101,41 +69,33 @@ namespace VVVVVV
                 {
                     direction = controller.direction,
                     gravity = controller.gravity,
-                    roomPos = (room.pos.x, room.pos.y),
                     position = (p.x, p.y, p.z),
+                    deathCount = deathCount,
                 }
             );
         }
 
         public void Load(string str)
         {
-            if (str == "")
-            {
-                // Only Use for Development when save data clear
-                changeRoom(new Vector2Int(115, 103));
-                return;
-            }
+            if (str == "") return;
 
             GetComponent<Collider2D>().isTrigger = false;
-            controller.enabled = true;
 
             var x = SaveManager.DeserializeObject<SaveInfo>(str);
+            controller.enabled = true;
             controller.direction = x.direction;
             controller.ReverseGravity(x.gravity);
 
-            changeRoom(new Vector2Int(x.roomPos.Item1, x.roomPos.Item2));
             transform.position = new Vector3(x.position.Item1, x.position.Item2, x.position.Item3);
 
             deathCount = x.deathCount;
         }
-
 
         [Serializable]
         struct SaveInfo
         {
             public Direction direction;
             public Gravity gravity;
-            public (int, int) roomPos;
             public (float, float, float) position;
             public int deathCount;
         }

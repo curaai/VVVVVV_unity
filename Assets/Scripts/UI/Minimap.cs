@@ -18,36 +18,51 @@ namespace VVVVVV.UI
         [SerializeField] Text roomnameText;
 
         private List<Room> rooms;
+        public Room CurRoom { get; private set; }
 
         HashSet<(int, int)> explored = new HashSet<(int, int)>(); // use tuple only for serializable 
 
         void Awake()
         {
-            this.rooms = Resources.LoadAll<Room>("Tables/Rooms").ToList();
+            this.rooms = GameObject.Find("World").GetComponentsInChildren<Room>().ToList();
         }
 
         public Room room(Vector2Int pos) => rooms.Find(x => x.pos == pos);
-        public Room room(string name) => rooms.Find(x => x.name == name);
         public GameObject roomObj(Room r) => GameObject.Find("Grid").transform.Find(r.name).gameObject;
 
         public void ChangeRoom(Vector2Int pos)
         {
+            CurRoom = room(pos);
             Debug.Log("Room Changed" + pos.ToString());
 
-            UpdateUI(room(pos));
+            UpdateUI();
             SetExplored(pos);
         }
 
-        void UpdateUI(Room r)
+        void EnableRoom()
+        {
+            void Tilemap()
+            {
+                // Disable all 
+                foreach (var r in rooms)
+                    r.gameObject.SetActive(false);
+
+                CurRoom.gameObject.SetActive(true);
+            }
+
+            Tilemap();
+        }
+
+        void UpdateUI()
         {
             void SetBlinkPos()
             {
                 var z = FocusBlink.transform.localPosition.z;
-                var localPos = r.pos - Vector2.one * 100;
+                var localPos = CurRoom.pos - Vector2.one * 100;
                 FocusBlink.transform.localPosition = new Vector3(24 * localPos.x, -(18 * localPos.y), z);
             }
 
-            roomnameText.text = r.name;
+            roomnameText.text = CurRoom.name;
             SetBlinkPos();
         }
 
