@@ -77,8 +77,8 @@ namespace VVVVVV
         {
             void AdjustCamPos()
             {
-                var camX = newRoomPos.x * 640;
-                var camY = newRoomPos.y * -480;
+                var camX = newRoomPos.x * 40 + 20;
+                var camY = newRoomPos.y * 30 + 15;
 
                 cam.localPosition = new Vector3(camX, camY, cam.localPosition.z);
             }
