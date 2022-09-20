@@ -7,10 +7,9 @@ namespace VVVVVV.World
 {
     public class StarBackground : MonoBehaviour
     {
+        [SerializeField] private GameObject starPrefab;
         public static readonly int NUM_STARS = 50;
         public static readonly float STAR_DEFAULT_SPEED = 0.5f;
-
-        [SerializeField] private GameObject starPrefab;
 
         private GameObject[] stars = new GameObject[NUM_STARS];
         private float[] speeds = new float[NUM_STARS];

@@ -76,7 +76,6 @@ namespace VVVVVV.UI
 
         void setColorAlpha(float a)
         {
-            Debug.Log(a);
             var color = transform.GetChild(1).GetComponent<Text>().color;
             var newColor = new UnityEngine.Color(color.r, color.g, color.b, a);
             var newBackgroundColor = new UnityEngine.Color(color.r / 6, color.g / 6, color.b / 6, a);

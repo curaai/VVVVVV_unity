@@ -39,6 +39,9 @@ namespace VVVVVV
         void Start()
         {
             saveManager.Load();
+
+            if (minimap.CurRoom == null)
+                ChangeRoom(player.transform.parent.GetComponent<Room>().pos);
         }
 
         void Update()
@@ -78,12 +81,13 @@ namespace VVVVVV
             void AdjustCamPos()
             {
                 var camX = newRoomPos.x * 40 + 20;
-                var camY = newRoomPos.y * 30 + 15;
+                var camY = newRoomPos.y * -30 + 15;
 
                 cam.localPosition = new Vector3(camX, camY, cam.localPosition.z);
             }
 
             minimap.ChangeRoom(newRoomPos);
+            player.transform.SetParent(minimap.CurRoom.transform);
             AdjustCamPos();
         }
 
