@@ -16,13 +16,13 @@ TagManager:
   - 
   - Water
   - UI
-  - background
-  - wall
-  - obstacle
-  - universe
+  - player
   - entity
+  - obstacle
+  - wall
   - wall for enity
-  - 
+  - background
+  - universe
   - 
   - 
   - 
