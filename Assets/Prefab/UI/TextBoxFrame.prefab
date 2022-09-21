@@ -470,7 +470,6 @@ GameObject:
   - component: {fileID: 5972053830604879742}
   - component: {fileID: 5972053830604879729}
   - component: {fileID: 5972053830604879728}
-  - component: {fileID: 5230878371655474452}
   - component: {fileID: -6876647654773324583}
   - component: {fileID: -2138324924406307629}
   m_Layer: 5
@@ -496,8 +495,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 320, y: -286}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
@@ -557,19 +556,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &5230878371655474452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5972053830604879730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9158da880eb6da439cf65800b209d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  original: {fileID: 5972053830667816320}
 --- !u!114 &-6876647654773324583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: asdfasdfasdf
+  m_Text: text
 --- !u!114 &5972053830667816323
 MonoBehaviour:
   m_ObjectHideFlags: 0

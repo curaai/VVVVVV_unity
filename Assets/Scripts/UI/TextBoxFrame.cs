@@ -88,7 +88,11 @@ namespace VVVVVV.UI
             backgroundObj.color = newBackgroundColor;
         }
 
-        private void OnValidate() => color = _color;
+        private void OnValidate()
+        {
+            color = _color;
+            transform.GetChild(1).GetComponent<Text>().text = GetComponent<Text>().text;
+        }
 
         private void OnDisable() => GetComponent<Animator>().SetTrigger("OnDisable");
     }
