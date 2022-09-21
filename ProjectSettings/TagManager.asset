@@ -9,6 +9,7 @@ TagManager:
   - Room
   - World
   - Trinket
+  - EventTrigger
   layers:
   - Default
   - TransparentFX

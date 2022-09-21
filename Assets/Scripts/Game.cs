@@ -11,13 +11,13 @@ namespace VVVVVV
     public class Game : MonoBehaviour
     {
         [SerializeField] public UI.Minimap minimap;
-        [SerializeField] public World.TrinketManager trinketManager;
         [SerializeField] public Player player;
         [SerializeField] public Transform cam;
 
         [SerializeField] private GameObject PausePanel;
         [SerializeField] private GameObject MapPanel;
 
+        [SerializeField] private List<GameObject> serializables;
 
         private SaveManager saveManager;
         private PanelController panelController;
@@ -32,6 +32,7 @@ namespace VVVVVV
                 player,
                 // trinketManager
             };
+            saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));
             saveManager = new SaveManager(saveTargetList);
             // panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
         }

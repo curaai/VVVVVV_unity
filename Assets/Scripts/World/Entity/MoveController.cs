@@ -161,7 +161,6 @@ namespace VVVVVV.World.Entity
                     OnGround = true;
                     if (velocity.y < 0) velocity.y = 0;
                 }
-
             }
         }
 

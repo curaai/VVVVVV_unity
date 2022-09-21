@@ -30,7 +30,11 @@ namespace VVVVVV
         public void Load()
         {
             foreach (var x in list)
-                x.Load(PlayerPrefs.GetString(x.SerializeKey, ""));
+            {
+                var y = PlayerPrefs.GetString(x.SerializeKey, "");
+                if (y != "")
+                    x.Load(y);
+            }
         }
 
         public void Load(string key) => list.Find(x => x.SerializeKey == key).Load(PlayerPrefs.GetString(key, ""));

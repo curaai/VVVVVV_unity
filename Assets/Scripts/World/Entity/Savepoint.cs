@@ -25,7 +25,7 @@ namespace VVVVVV.World.Entity
         {
             void disableAll() =>
                 allSavepoints
-                    .Select(x => x.GetComponent<SpriteGlowEffect>())
+                    .Select(x => x.GetComponentInChildren<SpriteGlowEffect>())
                     .Select(x => x.GlowOn = false)
                     .ToList();
 
@@ -33,7 +33,7 @@ namespace VVVVVV.World.Entity
 
             disableAll();
 
-            GetComponent<SpriteGlowEffect>().GlowOn = true;
+            GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collider)
@@ -43,7 +43,7 @@ namespace VVVVVV.World.Entity
                 Activate();
 
                 // AutoSave
-                GameObject.Find("Game").GetComponent<Game>().Save();
+                GameObject.Find("World").GetComponent<Game>().Save();
             }
         }
 
