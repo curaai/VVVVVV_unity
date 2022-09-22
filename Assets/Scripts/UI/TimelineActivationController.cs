@@ -7,11 +7,12 @@ using UnityEngine.Playables;
 
 namespace VVVVVV.UI
 {
+    [RequireComponent(typeof(PlayableDirector))]
     public class TimelineActivationController : MonoBehaviour
     {
         private PlayableDirector director;
 
-        void Start()
+        void Awake()
         {
             director = GetComponent<PlayableDirector>();
         }

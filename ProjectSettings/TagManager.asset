@@ -10,6 +10,7 @@ TagManager:
   - World
   - Trinket
   - EventTrigger
+  - TimelineController
   layers:
   - Default
   - TransparentFX
