@@ -6,8 +6,9 @@ namespace VVVVVV.UI
 {
     public class CutSceneController : MonoBehaviour
     {
-        public (GameObject, Transform)? mainUI;
+        public bool ControlInput { get; set; } = true;
 
+        public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
 
         public void Open(GameObject uiObj)
@@ -23,15 +24,17 @@ namespace VVVVVV.UI
             var player = GameObject.Find("Player");
             player.GetComponent<World.Entity.MoveController>().Stop();
             player.GetComponent<PlayerInputManager>().enabled = false;
+
+            Debug.Log($"Open Cutscene {uiObj.name}");
         }
 
         void Update()
         {
-            if (mainUI?.Item1.activeSelf ?? false && Input.GetKeyDown(KeyCode.Space))
+            if ((mainUI?.Item1.activeSelf ?? false) &&
+                Input.GetKeyDown(KeyCode.Space) &&
+                ControlInput)
             {
-                // TODO: Only Debug 
-                return;
-
+                Close();
             }
         }
 
@@ -50,6 +53,9 @@ namespace VVVVVV.UI
 
                         var player = GameObject.Find("Player");
                         player.GetComponent<PlayerInputManager>().enabled = true;
+                        ControlInput = true;
+
+                        Debug.Log("Close Cutscene");
                     }
                 ));
             }

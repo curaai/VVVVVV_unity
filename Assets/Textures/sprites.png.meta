@@ -64,25 +64,25 @@ TextureImporter:
     second: sprites_19
   - first:
       213: -1722539767903399326
-    second: sprites StopMan 0
+    second: sprites Traffic 0
   - first:
       213: -2018968827443427868
     second: sprites_21
   - first:
       213: 3950689983899740486
-    second: sprites StopMan 1
+    second: sprites Traffic 1
   - first:
       213: -3525548655422949061
     second: sprites Terminal
   - first:
       213: -577312649904740640
-    second: sprites StopMan 2
+    second: sprites Traffic 2
   - first:
       213: -3114738102144766914
     second: sprites_25
   - first:
       213: 4172163778452043772
-    second: sprites StopMan 3
+    second: sprites Traffic 3
   - first:
       213: 2414474533063011785
     second: sprites_27
@@ -94,7 +94,7 @@ TextureImporter:
     second: sprites_savepoint
   - first:
       213: 3864339640949227112
-    second: sprites WaveLength 0
+    second: sprites Wavelengths 0
   - first:
       213: -1369878811986984067
     second: sprites Trinket
@@ -532,7 +532,7 @@ TextureImporter:
     second: sprites_175
   - first:
       213: -5014597575052150466
-    second: sprites WaveLength 1
+    second: sprites Wavelengths 1
   - first:
       213: 2174282902262228016
     second: sprites Speaker 0
@@ -1060,7 +1060,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites StopMan 0
+      name: sprites Traffic 0
       rect:
         serializedVersion: 2
         x: 128
@@ -1129,7 +1129,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites StopMan 1
+      name: sprites Traffic 1
       rect:
         serializedVersion: 2
         x: 160
@@ -1193,7 +1193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites StopMan 2
+      name: sprites Traffic 2
       rect:
         serializedVersion: 2
         x: 192
@@ -1257,7 +1257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites StopMan 3
+      name: sprites Traffic 3
       rect:
         serializedVersion: 2
         x: 224
@@ -4432,7 +4432,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites WaveLength 0
+      name: sprites Wavelengths 0
       rect:
         serializedVersion: 2
         x: 256
@@ -4461,7 +4461,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites WaveLength 1
+      name: sprites Wavelengths 1
       rect:
         serializedVersion: 2
         x: 288

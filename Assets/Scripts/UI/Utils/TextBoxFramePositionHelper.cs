@@ -19,7 +19,7 @@ namespace VVVVVV.UI.Utils
         private Transform player => GameObject.Find("Player").transform;
         private string txt => GetComponent<Text>().text;
 
-        void OnValidate()
+        void OnEnable()
         {
             Vector2 playerPosInUI()
             {
@@ -29,7 +29,6 @@ namespace VVVVVV.UI.Utils
                     (rt.localPosition.y + rt.rect.height / 2) / 30 * 480
                 );
             }
-
             var playerLT = playerPosInUI();
             var rt = (RectTransform)transform;
 

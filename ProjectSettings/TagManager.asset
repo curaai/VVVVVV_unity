@@ -11,6 +11,7 @@ TagManager:
   - Trinket
   - EventTrigger
   - TimelineController
+  - Terminal
   layers:
   - Default
   - TransparentFX

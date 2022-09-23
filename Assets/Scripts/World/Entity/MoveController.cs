@@ -26,7 +26,6 @@ namespace VVVVVV.World.Entity
         [SerializeField] bool ApplyFriction;
 
         public int CollideTargetLayer = -1;
-        protected SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
 
         public bool OnAir => !(OnGround || OnRoof);
         public bool OnWallLeft { get; protected set; }
@@ -35,8 +34,30 @@ namespace VVVVVV.World.Entity
         public bool OnRoof { get; protected set; }
         protected ContactPoint2D[] lastContactPts;
 
-        public Gravity gravity;
-        public Direction direction;
+        public Gravity gravity
+        {
+            get => _gravity;
+            set
+            {
+                _gravity = value;
+
+                if (!UpdateSprite) return;
+                var s = transform.localScale;
+                transform.localScale = new Vector3(s.x, gravity == Gravity.DOWN ? 1 : -1, s.z);
+            }
+        }
+        private Gravity _gravity;
+        public Direction direction
+        {
+            get => _direction; set
+            {
+                _direction = value;
+                if (!UpdateSprite) return;
+                var s = transform.localScale;
+                transform.localScale = new Vector3(direction == Direction.RIGHT ? 1 : -1, s.y, s.z);
+            }
+        }
+        private Direction _direction;
 
         public Vector2 force;
         public Vector2 velocity;
@@ -77,12 +98,6 @@ namespace VVVVVV.World.Entity
 
             if (ApplyFriction) velocity = applyFriction(velocity);
             GetComponent<Rigidbody2D>().velocity = (AdditionalVelocity + velocity) * VelocityCalibrationParameter;
-
-            if (UpdateSprite)
-            {
-                spriteRenderer.flipX = direction == Direction.LEFT;
-                spriteRenderer.flipY = gravity == Gravity.UP;
-            }
         }
 
         public void Stop()

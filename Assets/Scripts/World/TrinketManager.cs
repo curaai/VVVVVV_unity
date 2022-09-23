@@ -19,12 +19,14 @@ namespace VVVVVV.World
 
         void Awake()
         {
-            trinkets = GameObject.FindWithTag("World").GetComponentsInChildren<Trinket>();
+            trinkets = GameObject.FindWithTag("World").GetComponentsInChildren<Trinket>(true);
         }
 
         public void Collect(Trinket t)
         {
-            trinkets.Where(x => x == t).First().Collected = true;
+            var target = trinkets.Where(x => x == t).First();
+            target.Collected = true;
+            target.gameObject.SetActive(false);
 
             var textUi = trinketUI.transform.Find("Count").GetComponent<Text>();
             textUi.text = CountString();
@@ -38,7 +40,10 @@ namespace VVVVVV.World
 
             var arr = SaveManager.DeserializeObject<bool[]>(str);
             for (int i = 0; i < trinkets.Length; i++)
+            {
                 trinkets[i].Collected = arr[i];
+                trinkets[i].gameObject.SetActive(!arr[i]);
+            }
         }
 
         public string Save()

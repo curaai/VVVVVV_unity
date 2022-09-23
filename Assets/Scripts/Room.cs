@@ -17,6 +17,15 @@ namespace VVVVVV
         void OnEnable() => UI?.SetActive(true);
         void OnDisable() => UI?.SetActive(false);
 
+        void OnValidate()
+        {
+            transform.localPosition = new Vector3(
+                pos.x * 40,
+                -(pos.y * 30),
+                0
+            );
+        }
+
         public string areaStr()
         {
             switch (area)

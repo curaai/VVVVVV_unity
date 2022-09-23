@@ -39,7 +39,7 @@ namespace VVVVVV
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.collider.CompareTag(DAMAGABLE_TAG))
+            if (collision.gameObject.CompareTag(DAMAGABLE_TAG))
                 GameOver();
         }
 

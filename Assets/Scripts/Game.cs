@@ -3,8 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using VVVVVV.UI.Utils;
 using VVVVVV.UI;
+using VVVVVV.UI.Utils;
+using VVVVVV.World.Entity;
 
 namespace VVVVVV
 {
@@ -27,10 +28,9 @@ namespace VVVVVV
             Application.targetFrameRate = 60;
             var saveTargetList = new List<ISerializable>() {
                 // minimap,
-                // GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 // GameObject.Find("Clock").GetComponent<World.Clock>(),
+                GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 player,
-                // trinketManager
             };
             saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));
             saveManager = new SaveManager(saveTargetList);
@@ -42,7 +42,10 @@ namespace VVVVVV
             saveManager.Load();
 
             if (minimap.CurRoom == null)
-                ChangeRoom(player.transform.parent.GetComponent<Room>().pos);
+            {
+                var lastRoom = Savepoint.LastSavepoint.transform.parent.GetComponentInParent<Room>().pos;
+                ChangeRoom(lastRoom);
+            }
         }
 
         void Update()
@@ -67,7 +70,9 @@ namespace VVVVVV
             }
             var newRoomDir = PlayerMovedRoom();
             if (newRoomDir.HasValue)
+            {
                 ChangeRoom(minimap.CurRoom.pos + newRoomDir.Value);
+            }
         }
 
         public void Respawn()

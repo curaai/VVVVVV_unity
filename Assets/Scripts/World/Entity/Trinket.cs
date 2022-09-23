@@ -6,18 +6,9 @@ namespace VVVVVV.World.Entity
     public class Trinket : MonoBehaviour
     {
         [SerializeField] public int Idx;
-        private TrinketManager manager => GameObject.Find("TrinketManager").GetComponent<TrinketManager>();
+        public bool Collected = false;
 
-        private bool _collected;
-        public bool Collected
-        {
-            get => _collected;
-            set
-            {
-                _collected = value;
-                GetComponent<SpriteRenderer>().enabled = !Collected;
-            }
-        }
+        private TrinketManager manager => GameObject.Find("TrinketManager").GetComponent<TrinketManager>();
 
         void OnTriggerEnter2D(Collider2D collider)
         {

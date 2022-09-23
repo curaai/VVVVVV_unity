@@ -23,7 +23,7 @@ namespace VVVVVV.World.Entity
             {
                 OnceActivated = true;
 
-                GetComponent<SpriteGlowEffect>().GlowOn = true;
+                GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
                 hoverTextBox.SetActive(false);
                 GameObject.Find("CutScene").GetComponent<UI.CutSceneController>().Open(log);
             }

@@ -61,22 +61,22 @@ namespace VVVVVV.World.Entity
 
         public void Load(string str)
         {
-            if (str == "") return;
-
             Savepoint FindLastSavepoint(string str)
             {
                 var res = SaveManager.DeserializeObject<(float, float)>(str);
+                Debug.Log($"{res.Item1}, {res.Item2}");
                 return Physics2D.OverlapCircleAll(
                                         new Vector2(res.Item1, res.Item2),
                                         3
                                         )
-                                    .Where(x => x.CompareTag("Savepoint"))
-                                    .Select(x => x.GetComponent<Savepoint>())
+                                    .Select(x => x.GetComponentInParent<Savepoint>())
+                                    .Where(x => x.gameObject.CompareTag("Savepoint"))
                                     .FirstOrDefault();
             }
 
             LastSavepoint ??= FindLastSavepoint(str);
-            LastSavepoint.Activate();
+            Debug.Log(LastSavepoint);
+            LastSavepoint?.Activate();
         }
     }
 }
