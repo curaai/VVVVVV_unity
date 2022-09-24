@@ -138,9 +138,6 @@ namespace VVVVVV.World.Entity
         }
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.collider.gameObject.layer != CollideTargetLayer)
-                return;
-
             UpdateTouchStatus(collision.contacts);
             lastContactPts = collision.contacts;
         }
@@ -151,8 +148,12 @@ namespace VVVVVV.World.Entity
             OnWallLeft = OnWallRight = OnGround = OnRoof = false;
 
             // Enable each
-            foreach (var n in contacts.Select(c => c.normal))
+            foreach (var c in contacts)
             {
+                if (c.collider.gameObject.layer != CollideTargetLayer)
+                    continue;
+
+                var n = c.normal;
                 // sometimes not perfect one
                 var nx = Math.Round(n.x, 2);
                 var ny = Math.Round(n.y, 2);

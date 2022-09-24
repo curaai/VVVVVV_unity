@@ -75,7 +75,6 @@ namespace VVVVVV.World.Entity
             }
 
             LastSavepoint ??= FindLastSavepoint(str);
-            Debug.Log(LastSavepoint);
             LastSavepoint?.Activate();
         }
     }

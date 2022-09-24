@@ -112,16 +112,16 @@ TextureImporter:
     second: sprites Security Drone 2
   - first:
       213: -5113350760131414088
-    second: sprites YesMan 0
+    second: sprites The Yes Man 0
   - first:
       213: -2943835317918062483
-    second: sprites YesMan 1
+    second: sprites The Yes Man 1
   - first:
       213: -9009826273307446855
-    second: sprites YesMan 2
+    second: sprites The Yes Man 2
   - first:
       213: -6038895966588477023
-    second: sprites YesMan 3
+    second: sprites The Yes Man 3
   - first:
       213: 2527441650270232441
     second: sprites Hunchbacked Guards 0
@@ -1492,7 +1492,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites YesMan 0
+      name: sprites The Yes Man 0
       rect:
         serializedVersion: 2
         x: 128
@@ -1513,7 +1513,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites YesMan 1
+      name: sprites The Yes Man 1
       rect:
         serializedVersion: 2
         x: 160
@@ -1534,7 +1534,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites YesMan 2
+      name: sprites The Yes Man 2
       rect:
         serializedVersion: 2
         x: 192
@@ -1555,7 +1555,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites YesMan 3
+      name: sprites The Yes Man 3
       rect:
         serializedVersion: 2
         x: 224

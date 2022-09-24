@@ -21,7 +21,7 @@ namespace VVVVVV.UI
         public bool saved { get; private set; }
         void Awake()
         {
-            minimap = GameObject.Find("Game").GetComponent<Game>().minimap;
+            minimap = GameObject.Find("World").GetComponent<Game>().minimap;
         }
 
         void OnEnable()

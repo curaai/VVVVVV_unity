@@ -19,8 +19,7 @@ namespace VVVVVV.UI
 
             if (mainUI.HasValue)
             {
-                var container = transform.GetChild(1);
-                mainUI?.Item1.transform.SetParent(container);
+                mainUI?.Item1.transform.SetParent(transform);
                 mainUI?.Item1.SetActive(true);
             }
         }

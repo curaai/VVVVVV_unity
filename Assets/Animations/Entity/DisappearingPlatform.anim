@@ -28,19 +28,6 @@ AnimationClip:
     - time: 0.75
       value: {fileID: -4962297809855956075, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
     attribute: m_Sprite
-    path: tile0
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-    - time: 0
-      value: {fileID: -2523126885017275079, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
-    - time: 0.25
-      value: {fileID: 1690234962019808037, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
-    - time: 0.5
-      value: {fileID: -4347991363811413760, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
-    - time: 0.75
-      value: {fileID: -4962297809855956075, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
-    attribute: m_Sprite
     path: tile3
     classID: 212
     script: {fileID: 0}
@@ -70,6 +57,19 @@ AnimationClip:
     path: tile1
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: -2523126885017275079, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
+    - time: 0.25
+      value: {fileID: 1690234962019808037, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
+    - time: 0.5
+      value: {fileID: -4347991363811413760, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
+    - time: 0.75
+      value: {fileID: -4962297809855956075, guid: ef8b8d18fbe16ef499b479808f932ca9, type: 3}
+    attribute: m_Sprite
+    path: tile0
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -77,13 +77,6 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - serializedVersion: 2
-      path: 4089484433
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
     - serializedVersion: 2
       path: 1791608107
       attribute: 0
@@ -100,6 +93,13 @@ AnimationClip:
       isPPtrCurve: 1
     - serializedVersion: 2
       path: 2227676167
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 4089484433
       attribute: 0
       script: {fileID: 0}
       typeID: 212

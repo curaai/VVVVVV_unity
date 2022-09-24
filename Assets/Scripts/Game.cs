@@ -27,14 +27,14 @@ namespace VVVVVV
         {
             Application.targetFrameRate = 60;
             var saveTargetList = new List<ISerializable>() {
-                // minimap,
-                // GameObject.Find("Clock").GetComponent<World.Clock>(),
+                minimap,
+                GameObject.Find("Clock").GetComponent<World.Clock>(),
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 player,
             };
             saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));
             saveManager = new SaveManager(saveTargetList);
-            // panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
+            panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
         }
 
         void Start()
@@ -50,10 +50,10 @@ namespace VVVVVV
 
         void Update()
         {
-            // if (Input.GetKeyDown(KeyCode.Escape))
-            //     panelController.Toggle(PausePanel);
-            // if (Input.GetKeyDown(KeyCode.Return))
-            //     panelController.Toggle(MapPanel);
+            if (Input.GetKeyDown(KeyCode.Escape))
+                panelController.Toggle(PausePanel);
+            if (Input.GetKeyDown(KeyCode.Return))
+                panelController.Toggle(MapPanel);
 
             Vector2Int? PlayerMovedRoom()
             {
@@ -68,6 +68,8 @@ namespace VVVVVV
 
                 return res == Vector2Int.zero ? (Vector2Int?)null : res;
             }
+            if (!player.transform.parent.CompareTag("Room")) return;
+
             var newRoomDir = PlayerMovedRoom();
             if (newRoomDir.HasValue)
             {
