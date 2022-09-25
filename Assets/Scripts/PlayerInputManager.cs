@@ -13,10 +13,12 @@ namespace VVVVVV
         private int tapLeft = 0;
         private int tapRight = 0;
         MoveController controller;
+        EntityCollider entityCollider;
 
         void Awake()
         {
             controller = GetComponent<MoveController>();
+            entityCollider = GetComponent<EntityCollider>();
         }
 
         void Update()
@@ -52,7 +54,7 @@ namespace VVVVVV
             // use key down to avoid repeat gravity switching 
             if (VerticalKeyList.Select(Input.GetKeyDown).Contains(true))
             {
-                if (!controller.OnAir)
+                if (!(entityCollider.OnGround || entityCollider.OnRoof))
                 {
                     controller.ReverseGravity();
                 }

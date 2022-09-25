@@ -15,7 +15,7 @@ namespace VVVVVV.World.Entity
         RIGHT,
     }
 
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(EntityCollider))]
     public class MoveController : MonoBehaviour
     {
         public static readonly Vector2 MaxSpeed = new Vector2(12, 20);
@@ -24,15 +24,6 @@ namespace VVVVVV.World.Entity
 
         [SerializeField] bool UpdateSprite;
         [SerializeField] bool ApplyFriction;
-
-        public int CollideTargetLayer = -1;
-
-        public bool OnAir => !(OnGround || OnRoof);
-        public bool OnWallLeft { get; protected set; }
-        public bool OnWallRight { get; protected set; }
-        public bool OnGround { get; protected set; }
-        public bool OnRoof { get; protected set; }
-        protected ContactPoint2D[] lastContactPts;
 
         public Gravity gravity
         {
@@ -49,7 +40,8 @@ namespace VVVVVV.World.Entity
         private Gravity _gravity;
         public Direction direction
         {
-            get => _direction; set
+            get => _direction;
+            set
             {
                 _direction = value;
                 if (!UpdateSprite) return;
@@ -63,10 +55,11 @@ namespace VVVVVV.World.Entity
         public Vector2 velocity;
         public Vector2 AdditionalVelocity = Vector2.zero;
 
+        private EntityCollider entityCollider;
+
         void Awake()
         {
-            if (CollideTargetLayer == -1)
-                CollideTargetLayer = LayerMask.NameToLayer("wall");
+            entityCollider = GetComponent<EntityCollider>();
         }
 
         void FixedUpdate()
@@ -86,14 +79,14 @@ namespace VVVVVV.World.Entity
                 return v * sign;
             }
 
-            if ((OnWallLeft && direction == Direction.RIGHT) ||
-                (OnWallRight && direction == Direction.LEFT) ||
-                (!OnWallLeft && !OnWallRight))
+            if ((entityCollider.OnWallLeft && direction == Direction.RIGHT) ||
+                (entityCollider.OnWallRight && direction == Direction.LEFT) ||
+                !(entityCollider.OnWallLeft || entityCollider.OnWallRight))
                 velocity.x = velocity.x + force.x;
 
-            if ((OnGround && gravity == Gravity.UP) ||
-                (OnRoof && gravity == Gravity.DOWN) ||
-                (!OnGround && !OnRoof))
+            if ((entityCollider.OnGround && gravity == Gravity.UP) ||
+                (entityCollider.OnRoof && gravity == Gravity.DOWN) ||
+                !(entityCollider.OnGround || entityCollider.OnRoof))
                 velocity.y = velocity.y + force.y;
 
             if (ApplyFriction) velocity = applyFriction(velocity);
@@ -108,75 +101,10 @@ namespace VVVVVV.World.Entity
 
         public void ToGround()
         {
-            if (!OnGround)
+            if (!entityCollider.OnRoof)
             {
                 gravity = Gravity.DOWN;
                 force.y = -6f;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            var layer = collision.collider.gameObject.layer;
-            if (layer == CollideTargetLayer)
-            {
-                UpdateTouchStatus(collision.contacts);
-                lastContactPts = collision.contacts;
-            }
-        }
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.collider.gameObject.layer != CollideTargetLayer)
-                return;
-
-            if (collision.contacts.Length != lastContactPts.Length)
-            {
-                UpdateTouchStatus(collision.contacts);
-            }
-
-            lastContactPts = collision.contacts;
-        }
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            UpdateTouchStatus(collision.contacts);
-            lastContactPts = collision.contacts;
-        }
-
-        protected void UpdateTouchStatus(ContactPoint2D[] contacts)
-        {
-            // disable all status 
-            OnWallLeft = OnWallRight = OnGround = OnRoof = false;
-
-            // Enable each
-            foreach (var c in contacts)
-            {
-                if (c.collider.gameObject.layer != CollideTargetLayer)
-                    continue;
-
-                var n = c.normal;
-                // sometimes not perfect one
-                var nx = Math.Round(n.x, 2);
-                var ny = Math.Round(n.y, 2);
-                if (nx == -1f)
-                {
-                    OnWallRight = true;
-                    if (0 < velocity.x) force.x = velocity.x = 0;
-                }
-                if (nx == 1)
-                {
-                    OnWallLeft = true;
-                    if (velocity.x < 0) force.x = velocity.x = 0;
-                }
-                if (ny == -1)
-                {
-                    OnRoof = true;
-                    if (0 < velocity.y) velocity.y = 0;
-                }
-                if (ny == 1)
-                {
-                    OnGround = true;
-                    if (velocity.y < 0) velocity.y = 0;
-                }
             }
         }
 
@@ -186,6 +114,18 @@ namespace VVVVVV.World.Entity
                 g = gravity == Gravity.UP ? Gravity.DOWN : Gravity.UP;
 
             gravity = g.Value;
+        }
+
+        public void TrimVelocity()
+        {
+            if (entityCollider.OnWallRight && 0 < velocity.x)
+                force.x = velocity.x = 0;
+            if (entityCollider.OnWallLeft && velocity.x < 0)
+                force.x = velocity.x = 0;
+            if (entityCollider.OnRoof && 0 < velocity.y)
+                velocity.y = 0;
+            if (entityCollider.OnGround && velocity.y < 0)
+                velocity.y = 0;
         }
     }
 }

@@ -7,40 +7,42 @@ namespace VVVVVV.World.Entity
     {
         [SerializeField] public Vector2 SPEED;
 
-        private MoveController c;
+        private MoveController m;
+        private EntityCollider c;
 
-        void Start()
+        void Awake()
         {
-            c = GetComponent<MoveController>();
-            c.velocity = SPEED;
+            m = GetComponent<MoveController>();
+            m.velocity = SPEED;
+            c = GetComponent<EntityCollider>();
         }
 
-        void FixedUpdate()
+        public void ReverseVelocity()
         {
             if (c.OnWallLeft || c.OnWallRight)
             {
                 if (c.OnWallLeft)
                 {
-                    c.velocity.x = Mathf.Abs(SPEED.x);
-                    c.direction = Direction.RIGHT;
+                    m.velocity.x = Mathf.Abs(SPEED.x);
+                    m.direction = Direction.RIGHT;
                 }
                 else
                 {
-                    c.velocity.x = -Mathf.Abs(SPEED.x);
-                    c.direction = Direction.LEFT;
+                    m.velocity.x = -Mathf.Abs(SPEED.x);
+                    m.direction = Direction.LEFT;
                 }
             }
             if (c.OnGround || c.OnRoof)
             {
                 if (c.OnGround)
                 {
-                    c.velocity.y = Mathf.Abs(SPEED.y);
-                    c.ReverseGravity(Gravity.UP);
+                    m.velocity.y = Mathf.Abs(SPEED.y);
+                    m.ReverseGravity(Gravity.UP);
                 }
                 else
                 {
-                    c.velocity.y = -Mathf.Abs(SPEED.y);
-                    c.ReverseGravity(Gravity.DOWN);
+                    m.velocity.y = -Mathf.Abs(SPEED.y);
+                    m.ReverseGravity(Gravity.DOWN);
                 }
             }
         }
