@@ -64,7 +64,6 @@ namespace VVVVVV.World.Entity
             Savepoint FindLastSavepoint(string str)
             {
                 var res = SaveManager.DeserializeObject<(float, float)>(str);
-                Debug.Log($"{res.Item1}, {res.Item2}");
                 return Physics2D.OverlapCircleAll(
                                         new Vector2(res.Item1, res.Item2),
                                         3

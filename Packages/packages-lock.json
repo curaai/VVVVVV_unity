@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.github.siccity.serializablecallback": {
+      "version": "git+https://github.com/Siccity/SerializableCallback.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7ff19f122305b6adb47bbee6c8e36e77cb471fb0"
+    },
     "com.litefeel.bitmapfontimporter": {
       "version": "https://github.com/litefeel/Unity-BitmapFontImporter.git#3.3.0",
       "depth": 0,

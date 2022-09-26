@@ -9,13 +9,13 @@ namespace VVVVVV.World
 {
     public class TrinketManager : MonoBehaviour, ISerializable
     {
-        public const int TOTAL_TRINKET_COUNT = 20;
         public string SerializeKey => "Trinkets";
-        private const string CLOSE_UI_TRIGGER = "Close";
+        public const int TOTAL_TRINKET_COUNT = 20;
 
         [SerializeField] GameObject trinketUI;
 
         private Trinket[] trinkets;
+        public bool HasAnyTrinket => trinkets.Any(x => x.Collected);
 
         void Awake()
         {
@@ -54,16 +54,17 @@ namespace VVVVVV.World
             return SaveManager.SerializableObject(arr);
         }
 
-        public int Collections => trinkets.Where(x => x.Collected).ToList().Count;
         public string CountString()
         {
+            var cnt = trinkets.Where(x => x.Collected).Count();
+
             string number2word(int n)
             {
                 var words = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty" };
                 if (20 < n) throw new InvalidCastException("Cannot convert number to word: " + n.ToString());
                 return words[n];
             }
-            return $" {number2word(Collections)} out of Twenty ";
+            return $" {number2word(cnt)} out of Twenty ";
         }
     }
 }

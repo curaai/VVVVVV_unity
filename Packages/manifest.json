@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.github.siccity.serializablecallback": "git+https://github.com/Siccity/SerializableCallback.git",
     "com.unity.2d.tilemap.extras": "https://github.com/Unity-Technologies/2d-extras.git#2020.3",
     "com.litefeel.bitmapfontimporter": "https://github.com/litefeel/Unity-BitmapFontImporter.git#3.3.0",
     "com.unity.2d.animation": "5.2.2",
