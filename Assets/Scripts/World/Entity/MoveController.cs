@@ -57,9 +57,22 @@ namespace VVVVVV.World.Entity
 
         private EntityCollider entityCollider;
 
+        public Vector3? StartPos = null;
+
         void Awake()
         {
             entityCollider = GetComponent<EntityCollider>();
+        }
+
+        void OnEnable()
+        {
+            if (gameObject.CompareTag("Player"))
+                return;
+
+            if (StartPos == null)
+                StartPos = transform.localPosition;
+            else
+                transform.localPosition = StartPos.Value;
         }
 
         void FixedUpdate()
