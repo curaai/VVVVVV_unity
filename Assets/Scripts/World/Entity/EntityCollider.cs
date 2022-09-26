@@ -34,15 +34,6 @@ namespace VVVVVV.World.Entity
             UpdateTouchStatus(collision.contacts);
         }
 
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.collider.gameObject.layer != CollideTargetLayer) return;
-
-            if (lastContactPointSize != collision.contacts.Length)
-                UpdateTouchStatus(collision.contacts);
-        }
-
-
         protected void UpdateTouchStatus(ContactPoint2D[] contacts)
         {
             // disable all status 

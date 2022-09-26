@@ -64,11 +64,13 @@ namespace VVVVVV.World.Entity
             Savepoint FindLastSavepoint(string str)
             {
                 var res = SaveManager.DeserializeObject<(float, float)>(str);
+
                 return Physics2D.OverlapCircleAll(
                                         new Vector2(res.Item1, res.Item2),
                                         3
                                         )
                                     .Select(x => x.GetComponentInParent<Savepoint>())
+                                    .Where(x => x != null)
                                     .Where(x => x.gameObject.CompareTag("Savepoint"))
                                     .FirstOrDefault();
             }
