@@ -292,7 +292,7 @@ TextureImporter:
     second: sprites_95
   - first:
       213: -4938309501481967450
-    second: sprites_96
+    second: sprites Mavverrick 0
   - first:
       213: -7613503841568118882
     second: sprites_97
@@ -379,7 +379,7 @@ TextureImporter:
     second: sprites_124
   - first:
       213: 6844135984193519686
-    second: sprites_125
+    second: sprites Mavverrick 0
   - first:
       213: 3966643369446284000
     second: sprites Radar 0
@@ -539,6 +539,9 @@ TextureImporter:
   - first:
       213: -5561777447717349959
     second: sprites Speaker 1
+  - first:
+      213: -6770301983372339524
+    second: sprites Mavverrick 1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2752,27 +2755,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_96
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 210
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a02b353ca9977bb0800000000000000
-      internalID: -4938309501481967450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: sprites_97
       rect:
         serializedVersion: 2
@@ -3361,19 +3343,36 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_125
+      name: sprites Mavverrick 0
       rect:
         serializedVersion: 2
         x: 0
         y: 146
-        width: 128
-        height: 46
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
+      physicsShape:
+      - - {x: 26, y: -23}
+        - {x: 30, y: -19}
+        - {x: 32, y: -19}
+        - {x: 32, y: 17}
+        - {x: 28, y: 21}
+        - {x: 24, y: 23}
+        - {x: -24, y: 23}
+        - {x: -26, y: 21}
+        - {x: -28, y: 21}
+        - {x: -32, y: 17}
+        - {x: -32, y: -19}
+        - {x: -30, y: -19}
+        - {x: -26, y: -23}
+        - {x: -14, y: -23}
+        - {x: -10, y: -19}
+        - {x: 10, y: -19}
+        - {x: 14, y: -23}
+      tessellationDetail: 1
       bones: []
       spriteID: 640c2547a614bfe50800000000000000
       internalID: 6844135984193519686
@@ -4527,6 +4526,27 @@ TextureImporter:
       bones: []
       spriteID: 9b5570df0e890d2b0800000000000000
       internalID: -5561777447717349959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites Mavverrick 1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 146
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb618fa773e0b02a0800000000000000
+      internalID: -6770301983372339524
       vertices: []
       indices: 
       edges: []

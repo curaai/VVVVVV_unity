@@ -54,7 +54,7 @@ namespace VVVVVV
             // use key down to avoid repeat gravity switching 
             if (VerticalKeyList.Select(Input.GetKeyDown).Contains(true))
             {
-                if (!(entityCollider.OnGround || entityCollider.OnRoof))
+                if (entityCollider.OnGround || entityCollider.OnRoof)
                 {
                     controller.ReverseGravity();
                 }
