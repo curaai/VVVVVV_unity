@@ -286,13 +286,13 @@ TextureImporter:
     second: sprites_93
   - first:
       213: 7373215469331058133
-    second: sprites_94
+    second: sprites Brass Sent Us Under The Top 0
   - first:
       213: -7025280022394614582
-    second: sprites_95
+    second: sprites Brass Sent Us Under The Top 1
   - first:
       213: -4938309501481967450
-    second: sprites Mavverrick 0
+    second: sprites Tomb of Mad Carew 0
   - first:
       213: -7613503841568118882
     second: sprites_97
@@ -355,10 +355,10 @@ TextureImporter:
     second: sprites_116
   - first:
       213: -1171896252286994025
-    second: sprites_117
+    second: sprites Circle
   - first:
       213: -1687598921438376765
-    second: sprites_118
+    second: sprites Tomb of Mad Carew 1
   - first:
       213: -5592683031164280243
     second: sprites_119
@@ -379,7 +379,7 @@ TextureImporter:
     second: sprites_124
   - first:
       213: 6844135984193519686
-    second: sprites Mavverrick 0
+    second: sprites Tomb of Mad Carew 0
   - first:
       213: 3966643369446284000
     second: sprites Radar 0
@@ -2713,18 +2713,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_94
+      name: sprites Brass Sent Us Under The Top 0
       rect:
         serializedVersion: 2
-        x: 324
+        x: 322
         y: 288
-        width: 24
+        width: 28
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -14, y: 16}
+        - {x: -14, y: -16}
+        - {x: 14, y: -16}
+        - {x: 14, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: 5dd84e5876ce25660800000000000000
@@ -2734,18 +2738,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_95
+      name: sprites Brass Sent Us Under The Top 1
       rect:
         serializedVersion: 2
-        x: 352
-        y: 272
-        width: 30
-        height: 46
+        x: 354
+        y: 288
+        width: 28
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -14, y: 16}
+        - {x: -14, y: -16}
+        - {x: 14, y: -16}
+        - {x: 14, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: acc45898a01318e90800000000000000
@@ -3175,34 +3183,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_117
+      name: sprites Tomb of Mad Carew 1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 192
-        width: 128
-        height: 63
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79972d841969cbfe0800000000000000
-      internalID: -1171896252286994025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprites_118
-      rect:
-        serializedVersion: 2
-        x: 357
-        y: 231
-        width: 14
-        height: 25
+        x: 352
+        y: 230
+        width: 24
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4179,27 +4166,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_164
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 30
-        width: 142
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7da99a3de031978c0800000000000000
-      internalID: -4001145839540397353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: sprites_165
       rect:
         serializedVersion: 2
@@ -4547,6 +4513,48 @@ TextureImporter:
       bones: []
       spriteID: cb618fa773e0b02a0800000000000000
       internalID: -6770301983372339524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites Tomb of Mad Carew 0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 230
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a02b353ca9977bb0800000000000000
+      internalID: -4938309501481967450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites Circle
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79972d841969cbfe0800000000000000
+      internalID: -1171896252286994025
       vertices: []
       indices: 
       edges: []

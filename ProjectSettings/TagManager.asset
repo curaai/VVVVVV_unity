@@ -12,6 +12,7 @@ TagManager:
   - EventTrigger
   - TimelineController
   - Terminal
+  - Teleporter
   layers:
   - Default
   - TransparentFX

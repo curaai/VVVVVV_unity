@@ -28,16 +28,22 @@ namespace VVVVVV.UI.Utils.Glow
 
         public static Color32 ParseGlow(GlowExpression exp)
         {
+            // share random value in expression
+            var srand = RandomHelper.fRand();
+
             byte parse(string exp)
             {
                 var glow = GlowColorAnimation.glow;
 #if UNITY_EDITOR
                 if (glow == null) glow = 0;
 #endif
+                // Get random in each term
+                // TODO: when two frand() in term
                 var frand = RandomHelper.fRand();
 
                 exp = exp.Replace("glow", glow.ToString());
                 exp = exp.Replace("frand()", frand.ToString());
+                exp = exp.Replace("srand()", srand.ToString());
                 ExpressionEvaluator.Evaluate(exp, out float res);
                 return (byte)Mathf.FloorToInt(res);
             }

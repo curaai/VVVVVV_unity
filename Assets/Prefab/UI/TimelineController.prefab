@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 666339538218829666}
   m_Layer: 7
   m_Name: TimelineController
-  m_TagString: Untagged
+  m_TagString: TimelineController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
