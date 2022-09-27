@@ -19,6 +19,7 @@ namespace VVVVVV
         [SerializeField] private GameObject MapPanel;
 
         [SerializeField] private List<GameObject> serializables;
+        [SerializeField] private SoundManager soundManager;
 
         private SaveManager saveManager;
         private PanelController panelController;
@@ -43,9 +44,16 @@ namespace VVVVVV
 
             if (minimap.CurRoom == null)
             {
-                var lastRoom = Savepoint.LastSavepoint.transform.parent.GetComponentInParent<Room>().pos;
+                Vector2Int lastRoom;
+                if (Savepoint.LastSavepoint != null)
+                    lastRoom = Savepoint.LastSavepoint.GetComponentInParent<Room>().pos;
+                else
+                    lastRoom = player.GetComponentInParent<Room>().pos;
+
                 ChangeRoom(lastRoom);
             }
+
+            soundManager.PlayTrack(BGM.PUSHINGONWARDS);
         }
 
         void Update()
