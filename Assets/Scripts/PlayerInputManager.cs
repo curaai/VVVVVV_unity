@@ -7,9 +7,12 @@ namespace VVVVVV
     [RequireComponent(typeof(MoveController))]
     public class PlayerInputManager : MonoBehaviour
     {
+        public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space, KeyCode.W, KeyCode.S };
         public static readonly Vector2 SPEED = new Vector2(6f, 6f);
 
-        public static readonly KeyCode[] VerticalKeyList = new KeyCode[] { KeyCode.DownArrow, KeyCode.UpArrow, KeyCode.Space, KeyCode.W, KeyCode.S };
+        [SerializeField] AudioClip onGroundSound;
+        [SerializeField] AudioClip onRoofSound;
+
         private int tapLeft = 0;
         private int tapRight = 0;
         MoveController controller;
@@ -56,9 +59,13 @@ namespace VVVVVV
             {
                 if (entityCollider.OnGround || entityCollider.OnRoof)
                 {
+                    var sound = entityCollider.OnGround ? onGroundSound : onRoofSound;
+                    SoundManager.Instance.PlayEffect(sound);
+
                     controller.ReverseGravity();
                 }
             }
+
             controller.force.y = controller.gravity == Gravity.DOWN ? -SPEED.y : SPEED.y;
             TapMove();
         }

@@ -114,7 +114,7 @@ namespace VVVVVV.World.Entity
 
         public void ToGround()
         {
-            if (!entityCollider.OnRoof)
+            if (entityCollider.OnRoof)
             {
                 gravity = Gravity.DOWN;
                 force.y = -6f;

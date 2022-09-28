@@ -22,6 +22,7 @@ namespace VVVVVV.UI
 
     public class TextBoxFrame : MonoBehaviour
     {
+        [SerializeField] private AudioClip speakSound = null;
         [SerializeField] public float DestroyTimer = -1;
 
         [SerializeField]
@@ -40,7 +41,9 @@ namespace VVVVVV.UI
         void OnEnable()
         {
             if (DestroyTimer != -1)
-                Destroy(this, DestroyTimer);
+                Destroy(gameObject, DestroyTimer);
+            if (speakSound != null)
+                SoundManager.Instance.PlayEffect(speakSound);
         }
 
         private void setColor(Color colorEnum)

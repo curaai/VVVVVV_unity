@@ -7,6 +7,7 @@ namespace VVVVVV.World.Entity
 {
     public class DisappearingPlatform : MonoBehaviour
     {
+        [SerializeField] private AudioClip disappearSound;
 
         void OnCollisionEnter2D(Collision2D collision)
         {
@@ -14,6 +15,8 @@ namespace VVVVVV.World.Entity
             {
                 var anim = GetComponent<Animator>();
                 anim.SetTrigger("Collide");
+
+                SoundManager.Instance.PlayEffect(disappearSound);
             }
         }
 

@@ -5,7 +5,9 @@ namespace VVVVVV.World.Entity
 {
     public class Trinket : MonoBehaviour
     {
+        [SerializeField] private AudioClip collectSound;
         [SerializeField] public int Idx;
+
         public bool Collected = false;
 
         private TrinketManager manager => GameObject.Find("TrinketManager").GetComponent<TrinketManager>();
@@ -15,6 +17,7 @@ namespace VVVVVV.World.Entity
             if (Collected) return;
 
             manager.Collect(this);
+            SoundManager.Instance.PlayEffect(collectSound);
         }
     }
 }

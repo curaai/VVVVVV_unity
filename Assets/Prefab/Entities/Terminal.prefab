@@ -218,5 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd76ad7fe87405147aebec0d85de3df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terminalSound: {fileID: 8300000, guid: fadfe2ad9fadb2148a8a27f9e1d033ec, type: 3}
+  terminalOpenSound: {fileID: 8300000, guid: fc4461d3658f9b4428f30cc0367b7e7e, type: 3}
   hoverTextBox: {fileID: 0}
   log: {fileID: 0}

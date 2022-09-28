@@ -146,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587606043840cd043980928344b24316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectSound: {fileID: 8300000, guid: 4b2ec530bf3ea73488c363ccdf3f9c23, type: 3}
   Idx: 0
   Collected: 0

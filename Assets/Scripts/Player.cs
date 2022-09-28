@@ -12,6 +12,7 @@ namespace VVVVVV
         public string SerializeKey => "Player";
 
         [SerializeField] private Game game;
+        [SerializeField] private AudioClip deathSound;
 
         private Animator animator;
         private MoveController controller;
@@ -45,6 +46,8 @@ namespace VVVVVV
 
         public void GameOver()
         {
+            SoundManager.Instance.PlayEffect(deathSound);
+
             animator.SetBool("HurtNow", true);
 
             GetComponent<Collider2D>().isTrigger = true;

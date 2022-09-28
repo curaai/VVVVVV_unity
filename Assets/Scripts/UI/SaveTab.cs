@@ -9,6 +9,8 @@ namespace VVVVVV.UI
 {
     public class SaveTab : MonoBehaviour
     {
+        [SerializeField] private AudioClip savedSound;
+
         [SerializeField] Clock clock;
         [SerializeField] Text lastSaveUI;
         [SerializeField] Text summaryUI;
@@ -43,6 +45,8 @@ namespace VVVVVV.UI
                 GameObject.Find("Game").GetComponent<Game>().Save();
                 saved = true;
                 OpenSaveUI();
+
+                SoundManager.Instance.PlayEffect(savedSound);
             }
         }
 

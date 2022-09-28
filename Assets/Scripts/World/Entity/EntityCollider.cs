@@ -33,6 +33,16 @@ namespace VVVVVV.World.Entity
             if (collision.collider.gameObject.layer != CollideTargetLayer) return;
             UpdateTouchStatus(collision.contacts);
         }
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (name != "Player") return;
+
+            if (collision.collider.gameObject.layer != CollideTargetLayer) return;
+
+            if (lastContactPointSize != collision.contacts.Length)
+                UpdateTouchStatus(collision.contacts);
+        }
+
 
         protected void UpdateTouchStatus(ContactPoint2D[] contacts)
         {

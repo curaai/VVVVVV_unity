@@ -10,6 +10,8 @@ namespace VVVVVV.World.Entity
 {
     public class Savepoint : MonoBehaviour, ISerializable
     {
+        [SerializeField] private AudioClip saveSound;
+
         public string SerializeKey { get => "last_savepoint"; }
         private int SavepointLayer => LayerMask.NameToLayer("entity");
 
@@ -34,6 +36,8 @@ namespace VVVVVV.World.Entity
             disableAll();
 
             GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
+
+            SoundManager.Instance.PlayEffect(saveSound);
         }
 
         private void OnTriggerEnter2D(Collider2D collider)

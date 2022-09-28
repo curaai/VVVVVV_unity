@@ -99,6 +99,46 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553493825464333213, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752365964264771309, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: CollisionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ReverseVelocity
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752365964264771309, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: CollisionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VVVVVV.World.Entity.IntervalRepeat, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752365964264771309, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
+      propertyPath: CollisionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8938501096876404284, guid: 36c869d11b012c744815ce64d339f32f, type: 3}
       propertyPath: m_AutoTiling
       value: 0

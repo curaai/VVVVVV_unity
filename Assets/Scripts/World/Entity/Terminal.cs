@@ -6,6 +6,8 @@ namespace VVVVVV.World.Entity
 {
     public class Terminal : MonoBehaviour
     {
+        [SerializeField] private AudioClip terminalSound;
+        [SerializeField] private AudioClip terminalOpenSound;
         [SerializeField] private GameObject hoverTextBox;
         [SerializeField] private GameObject log;
 
@@ -25,6 +27,8 @@ namespace VVVVVV.World.Entity
 
                 GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
                 hoverTextBox.SetActive(false);
+                SoundManager.Instance.PlayEffect(terminalOpenSound);
+
                 GameObject.Find("CutScene").GetComponent<UI.CutSceneController>().Open(log);
             }
         }
@@ -35,6 +39,7 @@ namespace VVVVVV.World.Entity
             {
                 OnPlayerNow = true;
                 hoverTextBox.SetActive(true);
+                SoundManager.Instance.PlayEffect(terminalSound);
             }
         }
 

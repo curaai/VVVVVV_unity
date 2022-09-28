@@ -564,3 +564,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003f29d1ace9a444e93d51aee73bb33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disappearSound: {fileID: 8300000, guid: 2273a7f4ce5bf82449ee90ca0ff6c100, type: 3}

@@ -16,10 +16,11 @@ namespace VVVVVV
         [SerializeField] public Transform cam;
 
         [SerializeField] private GameObject PausePanel;
+        [SerializeField] private AudioClip pauseSound;
         [SerializeField] private GameObject MapPanel;
 
         [SerializeField] private List<GameObject> serializables;
-        [SerializeField] private SoundManager soundManager;
+        [SerializeField] public SoundManager soundManager;
 
         private SaveManager saveManager;
         private PanelController panelController;
@@ -53,15 +54,22 @@ namespace VVVVVV
                 ChangeRoom(lastRoom);
             }
 
-            soundManager.PlayTrack(BGM.PUSHINGONWARDS);
+            soundManager.Play(BGM.PUSHINGONWARDS);
         }
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (panelController.Opened)
+                    SoundManager.Instance.PlayEffect(pauseSound);
+
                 panelController.Toggle(PausePanel);
+            }
             if (Input.GetKeyDown(KeyCode.Return))
+            {
                 panelController.Toggle(MapPanel);
+            }
 
             Vector2Int? PlayerMovedRoom()
             {
