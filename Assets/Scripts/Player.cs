@@ -80,8 +80,6 @@ namespace VVVVVV
 
         public void Load(string str)
         {
-            if (str == "") return;
-
             GetComponent<Collider2D>().isTrigger = false;
 
             var x = SaveManager.DeserializeObject<SaveInfo>(str);

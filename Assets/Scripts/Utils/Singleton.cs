@@ -26,6 +26,9 @@ namespace VVVVVV.Utils
                 return instance;
             }
         }
-        public void Awake() { DontDestroyOnLoad(gameObject); }
+        public void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

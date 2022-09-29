@@ -50,8 +50,9 @@ namespace VVVVVV
 
         public static T DeserializeObject<T>(string str)
         {
+            var _bf = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(str));
-            return (T)bf.Deserialize(memoryStream);
+            return (T)_bf.Deserialize(memoryStream);
         }
     }
 

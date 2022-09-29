@@ -13,16 +13,8 @@ namespace VVVVVV
     {
         [SerializeField] private List<AudioClip> bgmList;
 
-        private AudioSource bgmPlayer;
-        private AudioSource sfxPlayer;
-
-        new void Awake()
-        {
-            base.Awake();
-
-            bgmPlayer = transform.GetChild(0).GetComponent<AudioSource>();
-            sfxPlayer = transform.GetChild(1).GetComponent<AudioSource>();
-        }
+        private AudioSource bgmPlayer => transform.GetChild(0).GetComponent<AudioSource>();
+        private AudioSource sfxPlayer => transform.GetChild(1).GetComponent<AudioSource>();
 
         public void Play(BGM track)
         {

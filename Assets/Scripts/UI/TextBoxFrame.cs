@@ -44,6 +44,8 @@ namespace VVVVVV.UI
                 Destroy(gameObject, DestroyTimer);
             if (speakSound != null)
                 SoundManager.Instance.PlayEffect(speakSound);
+
+            OnValidate();
         }
 
         private void setColor(Color colorEnum)
@@ -107,6 +109,7 @@ namespace VVVVVV.UI
             color = _color;
             transform.GetChild(1).GetComponent<Text>().text = GetComponent<Text>().text;
         }
+
         private void OnDisable() => GetComponent<Animator>().SetTrigger("OnDisable");
     }
 }
