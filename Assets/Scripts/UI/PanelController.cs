@@ -3,13 +3,20 @@ using VVVVVV.UI.Utils;
 
 namespace VVVVVV.UI
 {
-    public class PanelController : MonoBehaviour
+    public class PanelController : IControllable
     {
-        [SerializeField] private Transform archiveObj;
+        [SerializeField] private GameObject pausePanel;
+        [SerializeField] private AudioClip pauseSound;
+        [SerializeField] private GameObject mapPanel;
 
         public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
         public bool Opened => GetComponent<RectTransform>().anchoredPosition.y == 480;
+
+        void Awake()
+        {
+            OnAction += ToggleMap;
+        }
 
         private void Open(GameObject obj)
         {
@@ -43,6 +50,23 @@ namespace VVVVVV.UI
                 Close();
             else
                 Open(ui);
+        }
+
+        public void TogglePause()
+        {
+            if (mainUI == null || mainUI?.Item1 == pausePanel)
+            {
+                if (mainUI != null) SoundManager.Instance.PlayEffect(pauseSound);
+                Toggle(pausePanel);
+            }
+        }
+
+        public void ToggleMap()
+        {
+            if (mainUI == null || mainUI?.Item1 == mapPanel)
+            {
+                Toggle(mapPanel);
+            }
         }
     }
 }

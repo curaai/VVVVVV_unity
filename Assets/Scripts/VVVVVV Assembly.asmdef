@@ -2,7 +2,8 @@
     "name": "VVVVVVAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:11a2306c728a4b843a652ec6c2f142bc"
+        "GUID:11a2306c728a4b843a652ec6c2f142bc",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

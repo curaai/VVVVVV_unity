@@ -15,15 +15,10 @@ namespace VVVVVV
         [SerializeField] public Player player;
         [SerializeField] public Transform cam;
 
-        [SerializeField] private GameObject PausePanel;
-        [SerializeField] private AudioClip pauseSound;
-        [SerializeField] private GameObject MapPanel;
-
-        [SerializeField] private List<GameObject> serializables;
         [SerializeField] public SoundManager soundManager;
+        [SerializeField] private List<GameObject> serializables;
 
         private SaveManager saveManager;
-        private PanelController panelController;
 
         void Awake()
         {
@@ -36,7 +31,6 @@ namespace VVVVVV
             };
             saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));
             saveManager = new SaveManager(saveTargetList);
-            panelController = GameObject.Find("RootPanel").GetComponent<PanelController>();
         }
 
         void Start()
@@ -59,18 +53,6 @@ namespace VVVVVV
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (panelController.Opened)
-                    SoundManager.Instance.PlayEffect(pauseSound);
-
-                panelController.Toggle(PausePanel);
-            }
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                panelController.Toggle(MapPanel);
-            }
-
             Vector2Int? PlayerMovedRoom()
             {
                 var lpos = player.transform.localPosition;

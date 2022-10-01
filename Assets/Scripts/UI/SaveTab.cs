@@ -40,14 +40,14 @@ namespace VVVVVV.UI
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !saved)
-            {
-                GameObject.Find("Game").GetComponent<Game>().Save();
-                saved = true;
-                OpenSaveUI();
+            // if (Input.GetKeyDown(KeyCode.Space) && !saved)
+            // {
+            //     GameObject.Find("Game").GetComponent<Game>().Save();
+            //     saved = true;
+            //     OpenSaveUI();
 
-                SoundManager.Instance.PlayEffect(savedSound);
-            }
+            //     SoundManager.Instance.PlayEffect(savedSound);
+            // }
         }
 
         public void LoadSavedData()

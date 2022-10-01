@@ -8,51 +8,36 @@ using VVVVVV.World.Entity;
 
 namespace VVVVVV.UI.Utils
 {
-    public class OptionSelector : MonoBehaviour
+    public class OptionSelector : IControllable
     {
         [SerializeField] protected List<Text> options;
-        [SerializeField] protected UnityEvent<int> optionChanged = new UnityEvent<int>();
-        private MoveController player => GameObject.Find("Player").GetComponent<MoveController>();
+        [SerializeField] protected UnityEvent<int> optionChanged;
+
+        void Awake()
+        {
+            OnMove += Move;
+        }
 
         void OnEnable()
         {
-            activeChildren(true);
-            player.enabled = false;
             curOptIdx = 0;
+            InputControlManager.Instance.SetFocus(this);
         }
-
         void OnDisable()
         {
-            activeChildren(false);
-
-            // TODO: refactoring need
-            player.enabled = true;
+            InputControlManager.Instance.DeFocus();
         }
 
-        public void Toggle()
+        void Move(float _direction)
         {
-        }
-
-        private void activeChildren(bool activate)
-        {
-            foreach (Transform child in transform)
-                child.gameObject.SetActive(activate);
-        }
-
-        void Update()
-        {
-            int direction = 0;
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.UpArrow))
-                direction = -1;
-            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-                direction = 1;
-            else
-                return;
+            if (_direction == 0) return;
+            var direction = Mathf.FloorToInt(_direction);
 
             var idx = curOptIdx + direction;
-            if (idx < 0) idx = options.Count - 1;
-            else if (options.Count <= idx) idx = 0;
+            if (idx < 0)
+                idx = options.Count - 1;
+            else if (options.Count <= idx)
+                idx = 0;
             curOptIdx = idx;
         }
 
@@ -61,20 +46,19 @@ namespace VVVVVV.UI.Utils
             get => _curOptIdx;
             set
             {
-                _curOptIdx = value;
-                var effects = options.Select(x => x.GetComponent<GlowEffect>()).ToList();
-                foreach (var opt in options.Select(x => x.GetComponent<GlowEffect>()))
+                void SetGlowOption(int idx, bool x)
                 {
-                    opt.GlowOn = false;
-                    var _pad = opt.GetComponent<GlowTextPadding>();
-                    if (_pad != null)
-                        _pad.enabled = false;
+                    var glow = options[idx].GetComponent<GlowEffect>();
+                    glow.GlowOn = x;
+                    var padding = glow.GetComponent<GlowTextPadding>();
+                    if (padding != null)
+                        padding.enabled = x;
                 }
 
-                options[curOptIdx].GetComponent<GlowEffect>().GlowOn = true;
-                var pad = options[curOptIdx].GetComponent<GlowTextPadding>();
-                if (pad != null)
-                    pad.enabled = true;
+                _curOptIdx = value;
+                foreach (var i in Enumerable.Range(0, options.Count))
+                    SetGlowOption(i, false);
+                SetGlowOption(_curOptIdx, true);
 
                 optionChanged.Invoke(curOptIdx);
             }
