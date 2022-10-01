@@ -21,6 +21,7 @@ namespace VVVVVV
             controller = GetComponent<MoveController>();
             entityCollider = GetComponent<EntityCollider>();
 
+            controlType = IControllable.Type.Player;
             OnMove += Move;
             OnSpace += Space;
         }

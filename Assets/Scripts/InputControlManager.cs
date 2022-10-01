@@ -7,6 +7,13 @@ namespace VVVVVV
 {
     public abstract class IControllable : MonoBehaviour
     {
+        public enum Type
+        {
+            Player,
+            UI,
+        }
+        public Type controlType = IControllable.Type.Player;
+
         public Action<float> OnMove = null;
         public Action OnSpace = null;
         public Action OnAction = null;
@@ -15,6 +22,19 @@ namespace VVVVVV
     public class InputControlManager : Utils.Singleton<InputControlManager>
     {
         [SerializeField] private List<IControllable> controlStateList;
+
+        void Start()
+        {
+            SwitchActionMap();
+        }
+
+        void SwitchActionMap()
+        {
+            if (controlStateList[0].controlType == IControllable.Type.Player)
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+            else
+                GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+        }
 
         public void OnMove(InputValue value)
         {
@@ -79,7 +99,16 @@ namespace VVVVVV
             GameObject.Find("PanelController").GetComponent<UI.PanelController>().TogglePause();
         }
 
-        public void SetFocus(IControllable controllable) => controlStateList.Insert(0, controllable);
-        public void DeFocus() => controlStateList.RemoveAt(0);
+        public void SetFocus(IControllable controllable)
+        {
+            controlStateList.Insert(0, controllable);
+            SwitchActionMap();
+        }
+
+        public void DeFocus()
+        {
+            controlStateList.RemoveAt(0);
+            SwitchActionMap();
+        }
     }
 }

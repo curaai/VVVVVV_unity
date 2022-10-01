@@ -15,6 +15,7 @@ namespace VVVVVV.UI.Utils
 
         void Awake()
         {
+            controlType = IControllable.Type.UI;
             OnMove += Move;
         }
 
