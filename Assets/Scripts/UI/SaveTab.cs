@@ -7,7 +7,8 @@ using VVVVVV.World.Entity;
 
 namespace VVVVVV.UI
 {
-    public class SaveTab : MonoBehaviour
+    // public class SaveTab : MonoBehaviour
+    public class SaveTab : IControllable
     {
         [SerializeField] private AudioClip savedSound;
 
@@ -15,39 +16,41 @@ namespace VVVVVV.UI
         [SerializeField] Text lastSaveUI;
         [SerializeField] Text summaryUI;
 
-        Minimap minimap;
-
         private Transform offSavedUI => transform.Find("NotSaved");
         private Transform onSavedUI => transform.Find("Saved");
+        public override Type controlType => Type.UI;
 
         public bool saved { get; private set; }
         void Awake()
         {
-            minimap = GameObject.Find("World").GetComponent<Game>().minimap;
+            OnSpace += Save;
         }
 
-        void OnEnable()
+        protected void OnEnable()
         {
             LoadSavedData();
             offSavedUI.gameObject.SetActive(true);
             onSavedUI.gameObject.SetActive(false);
+
+            FocusNow = true;
         }
 
-        void OnDisable()
+        protected void OnDisable()
         {
             saved = false;
+            FocusNow = false;
         }
 
-        void Update()
+        void Save()
         {
-            // if (Input.GetKeyDown(KeyCode.Space) && !saved)
-            // {
-            //     GameObject.Find("Game").GetComponent<Game>().Save();
-            //     saved = true;
-            //     OpenSaveUI();
+            if (!saved)
+            {
+                GameObject.Find("World").GetComponent<Game>().Save();
+                saved = true;
+                OpenSaveUI();
 
-            //     SoundManager.Instance.PlayEffect(savedSound);
-            // }
+                SoundManager.Instance.PlayEffect(savedSound);
+            }
         }
 
         public void LoadSavedData()
@@ -81,6 +84,8 @@ namespace VVVVVV.UI
 
         private (string, string) GetSavedAreaAndTime()
         {
+            var minimap = GameObject.Find("World").GetComponent<Game>().minimap;
+
             var rx = Mathf.FloorToInt(Savepoint.LastSavepoint.transform.position.x / 640);
             var ry = -Mathf.FloorToInt(Savepoint.LastSavepoint.transform.position.y / 480);
             var areaStr = minimap.room(new Vector2Int(rx, ry)).areaStr();

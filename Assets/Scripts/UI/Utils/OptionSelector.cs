@@ -12,22 +12,19 @@ namespace VVVVVV.UI.Utils
     {
         [SerializeField] protected List<Text> options;
         [SerializeField] protected UnityEvent<int> optionChanged;
+        public override Type controlType => Type.UI;
 
         void Awake()
         {
-            controlType = IControllable.Type.UI;
             OnMove += Move;
         }
 
         void OnEnable()
         {
             curOptIdx = 0;
-            InputControlManager.Instance.SetFocus(this);
+            FocusNow = true;
         }
-        void OnDisable()
-        {
-            InputControlManager.Instance.DeFocus();
-        }
+        void OnDisable() => FocusNow = false;
 
         void Move(float _direction)
         {
@@ -39,6 +36,8 @@ namespace VVVVVV.UI.Utils
                 idx = options.Count - 1;
             else if (options.Count <= idx)
                 idx = 0;
+
+            Debug.Log($"{idx} {direction}");
             curOptIdx = idx;
         }
 
@@ -58,13 +57,11 @@ namespace VVVVVV.UI.Utils
 
                 _curOptIdx = value;
                 foreach (var i in Enumerable.Range(0, options.Count))
-                    SetGlowOption(i, false);
-                SetGlowOption(_curOptIdx, true);
+                    SetGlowOption(i, i == _curOptIdx);
 
                 optionChanged.Invoke(curOptIdx);
             }
         }
-
         private int _curOptIdx;
     }
 }

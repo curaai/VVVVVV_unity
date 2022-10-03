@@ -4,24 +4,27 @@ using VVVVVV.UI.Utils.Glow;
 
 namespace VVVVVV.World.Entity
 {
-    public class Terminal : MonoBehaviour
+    public class Terminal : IControllable
     {
         [SerializeField] private AudioClip terminalSound;
         [SerializeField] private AudioClip terminalOpenSound;
         [SerializeField] private GameObject hoverTextBox;
         [SerializeField] private GameObject log;
 
+        public override Type controlType => IControllable.Type.UI;
+
         public bool OnPlayerNow { get; private set; }
         public bool OnceActivated { get; private set; }
 
-        void OnEabled()
+        void Awake()
         {
             OnceActivated = false;
+            OnAction += OpenLog;
         }
 
-        void Update()
+        void OpenLog()
         {
-            if (!log.activeSelf && !OnceActivated && OnPlayerNow && Input.GetKeyDown(KeyCode.Return))
+            if (!OnceActivated)
             {
                 OnceActivated = true;
 
@@ -37,6 +40,7 @@ namespace VVVVVV.World.Entity
         {
             if (collider.gameObject.CompareTag("Player") && !OnceActivated)
             {
+                FocusNow = true;
                 OnPlayerNow = true;
                 hoverTextBox.SetActive(true);
                 SoundManager.Instance.PlayEffect(terminalSound);
@@ -47,6 +51,7 @@ namespace VVVVVV.World.Entity
         {
             if (collider.gameObject.CompareTag("Player"))
             {
+                FocusNow = false;
                 OnPlayerNow = false;
                 hoverTextBox.SetActive(false);
             }

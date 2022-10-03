@@ -12,11 +12,15 @@ namespace VVVVVV.UI
         public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
         public bool Opened => GetComponent<RectTransform>().anchoredPosition.y == 480;
+        public override Type controlType => Type.UI;
 
         void Awake()
         {
             OnAction += ToggleMap;
         }
+
+        void OnEnable() => FocusNow = true;
+        void OnDisable() => FocusNow = false;
 
         private void Open(GameObject obj)
         {

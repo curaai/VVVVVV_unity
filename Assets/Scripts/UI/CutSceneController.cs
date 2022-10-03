@@ -4,18 +4,26 @@ using VVVVVV.Utils;
 
 namespace VVVVVV.UI
 {
-    public class CutSceneController : MonoBehaviour
+    public class CutSceneController : IControllable
     {
-        public bool ControlInput { get; set; } = true;
+        public override Type controlType => Type.UI;
 
         public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
+        void Awake()
+        {
+            OnSpace += Close;
+            OnMove += DummyMoveFunc;
+        }
 
         public void Open(GameObject uiObj)
         {
+            FocusNow = true;
+
             var container = transform.GetChild(1);
             uiObj.transform.SetParent(container);
             uiObj.SetActive(true);
+
             // save original parent;
             mainUI = (uiObj, uiObj.transform.parent);
 
@@ -28,16 +36,6 @@ namespace VVVVVV.UI
             Debug.Log($"Open Cutscene {uiObj.name}");
         }
 
-        void Update()
-        {
-            if ((mainUI?.Item1.activeSelf ?? false) &&
-                Input.GetKeyDown(KeyCode.Space) &&
-                ControlInput)
-            {
-                Close();
-            }
-        }
-
         public void Close()
         {
             slideAnimator.SetBool("Open", false);
@@ -46,6 +44,8 @@ namespace VVVVVV.UI
                 StartCoroutine(AnimationHelper.CheckAnimationCompleted(
                     slideAnimator, "Close", () =>
                     {
+                        FocusNow = false;
+
                         var obj = mainUI.Value.Item1;
                         obj.SetActive(false);
                         obj.transform.SetParent(mainUI.Value.Item2);
@@ -53,7 +53,6 @@ namespace VVVVVV.UI
 
                         var player = GameObject.Find("Player");
                         player.GetComponent<PlayerInputManager>().enabled = true;
-                        ControlInput = true;
 
                         Debug.Log("Close Cutscene");
                     }

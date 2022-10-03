@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "30f94f6a-52c4-44c5-b5e6-fb1e44c9af39",
                     "expectedControlType": "Axis",
                     "processors": "",
@@ -183,9 +183,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "62c9305b-ad40-4500-8afb-22018c4dd29c",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

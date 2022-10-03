@@ -16,19 +16,13 @@ namespace VVVVVV
 
         private Animator animator;
         private MoveController controller;
-        private UI.Minimap minimap;
 
-        public Room room;
         public int deathCount = 0;
 
         void Awake()
         {
             animator = GetComponent<Animator>();
             controller = GetComponent<MoveController>();
-        }
-        void Start()
-        {
-            minimap = game.minimap;
         }
 
         void FixedUpdate()

@@ -7,21 +7,25 @@ using UnityEngine.Playables;
 namespace VVVVVV.UI
 {
     [RequireComponent(typeof(PlayableDirector))]
-    public class TimelineActivationController : MonoBehaviour
+    public class TimelineActivationController : IControllable
     {
+        public override Type controlType => Type.UI;
+
         private PlayableDirector director;
 
         void Awake()
         {
             director = GetComponent<PlayableDirector>();
+            OnSpace += resume;
         }
 
-        void Update()
+        void OnEnable() => FocusNow = true;
+        void OnDisable() => FocusNow = false;
+
+        void resume()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && director.state == PlayState.Paused)
-            {
+            if (director.state == PlayState.Paused)
                 director.Resume();
-            }
         }
     }
 }

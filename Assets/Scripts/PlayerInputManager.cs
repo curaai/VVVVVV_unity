@@ -9,6 +9,7 @@ namespace VVVVVV
     public class PlayerInputManager : IControllable
     {
         public static readonly Vector2 SPEED = new Vector2(6f, 6f);
+        public override Type controlType => Type.Player;
 
         [SerializeField] AudioClip onGroundSound;
         [SerializeField] AudioClip onRoofSound;
@@ -21,10 +22,11 @@ namespace VVVVVV
             controller = GetComponent<MoveController>();
             entityCollider = GetComponent<EntityCollider>();
 
-            controlType = IControllable.Type.Player;
             OnMove += Move;
             OnSpace += Space;
         }
+        void OnEnable() => FocusNow = true;
+        void OnDisable() => FocusNow = false;
 
         void Move(float axis)
         {

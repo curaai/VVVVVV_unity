@@ -7,16 +7,35 @@ namespace VVVVVV
 {
     public abstract class IControllable : MonoBehaviour
     {
+        // Control Manager don't assign next state when face dummy function
+        public static void DummyMoveFunc(float x) => x += 1;
+        public static void DummySpaceFunc() { return; }
+        public static void DummyActionFunc() { return; }
+
         public enum Type
         {
-            Player,
             UI,
+            Player,
         }
-        public Type controlType = IControllable.Type.Player;
+        public virtual Type controlType => throw new NullReferenceException("Null control type");
 
         public Action<float> OnMove = null;
         public Action OnSpace = null;
         public Action OnAction = null;
+
+        protected bool FocusNow
+        {
+            get => _FocusNow;
+            set
+            {
+                _FocusNow = value;
+                if (value)
+                    InputControlManager.Instance.SetFocus(this);
+                else
+                    InputControlManager.Instance.DeFocus(this);
+            }
+        }
+        protected bool _FocusNow;
     }
 
     public class InputControlManager : Utils.Singleton<InputControlManager>
@@ -30,15 +49,21 @@ namespace VVVVVV
 
         void SwitchActionMap()
         {
+            string newmap;
             if (controlStateList[0].controlType == IControllable.Type.Player)
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                newmap = "Player";
             else
-                GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+                newmap = "UI";
+
+            var playerInput = GetComponent<PlayerInput>();
+            if (playerInput.currentActionMap.name != newmap)
+                playerInput.SwitchCurrentActionMap(newmap);
         }
 
         public void OnMove(InputValue value)
         {
             var axis = value.Get<float>();
+
             Action<float> mainFunc = null;
 
             foreach (var state in controlStateList)
@@ -50,10 +75,8 @@ namespace VVVVVV
                 }
             }
 
-            if (mainFunc == null)
-                throw new ArgumentNullException("Can't fetch OnMove Funtion");
-
-            mainFunc.Invoke(axis);
+            if (mainFunc != null)
+                mainFunc.Invoke(axis);
         }
 
         public void OnSpace()
@@ -69,10 +92,8 @@ namespace VVVVVV
                 }
             }
 
-            if (mainFunc == null)
-                throw new ArgumentNullException("Can't fetch OnSpace Funtion");
-
-            mainFunc.Invoke();
+            if (mainFunc != null)
+                mainFunc.Invoke();
         }
 
         public void OnAction()
@@ -88,10 +109,8 @@ namespace VVVVVV
                 }
             }
 
-            if (mainFunc == null)
-                throw new ArgumentNullException("Can't fetch OnAction Funtion");
-
-            mainFunc.Invoke();
+            if (mainFunc != null)
+                mainFunc.Invoke();
         }
 
         public void OnEscape()
@@ -105,9 +124,10 @@ namespace VVVVVV
             SwitchActionMap();
         }
 
-        public void DeFocus()
+        public void DeFocus(IControllable obj)
         {
-            controlStateList.RemoveAt(0);
+            if (controlStateList.Contains(obj))
+                controlStateList.Remove(obj);
             SwitchActionMap();
         }
     }
