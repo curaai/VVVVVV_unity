@@ -10,10 +10,11 @@ namespace VVVVVV.UI
 
         public (GameObject, Transform)? mainUI;
         private Animator slideAnimator => GetComponent<Animator>();
+
         void Awake()
         {
-            OnSpace += Close;
             OnMove += DummyMoveFunc;
+            OnSpace += Close;
         }
 
         public void Open(GameObject uiObj)
@@ -38,14 +39,14 @@ namespace VVVVVV.UI
 
         public void Close()
         {
+            FocusNow = false;
             slideAnimator.SetBool("Open", false);
+
             if (mainUI.HasValue)
             {
                 StartCoroutine(AnimationHelper.CheckAnimationCompleted(
                     slideAnimator, "Close", () =>
                     {
-                        FocusNow = false;
-
                         var obj = mainUI.Value.Item1;
                         obj.SetActive(false);
                         obj.transform.SetParent(mainUI.Value.Item2);

@@ -1,10 +1,7 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using VVVVVV.UI;
-using VVVVVV.UI.Utils;
+using VVVVVV.World;
 using VVVVVV.World.Entity;
 
 namespace VVVVVV
@@ -28,7 +25,9 @@ namespace VVVVVV
                 GameObject.Find("Clock").GetComponent<World.Clock>(),
                 GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
                 player,
+                GameObject.Find("EventTriggerManager").GetComponent<EventTriggerManager>(),
             };
+
             saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));
             saveManager = new SaveManager(saveTargetList);
         }

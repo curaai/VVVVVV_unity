@@ -9,6 +9,7 @@ namespace VVVVVV.UI
     [RequireComponent(typeof(PlayableDirector))]
     public class TimelineActivationController : IControllable
     {
+        public static bool IsPlayingNow = false;
         public override Type controlType => Type.UI;
 
         private PlayableDirector director;
@@ -17,6 +18,11 @@ namespace VVVVVV.UI
         {
             director = GetComponent<PlayableDirector>();
             OnSpace += resume;
+
+            // hooking OnSpace in cutscene 
+            var cutscene = GameObject.Find("CutScene").GetComponent<CutSceneController>();
+            director.played += (PlayableDirector d) => cutscene.OnSpace = null;
+            director.stopped += (PlayableDirector d) => cutscene.OnSpace += cutscene.Close;
         }
 
         void OnEnable() => FocusNow = true;

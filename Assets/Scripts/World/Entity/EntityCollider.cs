@@ -38,9 +38,7 @@ namespace VVVVVV.World.Entity
             if (name != "Player") return;
 
             if (collision.collider.gameObject.layer != CollideTargetLayer) return;
-
-            if (lastContactPointSize != collision.contacts.Length)
-                UpdateTouchStatus(collision.contacts);
+            UpdateTouchStatus(collision.contacts);
         }
 
 
