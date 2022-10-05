@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843204063027501384, guid: bfd950def4c51284cbb67a8a0637a349, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8843204063027501384, guid: bfd950def4c51284cbb67a8a0637a349, type: 3}
       propertyPath: m_Points.m_Paths.Array.size
@@ -669,3 +669,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd950def4c51284cbb67a8a0637a349, type: 3}
+--- !u!1 &3606704700228407700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5031388256489088494, guid: bfd950def4c51284cbb67a8a0637a349, type: 3}
+  m_PrefabInstance: {fileID: 8637484238985376890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &107484586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606704700228407700}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2498689a67094498e851268a2c0499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SavedTextBoxFrame: {fileID: 0}
+  hoverText: {fileID: 0}
+  sprites:
+  - {fileID: 8409234884740282508, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 5697196774372426085, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 5906088716191350737, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: -7390512877190775118, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 6002851821033003516, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 2659611413054207264, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 8301341895213619054, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: -5636476811879771515, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 888515372327595208, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
+  - {fileID: 165622345360703954, guid: fe0d4b6ee42d5c247a8050cb2b3f0acc, type: 3}
