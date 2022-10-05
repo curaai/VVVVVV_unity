@@ -59,8 +59,7 @@ namespace VVVVVV.UI
             void SetBlinkPos()
             {
                 var z = FocusBlink.transform.localPosition.z;
-                var localPos = CurRoom.pos - Vector2.one * 100;
-                FocusBlink.transform.localPosition = new Vector3(24 * localPos.x, -(18 * localPos.y), z);
+                FocusBlink.transform.localPosition = new Vector3(24 * CurRoom.pos.x, -(18 * CurRoom.pos.y), z);
             }
 
             roomnameText.text = CurRoom.name;
@@ -69,7 +68,6 @@ namespace VVVVVV.UI
 
         public void SetExplored(Vector2Int r, bool status = true)
         {
-            r -= Vector2Int.one * 100;
             if (status)
                 explored.Add((r.x, r.y));
             else
@@ -130,23 +128,21 @@ namespace VVVVVV.UI
 
         public void ShowShip()
         {
-            var dummy = Vector2Int.one * 100;
-            SetExplored(new Vector2Int(2, 10) + dummy);
-            SetExplored(new Vector2Int(3, 10) + dummy);
-            SetExplored(new Vector2Int(4, 10) + dummy);
-            SetExplored(new Vector2Int(2, 11) + dummy);
-            SetExplored(new Vector2Int(3, 11) + dummy);
-            SetExplored(new Vector2Int(4, 11) + dummy);
+            SetExplored(new Vector2Int(2, 10));
+            SetExplored(new Vector2Int(3, 10));
+            SetExplored(new Vector2Int(4, 10));
+            SetExplored(new Vector2Int(2, 11));
+            SetExplored(new Vector2Int(3, 11));
+            SetExplored(new Vector2Int(4, 11));
         }
         public void HideShip()
         {
-            var dummy = Vector2Int.one * 100;
-            SetExplored(new Vector2Int(2, 10) + dummy, false);
-            SetExplored(new Vector2Int(3, 10) + dummy, false);
-            SetExplored(new Vector2Int(4, 10) + dummy, false);
-            SetExplored(new Vector2Int(2, 11) + dummy, false);
-            SetExplored(new Vector2Int(3, 11) + dummy, false);
-            SetExplored(new Vector2Int(4, 11) + dummy, false);
+            SetExplored(new Vector2Int(2, 10), false);
+            SetExplored(new Vector2Int(3, 10), false);
+            SetExplored(new Vector2Int(4, 10), false);
+            SetExplored(new Vector2Int(2, 11), false);
+            SetExplored(new Vector2Int(3, 11), false);
+            SetExplored(new Vector2Int(4, 11), false);
         }
     }
 }

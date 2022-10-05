@@ -40,6 +40,7 @@ namespace VVVVVV
 
     public enum Area
     {
+        World = 0,
         SpaceStation = 5,
     }
 }
