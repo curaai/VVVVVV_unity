@@ -8,7 +8,6 @@ namespace VVVVVV
 {
     public class Game : MonoBehaviour
     {
-        [SerializeField] public UI.Minimap minimap;
         [SerializeField] public Player player;
         [SerializeField] public Transform cam;
 
@@ -16,10 +15,13 @@ namespace VVVVVV
         [SerializeField] private List<GameObject> serializables;
 
         private SaveManager saveManager;
+        public Minimap minimap;
 
         void Awake()
         {
             Application.targetFrameRate = 60;
+            minimap = GetComponentInChildren<Minimap>();
+
             var saveTargetList = new List<ISerializable>() {
                 minimap,
                 GameObject.Find("Clock").GetComponent<World.Clock>(),
