@@ -11,7 +11,7 @@ namespace VVVVVV
 
         void Awake()
         {
-            UI = GameObject.Find("UI Rooms").transform.Find(name)?.gameObject;
+            UI = GameObject.Find("UI Rooms").transform.Find(transform.parent.name + "/" + name)?.gameObject;
         }
 
         void OnEnable() => UI?.SetActive(true);

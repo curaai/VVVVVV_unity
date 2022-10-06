@@ -47,6 +47,10 @@ namespace VVVVVV.World
                 explored.Add((r.x, r.y));
             else
                 explored.Remove((r.x, r.y));
+
+            var minimaptabs = GameObject.Find("Canvas").GetComponentsInChildren<UI.MinimapTab>();
+            foreach (var tab in minimaptabs)
+                tab.UpdateFog();
         }
 
         public string Save() => SaveManager.SerializableObject(explored);
