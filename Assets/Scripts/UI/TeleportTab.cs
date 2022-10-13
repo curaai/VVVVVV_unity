@@ -71,7 +71,6 @@ namespace VVVVVV.UI
             dstIdx = x;
         }
 
-        // throw new NotImplementedException("Show Cur Selected teleporter");
         public void Teleport()
         {
             // throw new NotImplementedException("Move to selected teleporter");

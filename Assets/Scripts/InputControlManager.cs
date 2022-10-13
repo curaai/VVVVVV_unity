@@ -56,7 +56,7 @@ namespace VVVVVV
                 newmap = "UI";
 
             var playerInput = GetComponent<PlayerInput>();
-            if (playerInput.currentActionMap.name != newmap)
+            if (playerInput?.currentActionMap.name != newmap)
                 playerInput.SwitchCurrentActionMap(newmap);
         }
 
