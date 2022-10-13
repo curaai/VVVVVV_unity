@@ -5,6 +5,7 @@ namespace VVVVVV.World
 {
     public class Teleporter : IControllable
     {
+        [SerializeField] private GameObject teleportTab;
         [SerializeField] private GameObject SavedTextBoxFrame;
         [SerializeField] private GameObject hoverText;
         [SerializeField] private Sprite[] sprites;
@@ -40,7 +41,8 @@ namespace VVVVVV.World
 
         void ShowTeleportMap()
         {
-
+            var panelCtrl = GameObject.Find("PanelController").GetComponent<UI.PanelController>();
+            panelCtrl.Toggle(teleportTab);
         }
 
         void Update()

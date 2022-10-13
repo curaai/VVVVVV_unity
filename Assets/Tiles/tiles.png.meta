@@ -3382,13 +3382,13 @@ TextureImporter:
     second: tiles_1125
   - first:
       213: 8355467308704359392
-    second: tiles_1126
+    second: tiles Unknown
   - first:
       213: 571565190852976569
     second: tiles Teleporter
   - first:
       213: -7718856030976652436
-    second: tiles_1128
+    second: tiles Teleporter Highlight
   - first:
       213: 1326830724189477379
     second: tiles_1129
@@ -27353,7 +27353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_1126
+      name: tiles Unknown
       rect:
         serializedVersion: 2
         x: 48
@@ -27395,7 +27395,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_1128
+      name: tiles Teleporter Highlight
       rect:
         serializedVersion: 2
         x: 64

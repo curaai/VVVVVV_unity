@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,13 +12,16 @@ namespace VVVVVV.UI
         private Image fogMaskPanel;
         private Transform roomBlink;
 
+        private UI.Teleporter[] teleporters;
         private Minimap minimap;
 
         void Awake()
         {
             minimap = GameObject.Find("World").GetComponentInChildren<Minimap>(true);
-            roomBlink = transform.Find("BlinkRoom");
             fogMaskPanel = transform.Find("FogMask").GetComponent<Image>();
+            roomBlink = transform.Find("BlinkRoom");
+
+            teleporters = GetComponentsInChildren<UI.Teleporter>();
         }
 
         void OnEnable()
@@ -32,29 +36,42 @@ namespace VVVVVV.UI
             }
 
             UpdateFog();
-            SetBlinkPos(minimap.CurRoom.pos);
+            UpdateTeleporter();
+
+            if (roomBlink != null)
+                SetBlinkPos(minimap.CurRoom.pos);
         }
 
         public void UpdateFog()
         {
-            (int rw, int rh) = (fogTile.width, fogTile.height);
-            var tex = new Texture2D(rw * 20, rh * 20);
-            tex.alphaIsTransparency = true;
+            (int tw, int th) = (fogTile.width, fogTile.height);
+            var fogMask = new Texture2D(tw * 20, th * 20);
+            fogMask.alphaIsTransparency = true;
+            var transparentTile = Enumerable.Repeat(new UnityEngine.Color(0, 0, 0, 0), tw * th).ToArray();
+
             for (int y = 0; y < 20; y++)
             {
                 for (int x = 0; x < 20; x++)
                 {
-                    var pixels = fogTile.GetPixels();
+                    UnityEngine.Color[] pixels;
+
                     // reverse y for coordnation
                     if (minimap.explored.Contains((x, 19 - y)))
-                        pixels = Enumerable.Repeat(new UnityEngine.Color(0, 0, 0, 0), rw * rh).ToArray();
+                        pixels = transparentTile;
+                    else
+                        pixels = fogTile.GetPixels();
 
-                    tex.SetPixels(x * rw, y * rh, rw, rh, pixels);
+                    fogMask.SetPixels(x * tw, y * th, tw, th, pixels);
                 }
             }
-            tex.Apply(false);
-            var newMask = Sprite.Create(tex, new Rect(0, 0, 240, 180), Vector2.one / 2f);
-            fogMaskPanel.sprite = newMask;
+            fogMask.Apply(false);
+            fogMaskPanel.sprite = Sprite.Create(fogMask, new Rect(0, 0, 240, 180), Vector2.one / 2f); ;
+        }
+
+        public void UpdateTeleporter()
+        {
+            foreach (var t in teleporters)
+                t.SetExplored(minimap.explored.Contains((t.pos.x, t.pos.y)));
         }
     }
 }
