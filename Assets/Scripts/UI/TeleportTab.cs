@@ -14,10 +14,12 @@ namespace VVVVVV.UI
 
         private Transform curTelHighlight;
         private Transform dstTelHighlight;
-        public int dstIdx
+
+        private int curIdx;
+        private int dstIdx
         {
             get => _dstIdx;
-            private set
+            set
             {
                 _dstIdx = value;
                 dstTelHighlight.localPosition = teleporters[dstIdx].transform.localPosition;
@@ -56,7 +58,8 @@ namespace VVVVVV.UI
             var pos = getCurrentRoom();
             var curTeleporter = teleporters.Find(t => t.pos == pos);
             curTelHighlight.localPosition = curTeleporter.transform.localPosition;
-            dstIdx = teleporters.IndexOf(curTeleporter);
+            curIdx = teleporters.IndexOf(curTeleporter);
+            dstIdx = curIdx;
         }
         private void OnDisable()
         {
@@ -73,7 +76,18 @@ namespace VVVVVV.UI
 
         public void Teleport()
         {
-            // throw new NotImplementedException("Move to selected teleporter");
+            void closeTab()
+            {
+                GameObject.Find("PanelController")
+                .GetComponent<UI.PanelController>()
+                .Toggle(gameObject);
+            }
+
+            if (curIdx != dstIdx)
+            {
+            }
+
+            closeTab();
         }
     }
 }

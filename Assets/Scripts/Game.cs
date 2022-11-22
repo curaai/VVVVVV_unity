@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using VVVVVV.World;
 using VVVVVV.World.Entity;
 
@@ -13,6 +14,8 @@ namespace VVVVVV
 
         [SerializeField] public SoundManager soundManager;
         [SerializeField] private List<GameObject> serializables;
+        // TODO: Serialize timeline
+        [SerializeField] public PlayableDirector teleportTimeline = null;
 
         private SaveManager saveManager;
         public Minimap minimap;
