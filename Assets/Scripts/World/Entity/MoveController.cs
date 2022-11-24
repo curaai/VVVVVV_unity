@@ -127,6 +127,8 @@ namespace VVVVVV.World.Entity
                 g = gravity == Gravity.UP ? Gravity.DOWN : Gravity.UP;
 
             gravity = g.Value;
+            if (gravity == Gravity.UP) force.y = 6f;
+            else force.y = -6f;
         }
 
         public void TrimVelocity()

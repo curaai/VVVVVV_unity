@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VVVVVV.UI.Utils.Glow;
+using VVVVVV.World.Entity;
 
 namespace VVVVVV.World
 {
@@ -17,6 +21,8 @@ namespace VVVVVV.World
         [SerializeField] private GameObject hoverText;
         [SerializeField] private Sprite[] sprites;
 
+        public static bool WarpNow = false;
+
         public override Type controlType => Type.Player;
         public State state { get; private set; }
 
@@ -25,21 +31,34 @@ namespace VVVVVV.World
 
         void Awake()
         {
-            OnAction += showTeleportMap;
+            // TODO: Replace to Show Teleport Map
+            // OnAction += showTeleportMap;
+            OnAction += Teleport;
+
+            state = State.OFF;
+        }
+
+        void OnEnable()
+        {
+            hoverText.SetActive(true);
+            SavedTextBoxFrame.SetActive(true); //Disappear automatically
+            GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
+            GameObject.Find("World").GetComponent<Game>().Save();
+        }
+        void OnDisable()
+        {
             state = State.OFF;
         }
 
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (!collider.CompareTag("Player")) return;
-            state = State.IDLE;
-
-            enabled = true;
+            if (state == State.OFF)
+            {
+                state = State.IDLE;
+                enabled = true;
+            }
             FocusNow = true;
-            hoverText.SetActive(true);
-            SavedTextBoxFrame.SetActive(true); //Disappear automatically
-            GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
-            GameObject.Find("World").GetComponent<Game>().Save();
         }
 
         void OnTriggerExit2D(Collider2D collider)
@@ -50,7 +69,7 @@ namespace VVVVVV.World
 
         private void showTeleportMap()
         {
-            var teleportTimeline = GameObject.Find("Game").GetComponent<Game>().teleportTimeline;
+            var teleportTimeline = GameObject.Find("World").GetComponent<Game>().teleportTimeline;
             if (teleportTimeline != null)
             {
                 teleportTimeline.Play();
@@ -62,9 +81,57 @@ namespace VVVVVV.World
             }
         }
 
-        public void Teleport(Vector2Int dstPos)
+        // public void Teleport(Vector2Int dstPos)
+        public void Teleport()
         {
-            state = State.ON;
+            var game = GameObject.Find("World").GetComponent<Game>();
+            var player = GameObject.Find("Player").GetComponent<Player>();
+
+            var teleportPos = new Vector2Int(2, 11);
+            var newTeleporter = GameObject.Find("World")
+                .GetComponentsInChildren<Room>(true)
+                .Where(r => r.pos == teleportPos)
+                .Select(r => r.GetComponentInChildren<Teleporter>())
+                .First();
+
+            // TODO: Append sounds
+            // TODO: Refactoring
+            IEnumerator Warp()
+            {
+                WarpNow = true;
+
+                state = State.ON;
+                yield return new WaitForSeconds(0.5f);
+
+                // TODO: Change color of teleporter & player
+                state = State.OFF;
+                // hide player
+                player.gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.1f);
+
+                player.gameObject.SetActive(true);
+                newTeleporter.state = State.ON;
+
+                game.ChangeRoom(teleportPos);
+                player.transform.localPosition = newTeleporter.transform.localPosition;
+
+                var moveVelocityQueue = newTeleporter.GetComponent<MoveVelocityQueue>();
+                if (moveVelocityQueue != null)
+                {
+                    moveVelocityQueue.enabled = true;
+                    moveVelocityQueue.TargetController = player.GetComponent<MoveController>();
+                }
+
+                var teleportTimeline = game.teleportTimeline;
+
+                WarpNow = false;
+                yield return null;
+            }
+
+            StartCoroutine(Warp());
+
+
+            Debug.Log(newTeleporter);
         }
 
         void Update()

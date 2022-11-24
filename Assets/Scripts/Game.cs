@@ -59,6 +59,9 @@ namespace VVVVVV
         {
             Vector2Int? PlayerMovedRoom()
             {
+                if (player.GetComponent<MoveController>().velocity == Vector2.zero)
+                    return null;
+
                 var lpos = player.transform.localPosition;
                 var res = Vector2Int.zero;
 
@@ -70,7 +73,9 @@ namespace VVVVVV
 
                 return res == Vector2Int.zero ? (Vector2Int?)null : res;
             }
+
             if (!player.transform.parent.CompareTag("Room")) return;
+            if (Teleporter.WarpNow) return;
 
             var newRoomDir = PlayerMovedRoom();
             if (newRoomDir.HasValue)

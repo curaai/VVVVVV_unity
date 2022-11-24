@@ -19,14 +19,22 @@ namespace VVVVVV.World
 
         void Awake()
         {
-            this.rooms = GameObject.Find("World").GetComponentsInChildren<Room>().ToList();
+            this.rooms = GameObject.Find("World").GetComponentsInChildren<Room>(true).ToList();
         }
 
         public void ChangeRoom(Vector2Int pos)
         {
-            CurRoom = room(pos);
+            var newRoom = room(pos);
+
+            // if Area Changed 
+            if (CurRoom != null && CurRoom.area != newRoom.area)
+            {
+                CurRoom.transform.parent.gameObject.SetActive(false);
+                newRoom.transform.parent.gameObject.SetActive(true);
+            }
+
+            CurRoom = newRoom;
             roomnameText.text = CurRoom.name;
-            Debug.Log("Room Changed" + pos.ToString());
 
             EnableRoom();
             SetExplored(pos);

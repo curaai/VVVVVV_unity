@@ -40,8 +40,14 @@ namespace VVVVVV.UI
 
         void OnEnable()
         {
+            IEnumerator DisableTimer()
+            {
+                yield return new WaitForSeconds(DestroyTimer);
+                gameObject.SetActive(false);
+            }
+
             if (DestroyTimer != -1)
-                Destroy(gameObject, DestroyTimer);
+                StartCoroutine(DisableTimer());
             if (speakSound != null)
                 SoundManager.Instance.PlayEffect(speakSound);
 
