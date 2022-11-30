@@ -22,6 +22,7 @@ namespace VVVVVV.UI
             // hooking OnSpace in cutscene 
             var cutscene = GameObject.Find("CutScene").GetComponent<CutSceneController>();
             cutscene.OnSpace = null;
+            // rollback original hooked OnSpace of cutscene
             director.stopped += (PlayableDirector d) => cutscene.OnSpace += cutscene.Close;
         }
 
