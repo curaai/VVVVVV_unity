@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Internal;
 using UnityEngine.UIElements;
 using UnityEditor;
-using VVVVVV.UI.Timeline;
+using VVVVVV.UI.Timeline.Dialogue;
 
 namespace VVVVVV.Editor
 {

@@ -19,8 +19,11 @@ namespace VVVVVV.UI
             director = GetComponent<PlayableDirector>();
             OnSpace += resume;
 
-            // hooking OnSpace in cutscene 
             var cutscene = GameObject.Find("CutScene").GetComponent<CutSceneController>();
+            cutscene.Open(GetComponentInParent<Room>().UI);
+            director.stopped += (PlayableDirector d) => cutscene.Close();
+
+            // hooking OnSpace in cutscene 
             cutscene.OnSpace = null;
             // rollback original hooked OnSpace of cutscene
             director.stopped += (PlayableDirector d) => cutscene.OnSpace += cutscene.Close;

@@ -18,6 +18,7 @@ namespace VVVVVV.UI
         WHITE,
         GRAY,
         ORANGE,
+        CUSTOM,
     }
 
     public class TextBoxFrame : MonoBehaviour
@@ -78,6 +79,8 @@ namespace VVVVVV.UI
                         return new UnityEngine.Color32(174, 174, 174, 255);
                     case Color.ORANGE:
                         return new UnityEngine.Color32(255, 130, 20, 255);
+                    case Color.CUSTOM:
+                        return GetComponent<Text>().color;
                     default:
                         throw new ArgumentException($"Can't parse color enum {c}");
                 }

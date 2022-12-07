@@ -75,7 +75,7 @@ namespace VVVVVV
             }
 
             if (!player.transform.parent.CompareTag("Room")) return;
-            if (Teleporter.WarpNow) return;
+            if (Teleporter.WarpNow || player.IsMoveNow) return;
 
             var newRoomDir = PlayerMovedRoom();
             if (newRoomDir.HasValue)
@@ -104,6 +104,12 @@ namespace VVVVVV
             minimap.ChangeRoom(newRoomPos);
             player.transform.SetParent(minimap.CurRoom.transform);
             AdjustCamPos();
+        }
+
+        public void ChangeRoom(Vector2Int newRoomPos, Vector3 inRoomPos)
+        {
+            ChangeRoom(newRoomPos);
+            player.transform.localPosition = inRoomPos;
         }
 
         public void Save()

@@ -17,6 +17,8 @@ namespace VVVVVV
         private Animator animator;
         private MoveController controller;
 
+        public bool IsMoveNow { get; private set; }
+
         public int deathCount = 0;
 
         void Awake()

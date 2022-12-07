@@ -112,8 +112,7 @@ namespace VVVVVV.World
                 player.gameObject.SetActive(true);
                 newTeleporter.state = State.ON;
 
-                game.ChangeRoom(teleportPos);
-                player.transform.localPosition = newTeleporter.transform.localPosition;
+                game.ChangeRoom(teleportPos, newTeleporter.transform.localPosition);
 
                 var moveVelocityQueue = newTeleporter.GetComponent<MoveVelocityQueue>();
                 if (moveVelocityQueue != null)
