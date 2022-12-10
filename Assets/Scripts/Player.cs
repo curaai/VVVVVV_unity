@@ -9,7 +9,6 @@ namespace VVVVVV
     public class Player : MonoBehaviour, ISerializable
     {
         const string DAMAGABLE_TAG = "Damagable";
-        public string SerializeKey => "Player";
 
         [SerializeField] private Game game;
         [SerializeField] private AudioClip deathSound;
@@ -18,6 +17,7 @@ namespace VVVVVV
         private MoveController controller;
 
         public bool IsMoveNow { get; private set; }
+
 
         public int deathCount = 0;
 
@@ -59,11 +59,11 @@ namespace VVVVVV
             }));
         }
 
-        public string Save()
+        string ISerializable.Serialize()
         {
             var p = Savepoint.LastSavepoint.transform.position;
 
-            return SaveManager.SerializableObject(
+            return Utils.SerializeHelper.SerializeObject(
                 new SaveInfo()
                 {
                     direction = controller.direction,
@@ -74,11 +74,11 @@ namespace VVVVVV
             );
         }
 
-        public void Load(string str)
+        void ISerializable.LoadSerializedData(string str)
         {
             GetComponent<Collider2D>().isTrigger = false;
 
-            var x = SaveManager.DeserializeObject<SaveInfo>(str);
+            var x = Utils.SerializeHelper.DeserializeObject<SaveInfo>(str);
             controller.enabled = true;
             controller.direction = x.direction;
             controller.ReverseGravity(x.gravity);

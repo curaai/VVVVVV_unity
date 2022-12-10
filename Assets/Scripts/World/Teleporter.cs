@@ -45,6 +45,7 @@ namespace VVVVVV.World
             GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
             GameObject.Find("World").GetComponent<Game>().Save();
         }
+
         void OnDisable()
         {
             state = State.OFF;
@@ -120,8 +121,6 @@ namespace VVVVVV.World
                     moveVelocityQueue.enabled = true;
                     moveVelocityQueue.TargetController = player.GetComponent<MoveController>();
                 }
-
-                var teleportTimeline = game.teleportTimeline;
 
                 WarpNow = false;
                 yield return null;

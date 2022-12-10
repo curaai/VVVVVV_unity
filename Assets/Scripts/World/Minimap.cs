@@ -8,8 +8,6 @@ namespace VVVVVV.World
 {
     public class Minimap : MonoBehaviour, ISerializable
     {
-        public string SerializeKey { get => "minimap"; }
-
         [SerializeField] Text roomnameText;
 
         private List<Room> rooms;
@@ -62,12 +60,12 @@ namespace VVVVVV.World
                 tab.UpdateFog();
         }
 
-        public string Save() => SaveManager.SerializableObject(explored);
-        public void Load(string str)
+        public string Serialize() => Utils.SerializeHelper.SerializeObject(explored);
+        public void LoadSerializedData(string str)
         {
             if (str == "") return;
 
-            explored = SaveManager.DeserializeObject<HashSet<(int, int)>>(str);
+            explored = Utils.SerializeHelper.DeserializeObject<HashSet<(int, int)>>(str);
         }
 
         public void ShowShip()

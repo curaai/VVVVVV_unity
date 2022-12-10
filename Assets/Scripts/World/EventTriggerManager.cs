@@ -8,9 +8,7 @@ namespace VVVVVV.World
 {
     public class EventTriggerManager : MonoBehaviour, ISerializable
     {
-        public string SerializeKey => "EventTriggerManager";
-
-        public string Save()
+        public string Serialize()
         {
             string GetPath(GameObject obj)
             {
@@ -23,15 +21,14 @@ namespace VVVVVV.World
                 return path;
             }
 
-            var a = GameObject.Find("World");
-
             var triggers = GameObject.Find("World").GetComponentsInChildren<EventTrigger>(true);
             Dictionary<string, bool> data = triggers.ToDictionary(x => GetPath(x.gameObject), x => x.Excuted);
-            return SaveManager.SerializableObject(data);
+            return Utils.SerializeHelper.SerializeObject(data);
         }
-        public void Load(string str)
+
+        public void LoadSerializedData(string str)
         {
-            var data = SaveManager.DeserializeObject<Dictionary<string, bool>>(str);
+            var data = Utils.SerializeHelper.DeserializeObject<Dictionary<string, bool>>(str);
             foreach (var x in data)
                 GameObject.Find(x.Key).GetComponent<EventTrigger>().Excuted = x.Value;
         }

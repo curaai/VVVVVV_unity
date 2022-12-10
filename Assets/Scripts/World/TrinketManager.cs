@@ -9,7 +9,6 @@ namespace VVVVVV.World
 {
     public class TrinketManager : MonoBehaviour, ISerializable
     {
-        public string SerializeKey => "Trinkets";
         public const int TOTAL_TRINKET_COUNT = 20;
 
         [SerializeField] GameObject trinketUI;
@@ -34,11 +33,11 @@ namespace VVVVVV.World
             GameObject.Find("CutScene").GetComponent<UI.CutSceneController>().Open(trinketUI);
         }
 
-        public void Load(string str)
+        public void LoadSerializedData(string str)
         {
             if (str == "") return;
 
-            var arr = SaveManager.DeserializeObject<bool[]>(str);
+            var arr = Utils.SerializeHelper.DeserializeObject<bool[]>(str);
             for (int i = 0; i < trinkets.Length; i++)
             {
                 trinkets[i].Collected = arr[i];
@@ -46,12 +45,12 @@ namespace VVVVVV.World
             }
         }
 
-        public string Save()
+        public string Serialize()
         {
             var arr = new bool[TOTAL_TRINKET_COUNT];
             foreach (var i in Enumerable.Range(0, trinkets.Length))
                 arr[i] = trinkets[i].Collected;
-            return SaveManager.SerializableObject(arr);
+            return Utils.SerializeHelper.SerializeObject(arr);
         }
 
         public string CountString()

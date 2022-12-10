@@ -12,7 +12,6 @@ namespace VVVVVV.World.Entity
     {
         [SerializeField] private AudioClip saveSound;
 
-        public string SerializeKey { get => "last_savepoint"; }
         private int SavepointLayer => LayerMask.NameToLayer("entity");
 
         public static Savepoint LastSavepoint { get; private set; } = null;
@@ -51,23 +50,23 @@ namespace VVVVVV.World.Entity
             }
         }
 
-        public string Save()
+        public string Serialize()
         {
             if (LastSavepoint == this)
             {
                 var pos = (transform.position.x, transform.position.y);
 
-                return SaveManager.SerializableObject(pos);
+                return Utils.SerializeHelper.SerializeObject(pos);
             }
             else
-                return LastSavepoint.Save();
+                return LastSavepoint.Serialize();
         }
 
-        public void Load(string str)
+        public void LoadSerializedData(string str)
         {
             Savepoint FindLastSavepoint(string str)
             {
-                var res = SaveManager.DeserializeObject<(float, float)>(str);
+                var res = Utils.SerializeHelper.DeserializeObject<(float, float)>(str);
 
                 return Physics2D.OverlapCircleAll(
                                         new Vector2(res.Item1, res.Item2),

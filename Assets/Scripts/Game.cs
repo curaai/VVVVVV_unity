@@ -39,7 +39,7 @@ namespace VVVVVV
 
         void Start()
         {
-            saveManager.Load();
+            saveManager.LoadAll();
 
             if (minimap.CurRoom == null)
             {
@@ -86,7 +86,7 @@ namespace VVVVVV
 
         public void Respawn()
         {
-            saveManager.Load(player.SerializeKey);
+            saveManager.Load(player);
             // TODO: Separate stat members from player
             player.deathCount++;
         }

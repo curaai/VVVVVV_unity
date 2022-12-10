@@ -1,8 +1,5 @@
-using System;
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace VVVVVV
@@ -10,7 +7,6 @@ namespace VVVVVV
     public class SaveManager
     {
         private List<ISerializable> list;
-        private ISerializable this[string key] => list.Find(x => x.SerializeKey == key);
 
         public SaveManager(IEnumerable<ISerializable> list)
         {
@@ -19,47 +15,33 @@ namespace VVVVVV
 
         public void Save()
         {
-            foreach (var x in list)
-                Save(x.SerializeKey);
-        }
-        public void Save(string key)
-        {
-            PlayerPrefs.SetString(key, this[key].Save());
+            foreach (var item in list)
+                PlayerPrefs.SetString(getPrefKey(item), item.Serialize());
             PlayerPrefs.Save();
         }
-        public void Load()
+
+        public void Load(ISerializable item)
         {
-            foreach (var x in list)
+            var loadData = PlayerPrefs.GetString(getPrefKey(item), "");
+            if (loadData != "" && list.Contains(item))
+                item.LoadSerializedData(loadData);
+        }
+
+        public void LoadAll()
+        {
+            foreach (var serializable in list)
             {
-                var y = PlayerPrefs.GetString(x.SerializeKey, "");
-                if (y != "")
-                    x.Load(y);
+                var serializeData = PlayerPrefs.GetString(getPrefKey(serializable), "");
+                if (serializeData != "")
+                    serializable.LoadSerializedData(serializeData);
             }
         }
 
-        public void Load(string key) => list.Find(x => x.SerializeKey == key).Load(PlayerPrefs.GetString(key, ""));
-
-        // serializableObject is any struct or class marked with [Serializable]
-        public static BinaryFormatter bf = new BinaryFormatter();
-        public static string SerializableObject(object serializableObject)
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            bf.Serialize(memoryStream, serializableObject);
-            return System.Convert.ToBase64String(memoryStream.ToArray());
-        }
-
-        public static T DeserializeObject<T>(string str)
-        {
-            var _bf = new BinaryFormatter();
-            MemoryStream memoryStream = new MemoryStream(System.Convert.FromBase64String(str));
-            return (T)_bf.Deserialize(memoryStream);
-        }
+        private string getPrefKey(ISerializable obj) => obj.GetType().Name;
     }
-
     public interface ISerializable
     {
-        public string SerializeKey { get; }
-        public string Save();
-        public void Load(string str);
+        public string Serialize();
+        public void LoadSerializedData(string str);
     }
 }
