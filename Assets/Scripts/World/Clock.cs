@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VVVVVV.World
 {
-    public class Clock : Utils.Singleton<Clock>, ISerializable
+    public class Clock : Utils.SingletonMonoBehaviour<Clock>, ISerializable
     {
         public TimeSpan curPlaytime { get; private set; }
         public TimeSpan savetime { get; private set; }

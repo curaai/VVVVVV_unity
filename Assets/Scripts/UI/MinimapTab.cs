@@ -13,11 +13,9 @@ namespace VVVVVV.UI
         private Transform roomBlink;
 
         private UI.Teleporter[] teleporters;
-        private Minimap minimap;
 
         void Awake()
         {
-            minimap = GameObject.Find("World").GetComponentInChildren<Minimap>(true);
             fogMaskPanel = transform.Find("FogMask").GetComponent<Image>();
             roomBlink = transform.Find("BlinkRoom");
 
@@ -39,7 +37,7 @@ namespace VVVVVV.UI
             UpdateTeleporter();
 
             if (roomBlink != null)
-                SetBlinkPos(minimap.CurRoom.pos);
+                SetBlinkPos(Minimap.Instance.CurRoom.pos);
         }
 
         public void UpdateFog()
@@ -56,7 +54,7 @@ namespace VVVVVV.UI
                     UnityEngine.Color[] pixels;
 
                     // reverse y for coordnation
-                    if (minimap.explored.Contains((x, 19 - y)))
+                    if (Minimap.Instance.IsExplored(new Vector2Int(x, 19 - y)))
                         pixels = transparentTile;
                     else
                         pixels = fogTile.GetPixels();
@@ -67,11 +65,10 @@ namespace VVVVVV.UI
             fogMask.Apply(false);
             fogMaskPanel.sprite = Sprite.Create(fogMask, new Rect(0, 0, 240, 180), Vector2.one / 2f); ;
         }
-
         public void UpdateTeleporter()
         {
             foreach (var t in teleporters)
-                t.SetExplored(minimap.explored.Contains((t.pos.x, t.pos.y)));
+                t.SetExplored(Minimap.Instance.IsExplored(new Vector2Int(t.pos.x, t.pos.y)));
         }
     }
 }

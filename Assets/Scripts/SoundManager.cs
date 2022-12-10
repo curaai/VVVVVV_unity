@@ -8,7 +8,7 @@ namespace VVVVVV
         PUSHINGONWARDS = 1,
     }
 
-    public class SoundManager : Utils.Singleton<SoundManager>
+    public class SoundManager : Utils.SingletonMonoBehaviour<SoundManager>
     // public class SoundManager : MonoBehaviour
     {
         [SerializeField] private List<AudioClip> bgmList;

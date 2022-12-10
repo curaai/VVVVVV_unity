@@ -10,7 +10,6 @@ namespace VVVVVV
     {
         const string DAMAGABLE_TAG = "Damagable";
 
-        [SerializeField] private Game game;
         [SerializeField] private AudioClip deathSound;
 
         private Animator animator;
@@ -54,7 +53,7 @@ namespace VVVVVV
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             StartCoroutine(Utils.AnimationHelper.CheckAnimationCompleted(animator, "Hurt", () =>
             {
-                game.Respawn();
+                Game.Instance.Respawn();
                 animator.SetBool("HurtNow", false);
             }));
         }

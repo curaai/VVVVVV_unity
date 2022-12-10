@@ -7,7 +7,7 @@ using VVVVVV.World.Entity;
 
 namespace VVVVVV
 {
-    public class Game : MonoBehaviour
+    public class Game : Utils.SingletonMonoBehaviour<Game>
     {
         [SerializeField] public Player player;
         [SerializeField] public Transform cam;
@@ -27,10 +27,10 @@ namespace VVVVVV
 
             var saveTargetList = new List<ISerializable>() {
                 minimap,
-                GameObject.Find("Clock").GetComponent<World.Clock>(),
-                GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
+                Clock.Instance,
                 player,
                 GameObject.Find("EventTriggerManager").GetComponent<EventTriggerManager>(),
+                GameObject.FindGameObjectWithTag("Savepoint").GetComponent<World.Entity.Savepoint>(),
             };
 
             saveTargetList.AddRange(serializables.Select(x => x.GetComponent<ISerializable>()));

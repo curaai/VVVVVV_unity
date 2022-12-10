@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace VVVVVV
 {
-    public abstract class IControllable : MonoBehaviour
+    public class IControllable : MonoBehaviour
     {
         // Control Manager don't assign next state when face dummy function
         public static void DummyMoveFunc(float x) => x += 1;
@@ -35,10 +35,10 @@ namespace VVVVVV
                     InputControlManager.Instance.DeFocus(this);
             }
         }
-        protected bool _FocusNow;
+        private bool _FocusNow;
     }
 
-    public class InputControlManager : Utils.Singleton<InputControlManager>
+    public class InputControlManager : Utils.SingletonMonoBehaviour<InputControlManager>
     {
         [SerializeField] private List<IControllable> controlStateList;
 

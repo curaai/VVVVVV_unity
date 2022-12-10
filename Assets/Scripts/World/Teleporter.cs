@@ -43,7 +43,7 @@ namespace VVVVVV.World
             hoverText.SetActive(true);
             SavedTextBoxFrame.SetActive(true); //Disappear automatically
             GetComponentInChildren<SpriteGlowEffect>().GlowOn = true;
-            GameObject.Find("World").GetComponent<Game>().Save();
+            Game.Instance.Save();
         }
 
         void OnDisable()
@@ -70,7 +70,7 @@ namespace VVVVVV.World
 
         private void showTeleportMap()
         {
-            var teleportTimeline = GameObject.Find("World").GetComponent<Game>().teleportTimeline;
+            var teleportTimeline = Game.Instance.teleportTimeline;
             if (teleportTimeline != null)
             {
                 teleportTimeline.Play();
@@ -85,7 +85,6 @@ namespace VVVVVV.World
         // public void Teleport(Vector2Int dstPos)
         public void Teleport()
         {
-            var game = GameObject.Find("World").GetComponent<Game>();
             var player = GameObject.Find("Player").GetComponent<Player>();
 
             var teleportPos = new Vector2Int(2, 11);
@@ -113,7 +112,7 @@ namespace VVVVVV.World
                 player.gameObject.SetActive(true);
                 newTeleporter.state = State.ON;
 
-                game.ChangeRoom(teleportPos, newTeleporter.transform.localPosition);
+                Game.Instance.ChangeRoom(teleportPos, newTeleporter.transform.localPosition);
 
                 var moveVelocityQueue = newTeleporter.GetComponent<MoveVelocityQueue>();
                 if (moveVelocityQueue != null)

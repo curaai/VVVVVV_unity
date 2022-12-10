@@ -6,24 +6,27 @@ using UnityEngine.UI;
 
 namespace VVVVVV.World
 {
-    public class Minimap : MonoBehaviour, ISerializable
+    public class Minimap : Utils.SingletonMonoBehaviour<Minimap>, ISerializable
     {
         [SerializeField] Text roomnameText;
 
         private List<Room> rooms;
         public Room CurRoom { get; private set; }
-        public Room room(Vector2Int pos) => rooms.Find(x => x.pos == pos);
+        public Room GetRoom(Vector2Int pos) => rooms.Find(x => x.pos == pos);
 
-        public HashSet<(int, int)> explored { get; private set; } = new HashSet<(int, int)>(); // use tuple only for serializable 
+        private HashSet<(int, int)> explored = new HashSet<(int, int)>(); // use tuple only for serializable 
+
+        private UI.MinimapTab uiMinimap;
 
         void Awake()
         {
             this.rooms = GameObject.Find("World").GetComponentsInChildren<Room>(true).ToList();
+            uiMinimap = GameObject.Find("Canvas").GetComponentInChildren<UI.MinimapTab>();
         }
 
         public void ChangeRoom(Vector2Int pos)
         {
-            var newRoom = room(pos);
+            var newRoom = GetRoom(pos);
 
             // if Area Changed 
             if (CurRoom != null && CurRoom.area != newRoom.area)
@@ -35,11 +38,11 @@ namespace VVVVVV.World
             CurRoom = newRoom;
             roomnameText.text = CurRoom.name;
 
-            EnableRoom();
+            enableRoom();
             SetExplored(pos);
         }
 
-        void EnableRoom()
+        private void enableRoom()
         {
             // Disable all 
             foreach (var r in rooms)
@@ -55,10 +58,9 @@ namespace VVVVVV.World
             else
                 explored.Remove((r.x, r.y));
 
-            var minimaptabs = GameObject.Find("Canvas").GetComponentsInChildren<UI.MinimapTab>();
-            foreach (var tab in minimaptabs)
-                tab.UpdateFog();
+            uiMinimap.UpdateFog();
         }
+        public bool IsExplored(Vector2Int pos) => explored.Contains((pos.x, pos.y));
 
         public string Serialize() => Utils.SerializeHelper.SerializeObject(explored);
         public void LoadSerializedData(string str)

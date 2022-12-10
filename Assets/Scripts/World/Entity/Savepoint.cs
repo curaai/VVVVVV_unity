@@ -12,8 +12,6 @@ namespace VVVVVV.World.Entity
     {
         [SerializeField] private AudioClip saveSound;
 
-        private int SavepointLayer => LayerMask.NameToLayer("entity");
-
         public static Savepoint LastSavepoint { get; private set; } = null;
         private static Savepoint[] allSavepoints = null;
 
@@ -46,7 +44,7 @@ namespace VVVVVV.World.Entity
                 Activate();
 
                 // AutoSave
-                GameObject.Find("World").GetComponent<Game>().Save();
+                Game.Instance.Save();
             }
         }
 
@@ -55,7 +53,6 @@ namespace VVVVVV.World.Entity
             if (LastSavepoint == this)
             {
                 var pos = (transform.position.x, transform.position.y);
-
                 return Utils.SerializeHelper.SerializeObject(pos);
             }
             else
@@ -66,10 +63,10 @@ namespace VVVVVV.World.Entity
         {
             Savepoint FindLastSavepoint(string str)
             {
-                var res = Utils.SerializeHelper.DeserializeObject<(float, float)>(str);
+                var pos = Utils.SerializeHelper.DeserializeObject<(float, float)>(str);
 
                 return Physics2D.OverlapCircleAll(
-                                        new Vector2(res.Item1, res.Item2),
+                                        new Vector2(pos.Item1, pos.Item2),
                                         3
                                         )
                                     .Select(x => x.GetComponentInParent<Savepoint>())

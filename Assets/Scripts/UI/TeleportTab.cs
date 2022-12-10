@@ -49,14 +49,7 @@ namespace VVVVVV.UI
                 .OrderBy(t => t.Idx)
                 .Where(t => t.Explored).ToList();
 
-            Vector2Int getCurrentRoom()
-            {
-                var minimap = GameObject.Find("World").GetComponentInChildren<Minimap>(true);
-                return minimap.CurRoom.pos;
-            }
-
-            var pos = getCurrentRoom();
-            var curTeleporter = teleporters.Find(t => t.pos == pos);
+            var curTeleporter = teleporters.Find(t => t.pos == Minimap.Instance.CurRoom.pos);
             curTelHighlight.localPosition = curTeleporter.transform.localPosition;
             curIdx = teleporters.IndexOf(curTeleporter);
             dstIdx = curIdx;
