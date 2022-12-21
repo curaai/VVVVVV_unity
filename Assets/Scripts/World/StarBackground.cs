@@ -1,6 +1,5 @@
 // using System;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VVVVVV.World
@@ -8,52 +7,54 @@ namespace VVVVVV.World
     public class StarBackground : MonoBehaviour
     {
         [SerializeField] private GameObject starPrefab;
-        public static readonly int NUM_STARS = 50;
-        public static readonly float STAR_DEFAULT_SPEED = 0.5f;
+
+        private static readonly int NUM_STARS = 50;
+        private static readonly float STAR_EXPIRE_TRIGGER_X = -Constant.ROOM_LOCAL_SIZE.x * 0.0625f / 2;
+        private static readonly float STAR_RESPAWN_X = Constant.ROOM_LOCAL_SIZE.x * 1.0625f;
+        private static readonly float STAR_DEFAULT_SPEED = 0.5f;
+        private static readonly float FAST_STAR_THRESHOLD = STAR_DEFAULT_SPEED * 1.5f;
+        private static readonly float SPEED_ADJUST_PARAMETER = 0.65f;
 
         private GameObject[] stars = new GameObject[NUM_STARS];
         private float[] speeds = new float[NUM_STARS];
 
-        private float respawnStar(GameObject star, float? newX = null)
+        private void Start()
         {
-            var pos = new Vector2(Random.Range(0, 40f), Random.Range(0, 30f));
+            foreach (var i in Enumerable.Range(0, NUM_STARS))
+            {
+                var pos = new Vector2(Random.Range(0, Constant.ROOM_LOCAL_SIZE.x), Random.Range(0, Constant.ROOM_LOCAL_SIZE.y));
+
+                stars[i] = Instantiate(starPrefab, transform);
+                stars[i].transform.localPosition = pos;
+                speeds[i] = resetSpeed(stars[i]);
+            }
+        }
+
+        private float resetSpeed(GameObject star)
+        {
             var speed = Random.Range(STAR_DEFAULT_SPEED, STAR_DEFAULT_SPEED * 2);
 
-            if (newX.HasValue) pos.x = newX.Value;
-
-            star.transform.parent = transform;
-            star.transform.localPosition = new Vector3(pos.x, pos.y, 0);
-            star.transform.localScale = new Vector3(0.25f, 0.25f, 1);
-
-            var c = (byte)(speed < 1.5f * STAR_DEFAULT_SPEED ? 0x22 : 0x55);
+            var c = (byte)(speed < FAST_STAR_THRESHOLD ? 0x22 : 0x55);
             star.GetComponent<SpriteRenderer>().color = new Color32(c, c, c, 0xff);
 
             return speed;
         }
 
-        void Start()
+        private void Update()
         {
             foreach (var i in Enumerable.Range(0, NUM_STARS))
             {
-                stars[i] = Instantiate(starPrefab);
-                speeds[i] = respawnStar(stars[i]);
+                var p = stars[i].transform.localPosition;
+
+                var newX = p.x - (speeds[i] * SPEED_ADJUST_PARAMETER);
+                if (newX < STAR_EXPIRE_TRIGGER_X)
+                {
+                    newX += STAR_RESPAWN_X;
+                    speeds[i] = resetSpeed(stars[i]);
+                }
+
+                stars[i].transform.localPosition = new Vector3(newX, p.y);
             }
         }
-
-        void Update()
-        {
-            foreach (var i in Enumerable.Range(0, NUM_STARS))
-            {
-                var t = stars[i].transform;
-                var x = t.localPosition.x - speeds[i];
-                var alpha = 0.65f; // TODO: alpha can chage in accumulator
-                x = lerp(x + speeds[i], x, alpha);
-                t.localPosition = new Vector3(x, t.localPosition.y, t.localPosition.z);
-
-                if (x < -1.25) speeds[i] = respawnStar(stars[i], x + 42.5f);
-            }
-        }
-
-        public static float lerp(float a, float b, float alpha) => a + alpha * (b - a);
     }
 }
