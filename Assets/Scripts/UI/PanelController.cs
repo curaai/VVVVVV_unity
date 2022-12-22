@@ -1,76 +1,34 @@
 using UnityEngine;
-using VVVVVV.UI.Utils;
 
 namespace VVVVVV.UI
 {
-    public class PanelController : IControllable
+    public class PanelController : MonoBehaviour
     {
-        [SerializeField] private GameObject pausePanel;
-        [SerializeField] private AudioClip pauseSound;
-        [SerializeField] private GameObject mapPanel;
+        private readonly string ANIMATOR_TRANSITION_KEY = "open";
+        private readonly string IDLE_STATE_NAME = "IDLE";
 
-        public (GameObject, Transform)? mainUI;
-        private Animator slideAnimator => GetComponent<Animator>();
-        public bool Opened => GetComponent<RectTransform>().anchoredPosition.y == 480;
-        public override Type controlType => Type.UI;
+        private Animator animator;
 
-        void Awake()
+        private void Awake()
         {
-            OnAction += ToggleMap;
+            animator = GetComponent<Animator>();
         }
 
-        void OnEnable() => FocusNow = true;
-        void OnDisable() => FocusNow = false;
-
-        private void Open(GameObject obj)
+        public void Toggle()
         {
-            mainUI = (obj, obj.transform.parent);
-            if (!Opened)
-                slideAnimator.SetBool("open", true);
-
-            if (mainUI.HasValue)
+            bool isPlayingNow()
             {
-                mainUI?.Item1.transform.SetParent(transform);
-                mainUI?.Item1.SetActive(true);
-            }
-        }
-        private void Close()
-        {
-            if (Opened)
-            {
-                slideAnimator.SetBool("open", false);
-                StartCoroutine(VVVVVV.Utils.AnimationHelper.CheckAnimationCompleted(slideAnimator, "DOWN", () =>
-                {
-                    mainUI?.Item1.transform.SetParent(mainUI?.Item2);
-                    mainUI?.Item1.SetActive(false);
-                    mainUI = null;
-                }));
-            }
-        }
+                var state = animator.GetCurrentAnimatorStateInfo(0);
+                var isIdleState = state.IsName(IDLE_STATE_NAME);
 
-        public void Toggle(GameObject ui)
-        {
-            if (ui == null || mainUI?.Item1 == ui)
-                Close();
-            else
-                Open(ui);
-        }
-
-        public void TogglePause()
-        {
-            if (mainUI == null || mainUI?.Item1 == pausePanel)
-            {
-                if (mainUI != null) SoundManager.Instance.PlayEffect(pauseSound);
-                Toggle(pausePanel);
+                return !isIdleState && state.normalizedTime < 1;
             }
-        }
+            if (isPlayingNow()) return;
 
-        public void ToggleMap()
-        {
-            if (mainUI == null || mainUI?.Item1 == mapPanel)
-            {
-                Toggle(mapPanel);
-            }
+            var openNow = !animator.GetBool(ANIMATOR_TRANSITION_KEY);
+            animator.SetBool(ANIMATOR_TRANSITION_KEY, openNow);
+
+            Debug.Log($"[Panel] OpenState: {openNow}");
         }
     }
 }
