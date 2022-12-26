@@ -39,7 +39,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -200,22 +200,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Action",
-                    "type": "Button",
-                    "id": "9a629cc9-47ba-4e9e-89b9-184adf431aaa",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Escape",
                     "type": "Button",
                     "id": "d1bbdecd-43cf-40b5-9c6e-d8ac2ede06eb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -253,7 +244,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "negative",
+                    "name": "positive",
                     "id": "45707da6-1b85-4d58-90d1-aa4e738af135",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -264,7 +255,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "negative",
+                    "name": "positive",
                     "id": "e06fc904-4b09-4ea9-979e-24df281e07de",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
@@ -297,7 +288,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "negative",
                     "id": "708d3433-a2f1-49df-8748-0f6f4e654d2d",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -308,7 +299,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "negative",
                     "id": "6e59b8ed-09d9-4d21-9e70-9f1129afafbb",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
@@ -326,17 +317,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Space",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "59c82aed-2d2a-4667-950f-3fbc18480c96",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -543,7 +543,7 @@ TextureImporter:
       213: -6770301983372339524
     second: sprites Mavverrick 1
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -560,10 +560,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -602,6 +604,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -617,6 +621,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1376,7 +1392,7 @@ TextureImporter:
       tessellationDetail: 1
       bones: []
       spriteID: e7aed60e02478f090800000000000000
-      internalID: -8000517053470610818
+      internalID: 6372064299423702416
       vertices: []
       indices: 
       edges: []
@@ -3362,7 +3378,7 @@ TextureImporter:
       tessellationDetail: 1
       bones: []
       spriteID: 640c2547a614bfe50800000000000000
-      internalID: 6844135984193519686
+      internalID: -1418253223872536476
       vertices: []
       indices: 
       edges: []
@@ -3404,7 +3420,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3e9fcaf814fd00290800000000000000
-      internalID: -7926089871495726621
+      internalID: 2897606993735773097
       vertices: []
       indices: 
       edges: []
@@ -3425,7 +3441,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: dd32199a0e41fda00800000000000000
-      internalID: 783367815335846877
+      internalID: -4553008550804088977
       vertices: []
       indices: 
       edges: []
@@ -3446,7 +3462,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bfe78c50e8244a6d0800000000000000
-      internalID: -2980183875662610693
+      internalID: -7926089871495726621
       vertices: []
       indices: 
       edges: []
@@ -4569,9 +4585,188 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      sprites_17: 5182299067807867188
+      sprites_163: 723876030693624394
+      sprites_61: 7083852059897662497
+      sprites Wavelengths 0: 3864339640949227112
+      sprites Tomb of Mad Carew 1: -1687598921438376765
+      sprites_146: -4828874537961260737
+      sprites_140: 120168496469901813
+      sprites_78: -1867604602640378555
+      sprites_89: 8368725103422102283
+      sprites_93: -1669165860816324997
+      sprites_86: -9181122582910394562
+      sprites_44: 5888225539240422257
+      sprites Radar 0: 3966643369446284000
+      sprites_105: 8814850831427093524
+      sprites_138: -6456317177320185530
+      sprites_99: -4987352144231553832
+      sprites Character Sad 0: -7039003182478323700
+      sprites_81: 512565446414944370
+      sprites_67: -5404917630374751943
+      sprites Character Normal 1: 3386662938922423588
+      sprites_113: -7252906385758088036
+      sprites_90: -7725827350452926817
+      sprites_148: -1141242450971085202
+      sprites Trinket: -1369878811986984067
+      sprites_120: 7041978981008351696
+      sprites_45: -5414200790786512658
+      sprites_110: -5251729804008491297
+      sprites Character Normal 0: 6128299156075563123
+      sprites_52: -3244309331689365813
+      sprites_savepoint_flip: 6372064299423702416
+      sprites_104: 4875681043228078488
+      sprites_15: -8987557684774062561
+      sprites Speaker 0: 2174282902262228016
+      sprites The Yes Man 3: -6038895966588477023
+      sprites_savepoint: 7829124088692640654
+      sprites_139: -5609728991096837925
+      sprites_3: 8553092956536608252
+      sprites_106: 303064485153503272
+      sprites Security Drone 1: -4056437433907239288
+      sprites_46: -121173363941897590
+      sprites Tomb of Mad Carew 0: -4938309501481967450
+      sprites Traffic 2: -577312649904740640
+      sprites_54: 2415137940909422303
+      sprites_71: 7286473914490883674
+      sprites_136: 7715051395674374481
+      sprites_56: 8295090138552639746
+      sprites_79: 7593928736539212463
+      sprites_34: -5647778350772032766
+      sprites Security Drone 2: 286243765835191086
+      sprites_133: 7397159909495702296
+      sprites_80: -164529984348203399
+      sprites_5: 6813553822765877458
+      sprites_7: -2423230811885516303
+      sprites_65: -2419440146347887631
+      sprites_103: -2523043837458364076
+      sprites_73: 2027226811094811350
+      sprites_14: -5559150632450785296
+      sprites Security Drone 0: 2737844872717370115
+      sprites Hunchbacked Guards 3: -8643503263307243172
+      sprites_147: 1290425406043337795
+      sprites_143: -639925170266230570
+      sprites_12: 7010617245534139418
+      sprites_156: 539376943291157381
+      sprites_48: -3286353352431079860
+      sprites_98: 3796268708234276578
+      sprites_75: -3624837553737152464
+      sprites_102: -8453349197257186614
+      sprites_149: 4373701637164815442
+      sprites_83: -219129681585005343
+      sprites_77: 8472352921499875423
+      sprites_50: -8024298897280758709
+      sprites_155: 215471925695298921
+      sprites_clock: 4895558001321355738
+      sprites Speaker 1: -5561777447717349959
+      sprites_70: 1901097361567403819
+      sprites Radar 3: -7926089871495726621
+      sprites Wavelengths 1: -5014597575052150466
+      sprites_131: 3083976272160595165
+      sprites_157: -6446770608708171614
+      sprites_49: -3333306228155105222
+      sprites_153: -5962742384057639585
+      sprites_25: -3114738102144766914
+      sprites_141: 8996021905269737617
+      sprites_137: -637626799924230617
+      sprites_145: -4668926477349518025
+      sprites_167: -3886971374404680400
+      sprites_91: 2143661272096785804
+      sprites_19: -5717795354444781658
+      sprites_135: -7040726608966152103
+      sprites Radar 2: -4553008550804088977
+      sprites_116: -634063051727642907
+      sprites Traffic 1: 3950689983899740486
+      sprites_60: 5327131734856063916
+      sprites_11: -7263262467203474343
+      sprites_150: 5667774065376024275
+      sprites_112: 7119614076862762583
+      sprites_107: 5990486873270596335
+      sprites_132: -2505470106384198608
+      sprites_122: 308370575515578710
+      sprites_2: -6110656803992641779
+      sprites Hunchbacked Guards 0: 2527441650270232441
+      sprites Traffic 0: -1722539767903399326
+      sprites_161: 263290383180205257
+      sprites_84: 3029947129131274855
+      sprites_68: 1556287028122769168
+      sprites_119: -5592683031164280243
+      sprites_154: 2792984276731882393
+      sprites_134: 5799324825589895741
+      sprites Hunchbacked Guards 2: -7573515227342601164
+      sprites_173: 6707692162970717668
+      sprites_172: 5690447937233587930
+      sprites Mavverrick 0: -1418253223872536476
+      sprites_27: 2414474533063011785
+      sprites_18: -2408033011751398356
+      sprites_97: -7613503841568118882
+      sprites_169: -24194110124369420
+      sprites_162: -2720170869842187325
+      sprites_58: -864535716087862080
+      sprites_66: 3026130483469327200
+      sprites_16: -6751597515445260605
+      sprites_175: -2947830591355695505
+      sprites Terminal: -3525548655422949061
+      sprites_4: 6708733205153277002
+      sprites_6: -5082647686934749709
+      sprites_174: -5514163520694379274
+      sprites_74: 7003351578027503056
+      sprites_109: 3222400681153928868
+      sprites_144: 1761471075898016649
+      sprites_121: 2174949856078129311
+      sprites_158: -4953135845653112455
+      sprites_111: -4104715416385857594
+      sprites_85: 1450734729795741485
+      sprites_55: 2274784074636787833
+      sprites_53: -1993646571332382099
+      sprites_59: 6032119799802487242
+      sprites_62: -4513582774868341619
+      sprites_64: 6660317758004568044
+      sprites_10: -2950032572879587788
+      sprites_166: 7286452030171644687
+      sprites_57: 7316308436047370062
+      sprites_115: 5874148425905024281
+      sprites_92: -3674252677272732504
+      sprites_100: 1148329867865383677
+      sprites Brass Sent Us Under The Top 1: -7025280022394614582
+      sprites_151: 5021469078610173170
+      sprites The Yes Man 0: -5113350760131414088
+      sprites_165: 4582081811884518421
+      sprites_130: -4126146701794544339
+      sprites_87: 570518578003463945
+      sprites_171: -8280133237159170653
+      sprites_9: 6155212226941906339
+      sprites Circle: -1171896252286994025
+      sprites_63: 8064056289589391633
+      sprites Brass Sent Us Under The Top 0: 7373215469331058133
+      sprites_21: -2018968827443427868
+      sprites_69: -8564791059882666291
+      sprites_159: 2922749033926471182
+      sprites_168: -9093060954953784558
+      sprites Hunchbacked Guards 1: 5163875854333359583
+      sprites_152: 2106403975091884100
+      sprites_108: -7530184207592129074
+      sprites Mavverrick 1: -6770301983372339524
+      sprites_51: -987594996878273913
+      sprites_114: 6431981068159048171
+      sprites Traffic 3: 4172163778452043772
+      sprites_72: 2610982374439609670
+      sprites_82: 4557550545084294657
+      sprites_124: 3657152847645281830
+      sprites_88: -6138574182703388947
+      sprites The Yes Man 1: -2943835317918062483
+      sprites_142: -1490667797874546956
+      sprites_170: -6974868360014566456
+      sprites_123: -5811883968166787961
+      sprites_8: 1211998406744890917
+      sprites The Yes Man 2: -9009826273307446855
+      sprites_101: 5334472223922260060
+      sprites Radar 1: 2897606993735773097
+      sprites_160: -2199670328850662703
+      sprites_76: 5627485602472712047
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
