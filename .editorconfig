@@ -1,0 +1,130 @@
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+indent_size = 4
+end_of_line = lf
+indent_style = space
+
+### Dinkum Unity Coding Conventions
+## class, (interface), struct 는 Pascal Case 를 사용합니다.
+# Naming styles
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# Symbol specifications
+dotnet_naming_symbols.class_interface_struct.applicable_kinds = class,interface,struct
+
+# Naming rules
+dotnet_naming_rule.class_interface_struct_should_be_pascal_case.severity = warning
+dotnet_naming_rule.class_interface_struct_should_be_pascal_case.symbols = class_interface_struct
+dotnet_naming_rule.class_interface_struct_should_be_pascal_case.style = pascal_case_style
+
+# Naming styles
+dotnet_naming_style.interface_prefix_style.required_prefix = I
+dotnet_naming_style.interface_prefix_style.capitalization = pascal_case
+
+# Naming specifications
+dotnet_naming_symbols.interface_symbols.applicable_kinds = interface
+
+# Naming rules
+dotnet_naming_rule.interface_should_have_prefix_I.severity = warning
+dotnet_naming_rule.interface_should_have_prefix_I.symbols = interface_symbols
+dotnet_naming_rule.interface_should_have_prefix_I.style = interface_prefix_style
+
+# Symbol specifications
+dotnet_naming_symbols.property_event_method_symbols.applicable_kinds = property,event,method
+dotnet_naming_symbols.public_field_symbols.applicable_kinds = field
+dotnet_naming_symbols.public_field_symbols.applicable_accessibilities = public
+
+# Naming rules
+dotnet_naming_rule.property_event_method_should_be_pascal_case.severity = warning
+dotnet_naming_rule.property_event_method_should_be_pascal_case.symbols = property_event_method_symbols
+dotnet_naming_rule.property_event_method_should_be_pascal_case.style = pascal_case_style
+dotnet_naming_rule.public_field_should_be_pascal_case.severity = warning
+dotnet_naming_rule.public_field_should_be_pascal_case.symbols = public_field_symbols
+dotnet_naming_rule.public_field_should_be_pascal_case.style = pascal_case_style
+
+# Naming Styles
+dotnet_naming_rule.async_methods_end_in_async.severity = warning
+dotnet_naming_rule.async_methods_end_in_async.symbols = any_async_methods
+dotnet_naming_rule.async_methods_end_in_async.style = end_in_async
+
+# Naming Specification
+dotnet_naming_symbols.any_async_methods.applicable_kinds = method
+dotnet_naming_symbols.any_async_methods.applicable_accessibilities = *
+dotnet_naming_symbols.any_async_methods.required_modifiers = async
+
+# Naming Rules
+dotnet_naming_style.end_in_async.required_suffix = Async
+dotnet_naming_style.end_in_async.capitalization = pascal_case
+
+# Symbol specifications
+dotnet_naming_symbols.static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_fields.required_modifiers = static, readonly
+
+dotnet_naming_symbols.const_fields.applicable_kinds = field
+dotnet_naming_symbols.const_fields.required_modifiers = const
+
+# Naming rules
+dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.severity = warning
+dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.symbols = static_readonly_fields
+dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.style = pascal_case_style
+
+dotnet_naming_rule.const_fields_should_be_pascal_case.severity = warning
+dotnet_naming_rule.const_fields_should_be_pascal_case.symbols = const_fields
+dotnet_naming_rule.const_fields_should_be_pascal_case.style = pascal_case_style
+
+# Naming styles
+dotnet_naming_style._camel_case_style.capitalization = camel_case
+dotnet_naming_style._camel_case_style.required_prefix = _
+
+# Symbol specifications
+dotnet_naming_symbols.private_field_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_field_symbols.applicable_accessibilities = private
+
+# Naming rules
+dotnet_naming_rule.private_field_should_be_camel_case.severity = warning
+dotnet_naming_rule.private_field_should_be_camel_case.symbols = private_field_symbols
+dotnet_naming_rule.private_field_should_be_camel_case.style = _camel_case_style
+
+dotnet_style_require_accessibility_modifiers = omit_if_default:warning
+
+dotnet_style_prefer_string_interpolation = true:warning
+
+csharp_new_line_before_open_brace = all
+
+[*.py]
+indent_size = 4
+indent_style = space
+
+[*.json]
+indent_size = 2
+indent_style = space
+
+[*.xml]
+indent_size = 2
+indent_style = space
+
+[*.code-workspace]
+indent_size = 2
+indent_style = space
+
+[Jenkinsfile]
+indent_size = 2
+indent_style = tab
+
+[*.{asset,meta,prefab,mat,scene}]
+trim_trailing_whitespace = false
+
+[*.sh]
+indent_size = 4
+indent_style = space
+end_of_line = lf
+
+[*.{ts,tsx,js,mjs}]
+indent_size = 2
+indent_style = space
