@@ -1,0 +1,19 @@
+{
+    "name": "VVVVVV.Editor",
+    "rootNamespace": "VVVVVV",
+    "references": [
+        "VVVVVV.Utils",
+        "Unity.2D.Tilemap.Extras"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
