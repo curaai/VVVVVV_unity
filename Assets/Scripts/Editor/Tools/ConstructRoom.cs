@@ -28,14 +28,24 @@ public class ConstructRoom : EditorWindow
     {
         var prefabSrc = AssetDatabase.LoadAssetAtPath<GameObject>(RoomPrefabBasePath);
         var prefab = (GameObject)PrefabUtility.InstantiatePrefab(prefabSrc);
-        prefab.name = $"{json.Pos.x},{json.Pos.y}-{json.name}";
+        var name = json.name.Replace("?", "_");
+        prefab.name = $"{json.Pos.x},{json.Pos.y}-{name}";
 
-        var tilemap = prefab.GetComponentInChildren<Tilemap>();
+        var bg = prefab.transform.Find("BG").GetComponent<Tilemap>();
+        var wall = prefab.transform.Find("Wall").GetComponent<Tilemap>();
+        var hurtable = prefab.transform.Find("Hurtable").GetComponent<Tilemap>();
+
         for (int i = 0; i < RoomSize.x; i++)
         {
             for (int j = 0; j < RoomSize.y; j++)
             {
                 var tileIdx = json.tiles[j * RoomSize.x + i];
+                var tilemap = tileIdx switch
+                {
+                    < 80 => hurtable,
+                    (>= 80) and (< 680) => wall,
+                    _ => bg,
+                };
                 tilemap.SetTile(new(i, (RoomSize.y - 1) - j), _tiles[tileIdx]);
             }
         }
