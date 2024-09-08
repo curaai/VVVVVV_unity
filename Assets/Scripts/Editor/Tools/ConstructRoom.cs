@@ -3,7 +3,9 @@ using UnityEngine.Tilemaps;
 using UnityEditor;
 using System.Linq;
 using System;
+using VVVVVV.Runtime.World;
 using VVVVVV.Utils.Extension;
+using VVVVVV.Runtime;
 
 namespace VVVVVV.Editor.Tools;
 
@@ -13,7 +15,6 @@ public class ConstructRoom : EditorWindow
     static readonly string RoomJsonDir = "Assets/Data/room/spacestation";
     static readonly string RoomPrefabExportDir = "Assets/Prefabs/Rooms/SpaceStation";
     static readonly string RoomPrefabBasePath = "Assets/Prefabs/PF_RoomBase.prefab";
-    static readonly Vector2Int RoomSize = new(40, 30);
 
     static Tile[] _tiles = null!;
 
@@ -28,25 +29,28 @@ public class ConstructRoom : EditorWindow
     {
         var prefabSrc = AssetDatabase.LoadAssetAtPath<GameObject>(RoomPrefabBasePath);
         var prefab = (GameObject)PrefabUtility.InstantiatePrefab(prefabSrc);
+
+        var room = prefab.AddComponent<Room>();
         var name = json.name.Replace("?", "_");
         prefab.name = $"{json.Pos.x},{json.Pos.y}-{name}";
 
         var bg = prefab.transform.Find("BG").GetComponent<Tilemap>();
         var wall = prefab.transform.Find("Wall").GetComponent<Tilemap>();
-        var hurtable = prefab.transform.Find("Hurtable").GetComponent<Tilemap>();
+        var hurtAble = prefab.transform.Find("Hurtable").GetComponent<Tilemap>();
+        var roomSize = Constant.ROOM_TILE_SIZE;
 
-        for (int i = 0; i < RoomSize.x; i++)
+        for (int i = 0; i < roomSize.x; i++)
         {
-            for (int j = 0; j < RoomSize.y; j++)
+            for (int j = 0; j < roomSize.y; j++)
             {
-                var tileIdx = json.tiles[j * RoomSize.x + i];
-                var tilemap = tileIdx switch
+                var tileIdx = json.tiles[j * roomSize.x + i];
+                var tileMap = tileIdx switch
                 {
-                    < 80 => hurtable,
+                    < 80 => hurtAble,
                     (>= 80) and (< 680) => wall,
                     _ => bg,
                 };
-                tilemap.SetTile(new(i, (RoomSize.y - 1) - j), _tiles[tileIdx]);
+                tileMap.SetTile(new(i, (roomSize.y - 1) - j), _tiles[tileIdx]);
             }
         }
         PrefabUtility.SaveAsPrefabAsset(prefab, RoomPrefabExportDir + $"/{prefab.name}.prefab");

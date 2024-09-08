@@ -1,13 +1,13 @@
 {
-    "name": "VVVVVV.Editor",
+    "name": "VVVVVV.Runtime",
     "rootNamespace": "VVVVVV",
     "references": [
-        "VVVVVV.Runtime",
-        "VVVVVV.Utils",
-        "Unity.2D.Tilemap.Extras"
+        "VVVVVV.Utils"
     ],
     "includePlatforms": [
-        "Editor"
+        "Android",
+        "Editor",
+        "WindowsStandalone64"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
