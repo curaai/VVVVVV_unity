@@ -1,5 +1,9 @@
 {
     "recommendations": [
-      "visualstudiotoolsforunity.vstuc"
+      "ms-dotnettools.csharp",
+      "ms-dotnettools.csdevkit",
+      "editorconfig.editorconfig",
+      "visualstudiotoolsforunity.vstuc",
+      "streetsidesoftware.code-spell-checker"
     ]
 }

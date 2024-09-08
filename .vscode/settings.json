@@ -51,5 +51,11 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "VVVVVV-unity.sln"
+    "dotnet.defaultSolution": "VVVVVV-unity.sln",
+    "cSpell.words": [
+        "Tilemap",
+        "Tilemaps",
+        "Jsons",
+        "spacestation"
+    ]
 }
