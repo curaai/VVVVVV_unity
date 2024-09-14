@@ -88,7 +88,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - room
+    - Room
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 9d09e7666a7a84c4fb1e50dcbc03f608, type: 2}

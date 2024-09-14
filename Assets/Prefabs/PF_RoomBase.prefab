@@ -444,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7121030981810496203}
   - component: {fileID: 2437948523148427427}
+  - component: {fileID: 2203077122572630573}
   m_Layer: 0
   m_Name: PF_RoomBase
   m_TagString: Untagged
@@ -481,3 +482,16 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &2203077122572630573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211234097950949514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69939920985840f4d8f82048ad5b9474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pos: {x: 0, y: 0}
