@@ -2,7 +2,9 @@
     "name": "VVVVVV.Runtime",
     "rootNamespace": "VVVVVV",
     "references": [
-        "VVVVVV.Utils"
+        "VVVVVV.Utils",
+        "UniTask",
+        "UniTask.Linq"
     ],
     "includePlatforms": [
         "Android",

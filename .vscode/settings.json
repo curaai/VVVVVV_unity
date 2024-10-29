@@ -53,9 +53,11 @@
     },
     "dotnet.defaultSolution": "VVVVVV-unity.sln",
     "cSpell.words": [
-        "Tilemap",
-        "Tilemaps",
+        "Addressables",
+        "Cysharp",
         "Jsons",
-        "spacestation"
+        "spacestation",
+        "Tilemap",
+        "Tilemaps"
     ]
 }

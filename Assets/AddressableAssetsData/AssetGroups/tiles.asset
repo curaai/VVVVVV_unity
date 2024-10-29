@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: tiles
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: tiles
   m_Data:
     m_SerializedData: []
-  m_GUID: 714dd36a5ac270c4aa86bdf5b2216425
+  m_GUID: 5ec5f1a593281534ba80d7ce55cf5c5d
   m_SerializeEntries:
-  - m_GUID: 9cfba12aa02b49e4196ec143bcee1731
-    m_Address: PF_RoomBase
+  - m_GUID: a6a47836a0c274c4ea7ee2f2f4515297
+    m_Address: Tiles1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Tile
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bd2b7c91088421d4c9d91469cbb85287, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: d710a5b509dddad4087aecae6097fbe2, type: 2}
-    - {fileID: 11400000, guid: 0b62169a4a833a040bcb54acd8d09799, type: 2}
+    - {fileID: 11400000, guid: 654f64dad00dd49409777078b2ae60dc, type: 2}
+    - {fileID: 11400000, guid: c80f7145ae5f1cb4fb75e1b75d804983, type: 2}

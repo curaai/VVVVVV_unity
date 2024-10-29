@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 714dd36a5ac270c4aa86bdf5b2216425
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 1f0fdbe3e07d29956bdebb2d611f4ed4
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -46,7 +46,8 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 66a4d0bb4f155c64bae1807d3ae77549, type: 2}
   - {fileID: 11400000, guid: ffdf4cbf294874848a5527466acb652c, type: 2}
-  - {fileID: 11400000, guid: 3c8015d7cccca2143a42db668a217bc2, type: 2}
+  - {fileID: 11400000, guid: 6e3253e6786432549b2b9713571719b2, type: 2}
+  - {fileID: 11400000, guid: c90e33e8fcb3bb54f8b964379e27657b, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -89,6 +90,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Room
+    - Tile
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 9d09e7666a7a84c4fb1e50dcbc03f608, type: 2}

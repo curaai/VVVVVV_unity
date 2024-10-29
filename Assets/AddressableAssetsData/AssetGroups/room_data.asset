@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: room_data
+  m_EditorClassIdentifier: 
+  m_GroupName: room_data
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 441ce832de279714c84b92f24958b9e1
+  m_SerializeEntries:
+  - m_GUID: 09ee17b4567fb134081540367bdc06e9
+    m_Address: room_data/labclass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Room
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e673e8fed789ff64b9138c5d9494d014
+    m_Address: room_data/spacestation
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Room
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98984015752e4d347af4533fa3938e73
+    m_Address: room_data/warpclass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Room
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bd2b7c91088421d4c9d91469cbb85287, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e816e268cf0989e49a5dd8ce90eda45f, type: 2}
+    - {fileID: 11400000, guid: 70fd748a1e4b4404ea35b2d9e71e72ab, type: 2}

@@ -112,6 +112,7 @@ public class ConstructRoom : EditorWindow
 
         var entry = AddrSettings.CreateOrMoveEntry(guid, RoomGroup, readOnly: true, postEvent: true);
         entry.address = $"{spaceName}-{json.Pos.x},{json.Pos.y}";
+        entry.SetLabel("Room", true);
     }
 
     [Serializable]
