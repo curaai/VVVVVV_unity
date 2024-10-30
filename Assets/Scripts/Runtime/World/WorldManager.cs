@@ -21,6 +21,11 @@ public class WorldManager : IDisposable
         return room;
     }
 
+    public void Test_LoadAll()
+    {
+        _roomLoader.LoadAllRooms();
+    }
+
     public void Dispose()
     {
         Rooms.ForEach(UnityEngine.Object.Destroy);

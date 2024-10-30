@@ -44,10 +44,16 @@ public class RoomLoader : IDisposable
         return json;
     }
 
+    public void LoadAllRooms()
+    {
+        // TODO: Handle this
+        var allRooms = _roomDataDict.Keys.Select(Get).ToList();
+    }
+
     public Room Get(RoomKey key)
     {
         var room = GameObject.Instantiate(_pf_room).GetComponent<Room>();
-        room.InitTiles(_roomDataDict[key], _tiles);
+        room.Init(_roomDataDict[key], _tiles);
         return room;
     }
 

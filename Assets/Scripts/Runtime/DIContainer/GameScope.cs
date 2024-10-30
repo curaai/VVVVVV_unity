@@ -18,7 +18,7 @@ public class GameScope : IScope
 
     public void TearUp()
     {
-        _worldManager.LoadRoom(new RoomKey(SpaceType.SpaceStation, new Vector2Int(51, 49)));
+        _worldManager.Test_LoadAll();
     }
 
     public void TearDown()

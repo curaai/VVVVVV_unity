@@ -10,7 +10,14 @@ namespace VVVVVV.Runtime.World
         public Vector2Int RoomPos;
         public string RoomName;
 
-        public void InitTiles(RoomJson json, Tile[] tiles)
+        public void Init(RoomJson json, Tile[] tiles)
+        {
+            transform.name = json.name;
+            transform.position = new Vector3(json.Pos.x * Constant.ROOM_TILE_SIZE.x, json.Pos.y * -Constant.ROOM_TILE_SIZE.y);
+            InitTiles(json.tiles, tiles);
+        }
+
+        public void InitTiles(int[] tileIndies, Tile[] sprites)
         {
             var bg = transform.Find("BG").GetComponent<Tilemap>();
             var wall = transform.Find("Wall").GetComponent<Tilemap>();
@@ -21,14 +28,14 @@ namespace VVVVVV.Runtime.World
             {
                 for (int j = 0; j < roomSize.y; j++)
                 {
-                    var tileIdx = json.tiles[j * roomSize.x + i];
+                    var tileIdx = tileIndies[j * roomSize.x + i];
                     var tileMap = tileIdx switch
                     {
                         < 80 => hurtAble,
                         (>= 80) and (< 680) => wall,
                         _ => bg,
                     };
-                    tileMap.SetTile(new(i, (roomSize.y - 1) - j), tiles[tileIdx]);
+                    tileMap.SetTile(new(i, (roomSize.y - 1) - j), sprites[tileIdx]);
                 }
             }
         }
