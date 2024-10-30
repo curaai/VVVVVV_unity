@@ -11,7 +11,7 @@ public class WorldManager : IDisposable
 
     public async UniTask SetupAsync()
     {
-        await _roomLoader.LoadAsync();
+        await _roomLoader.SetupAsync();
     }
 
     public Room LoadRoom(RoomKey roomKey)

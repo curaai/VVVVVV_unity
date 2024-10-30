@@ -20,7 +20,7 @@ public class RoomLoader : IDisposable
     Tile[] _tiles = null!;
     GameObject _pf_room = null!;
 
-    public async UniTask LoadAsync()
+    public async UniTask SetupAsync()
     {
         var assetManager = ServiceRegistry.App.AssetManager;
         var roomDataTask = assetManager.LoadAssetsAtAsync<TextAsset>("Room", x => x.Contains("room_data/spacestation"));
